@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import { useEffect } from "react";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ host }) => {
+  const router = useRouter();
+  useEffect(() => {
+    console.log("🚀 ~ file: index.tsx ~ line 11 ~ router", router);
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +21,17 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to Next 1 App!</h1>
+        <h2>{host}</h2>
       </main>
+      <Link href="/_one">
+        <a>_one</a>
+      </Link>
+      <Link href="/_two">
+        <a>_two</a>
+      </Link>
+      <Link href={`${host}/two`}>
+        <a>NEXT2</a>
+      </Link>
 
       <footer className={styles.footer}>
         <a
@@ -30,6 +47,13 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
+};
+
+Home.getInitialProps = async (ctx) => {
+  const { req } = ctx;
+  console.log("🚀 ~ file: index.tsx ~ line 51 ~ req");
+  // fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
+  return { host: req?.headers.host };
 };
 
 export default Home;
