@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useEffect } from "react";
 
+// @ts-ignore: Unreachable code error
 const Home: NextPage = ({ host }) => {
   const router = useRouter();
   useEffect(() => {
