@@ -52,8 +52,9 @@ const Home: NextPage = ({ host }) => {
 
 Home.getInitialProps = async (ctx) => {
   const { req } = ctx;
-  // console.log("🚀 ~ file: index.tsx ~ line 51 ~ req", req?.headers);
-  const protocol = req?.headers?.referer?.split("://")[0];
+  console.log("🚀 ~ file: index.tsx ~ line 51 ~ req", req?.headers);
+  // @ts-ignore: Unreachable code error
+  const protocol = req.headers.referer.split("://")[0];
   // fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
   return { host: protocol + "://" + req?.headers.host };
 };
