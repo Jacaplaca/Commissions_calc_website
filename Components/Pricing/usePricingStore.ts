@@ -1,3 +1,4 @@
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { useState, useEffect } from "react";
 
 const yearFactor = 0.8333333333333333333;
@@ -27,6 +28,8 @@ const usePricingStore = () => {
   const [plans, setPlans] = useState(defaultPrices);
   const maxEmployeesOnSlider = 100;
   const freeEmployees = 5;
+  const headerPlanBoxHeightFull = 340;
+  const headerPlanBoxHeightSticky = 70;
 
   useEffect(() => {
     const free = employees <= freeEmployees;
@@ -67,8 +70,6 @@ const usePricingStore = () => {
     setPeriod(period);
   };
 
-  useEffect(() => {}, []);
-
   return {
     recommendedPlan,
     employees,
@@ -78,6 +79,8 @@ const usePricingStore = () => {
     plans,
     maxEmployeesOnSlider,
     freeEmployees,
+    headerPlanBoxHeightFull,
+    headerPlanBoxHeightSticky,
   };
 };
 

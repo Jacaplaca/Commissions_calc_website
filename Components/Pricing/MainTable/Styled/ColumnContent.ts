@@ -35,7 +35,7 @@ const ColumnContent = styled.div`
   --opacity: ${({ highlight, theme }) => (highlight ? "100%" : "80%")};
   --blur: ${({ highlight, theme }) => (highlight ? "none" : ".5px")};
   --radius: ${({ highlight, theme }) => (highlight ? "0px" : "3px")};
-  --scale: ${({ highlight, theme }) => (highlight ? 1.015 : 1)};
+  /* --scale: ${({ highlight, theme }) => (highlight ? 1.015 : 1)}; */
   flex: auto;
   display: flex;
   flex-direction: column;

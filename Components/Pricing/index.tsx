@@ -1,16 +1,25 @@
 import styled from "styled-components";
 import dynamic from "next/dynamic";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { Slider, Switch } from "antd";
 import TwoStateSlideAnimatedButton from "../Buttons/TwoStateSlideAnimatedButton";
 import MainPricingTable from "./MainTable";
 import { usePricingContext } from "./context";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
+import { useScrollData } from "scroll-data-hook";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import PricingFaq from "./Faq/PricingFaq";
 
 type Props = {};
 const Wrapper = styled.section`
   display: flex;
+  background-color: lightgrey;
+  height: 100vh;
+  flex: auto;
+  display: flex;
+  padding-top: 25px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   .sliderWrapper {
     width: 100%;
@@ -21,15 +30,9 @@ const Wrapper = styled.section`
   }
 `;
 
-// const TwoStateSlideAnimatedButton = dynamic(
-//   () => import("../Buttons/TwoStateSlideAnimatedButton"),
-//   { ssr: false }
-// );
-
 const Headline = styled.h1``;
 
-const Pricing: FunctionComponent<Props> = ({}) => {
-  const [recommendedPlan, setRecommendedPlan] = useState("free");
+const Pricing: FunctionComponent<Props> = ({ faq }) => {
   const {
     updateEmployees,
     employees,
@@ -37,18 +40,11 @@ const Pricing: FunctionComponent<Props> = ({}) => {
     updatePeriod,
     maxEmployeesOnSlider,
   } = usePricingContext();
+
   return (
     <Wrapper>
-      {/* <div className="button" onClick={() => setRecommendedPlan("free")}>
-        Free
-      </div>
-      <div className="button" onClick={() => setRecommendedPlan("basic")}>
-        Basic
-      </div>
-      <div className="button" onClick={() => setRecommendedPlan("pro")}>
-        Pro
-      </div> */}
-      <Headline>Plans for every stage of your creator journey</Headline>
+      {/* <Headline>Plans for every stage of your creator journey</Headline>
+
       <div className="sliderWrapper">
         <Slider
           defaultValue={0}
@@ -65,7 +61,8 @@ const Pricing: FunctionComponent<Props> = ({}) => {
           changeActive={updatePeriod}
         />
       </div>
-      <MainPricingTable />
+      <MainPricingTable /> */}
+      <PricingFaq source={faq} />
     </Wrapper>
   );
 };
