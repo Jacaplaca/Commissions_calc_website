@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const RecommendedStyled = styled(motion.div)`
-  --background: ${({ visible }) => (visible ? "darkblue" : "transparent")};
+  --background: darkblue;
+  /* --background: ${({ visible }) =>
+    visible ? "darkblue" : "transparent"}; */
   position: absolute;
   top: 0;
   width: calc(100% + 2px);

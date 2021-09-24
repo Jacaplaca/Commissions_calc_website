@@ -1,14 +1,22 @@
 import type { NextPage } from "next";
-import Pricing from "../Components/Pricing";
-import { PricingContextProvider } from "../Components/Pricing/context";
+import styled, { useTheme } from "styled-components";
+
 import { serialize } from "next-mdx-remote/serialize";
 import faqMdx from "../Components/Pricing/Data/faqMdx.js";
 
-const Home: NextPage = ({ faq }) => {
+import Layout from "../Components/Layout";
+
+const Wrapper = styled.section`
+  /* background: paleturquoise; */
+  flex: 0;
+`;
+
+const Home: NextPage = ({ indexContent }) => {
+  const theme = useTheme();
   return (
-    <PricingContextProvider>
-      <Pricing faq={faq} />;
-    </PricingContextProvider>
+    <Layout backgroundColor={theme.colors.palette.indexBackground}>
+      <Wrapper>asdf</Wrapper>
+    </Layout>
   );
 };
 
@@ -18,16 +26,10 @@ export async function getStaticProps() {
       return { question, answer: result };
     });
   });
-  console.log(
-    "🚀 ~ file: index.tsx ~ line 22 ~ Promise.all ~ promises",
-    promises
-  );
+
   return Promise.all(promises).then((results) => {
-    return { props: { faq: results } };
+    return { props: { indexContent: results } };
   });
-  // MDX text - can be from a local file, database, anywhere
-  // const source = "Some **mdx** text, with a component";
-  // const mdxSource = await serialize(source);
 }
 
 export default Home;

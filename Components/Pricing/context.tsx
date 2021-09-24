@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-// import { ContextDevTool } from "react-context-devtool";
+import { ContextDevTool } from "react-context-devtool";
 import usePricingStore from "./usePricingStore";
 
 type UseSomeStoreType = ReturnType<typeof usePricingStore>;
@@ -9,7 +9,11 @@ export const PricingContextProvider = ({ children }) => {
   const store = usePricingStore();
   return (
     <PricingContext.Provider value={store}>
-      {/* <ContextDevTool context={PricingContext} id="Pricing" displayName="Pricing" /> */}
+      <ContextDevTool
+        context={PricingContext}
+        id="Pricing"
+        displayName="Pricing"
+      />
       {children}
     </PricingContext.Provider>
   );

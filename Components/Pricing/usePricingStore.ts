@@ -1,5 +1,6 @@
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { useState, useEffect } from "react";
+import useDebouncedEffect from "../NoCopy/useDebouncedEffect";
 
 const yearFactor = 0.8333333333333333333;
 
@@ -24,12 +25,15 @@ const defaultPrices = [
 const usePricingStore = () => {
   const [recommendedPlan, setRecommendedPlan] = useState(0);
   const [employees, setEmployees] = useState(5);
+  const [employeesTemp, setEmployeesTemp] = useState(5);
   const [period, setPeriod] = useState(0);
   const [plans, setPlans] = useState(defaultPrices);
   const maxEmployeesOnSlider = 100;
   const freeEmployees = 5;
   const headerPlanBoxHeightFull = 340;
   const headerPlanBoxHeightSticky = 70;
+
+  // useDebouncedEffect(() => setEmployees(employeesTemp), [employeesTemp], 300);
 
   useEffect(() => {
     const free = employees <= freeEmployees;
@@ -62,7 +66,7 @@ const usePricingStore = () => {
     }
   }, [employees, period]);
 
-  const updateEmployees = (no) => {
+  const updateEmployees = (e, no) => {
     setEmployees(no);
   };
 
@@ -81,6 +85,7 @@ const usePricingStore = () => {
     freeEmployees,
     headerPlanBoxHeightFull,
     headerPlanBoxHeightSticky,
+    employeesTemp,
   };
 };
 
