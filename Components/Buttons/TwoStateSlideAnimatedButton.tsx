@@ -1,8 +1,25 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+  FunctionComponent,
+  RefObject,
+  useCallback,
+} from "react";
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
-const buttonStyled = css`
+type ColorScheme = {
+  background: string;
+};
+
+const buttonStyled = css<{
+  mobile: boolean;
+  colorScheme?: ColorScheme;
+  isHighlighted?: boolean;
+  disabled: boolean;
+}>`
   font-size: ${({ mobile }) => (mobile ? 0.8 : 1)}em;
   padding: ${({ mobile }) => (mobile ? "5px 5px" : "5px 20px")};
   text-align: center;
@@ -10,13 +27,12 @@ const buttonStyled = css`
 
 const Highlighter = styled(motion.div)`
   ${buttonStyled}
-  --background:darkblue;
+  --background:${({ colorScheme }) => colorScheme?.background};
   border-radius: 50px;
   position: absolute;
   height: 93%;
   top: 0px;
   padding: 2px;
-  ${(props) => props.addCss}
   .content {
     background-color: var(--background);
     height: 100%;
@@ -33,20 +49,22 @@ const Row = styled(motion.div)`
   width: fit-content;
 `;
 
-const Buttons = styled.div`
+const Buttons = styled.div<{ colorScheme: ColorScheme }>`
+  --background: ${(p) => p.colorScheme.background};
   display: flex;
   justify-content: center;
   /* height: 100%; */
-  background: lightblue;
+  background: var(--background);
   border-radius: 50px;
+  gap: 0 10px;
   /* width: 100%; */
 `;
 
 const Element = styled.div`
   ${buttonStyled}
-  --color: ${({ colorScheme, theme }) =>
-    colorScheme?.activeColor ? colorScheme?.activeColor : "white"};
-  color: ${({ isHighlighted }) => (isHighlighted ? "var(--color)" : "black")};
+  --color: white;
+  color: ${({ isHighlighted, theme }) =>
+    isHighlighted ? "var(--color)" : theme.colors.text.midDarkBlue}!important;
   /* padding: 5px 10px; */
   height: 100%;
   display: flex;
@@ -55,22 +73,34 @@ const Element = styled.div`
   /* background-color: yellow; */
   z-index: 2;
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
-  font-weight: 500;
+  font-weight: 600;
   opacity: ${({ isHighlighted, disabled }) =>
-    isHighlighted ? 1 : disabled ? 0.5 : 0.7};
+    isHighlighted ? 1 : disabled ? 0.5 : 0.85};
   &:hover {
-    opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+    opacity: ${({ disabled }) => (disabled ? 0.85 : 1)};
   }
 `;
 
-const menuElements = [
+const menuElements: {
+  label: string;
+  key: string;
+  disabled: boolean;
+  action?: any;
+  hide?: boolean;
+}[] = [
   {
     label: "Monthly",
     key: "monthly",
+    disabled: false,
+    action: null,
+    hide: false,
   },
   {
     label: "Yearly",
     key: "yearly",
+    disabled: false,
+    action: null,
+    hide: false,
   },
   // {
   //   label: "2Yearly",
@@ -78,36 +108,56 @@ const menuElements = [
   // },
 ];
 
-const TwoStateSlideAnimatedButton = ({ changeActive, active }) => {
+type Props = {
+  changeActive: (e: number) => void;
+  active: number;
+  colorScheme: {
+    background: string;
+    clicked: string;
+  };
+};
+
+const TwoStateSlideAnimatedButton: FunctionComponent<Props> = ({
+  changeActive,
+  active,
+  colorScheme,
+}) => {
+  const { background, clicked } = colorScheme;
   const sizes = { width: 500, height: 10 };
-  const [mousePosition, setMousePosition] = useState({});
+  const [mousePosition, setMousePosition] = useState<{
+    x: number;
+    y: number;
+    width: number;
+    i: number;
+  }>({ x: 0, y: 0, width: 0, i: 0 });
   const [highlighted, setHighlighted] = useState(0);
   // const [active, setActive] = useState(0);
-  let usernameRefs = useRef([]);
+  let usernameRefs = useRef<RefObject<HTMLDivElement>[]>([]);
   // const [resizeListener, sizes] = useResizeObserver(350);
 
   // const action = (i) => {
   //   changeActi(i);
   // };
 
-  const moveMouse = () => {
+  const moveMouse = useCallback(() => {
     // const i = menuElements.findIndex((x) => x.key === active);
     const el = usernameRefs.current[active]?.current;
 
     setMousePosition({
-      x: el?.offsetLeft,
       y: 744,
-      width: el?.clientWidth - 2,
+      x: el?.offsetLeft || 0,
+      width: el?.clientWidth ? el.clientWidth - 2 : 0,
       i: active,
     });
     setHighlighted(active);
     // }
-  };
+  }, [active]);
 
   useEffect(() => {
     let mounted = true;
     usernameRefs.current = menuElements.map(
-      (ref, index) => (usernameRefs.current[index] = React.createRef())
+      (ref, index) =>
+        (usernameRefs.current[index] = React.createRef<HTMLDivElement>())
     );
     setTimeout(() => {
       if (mounted) {
@@ -118,41 +168,35 @@ const TwoStateSlideAnimatedButton = ({ changeActive, active }) => {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [moveMouse]);
 
   useEffect(() => {
     moveMouse();
-  }, [active]);
+  }, [active, moveMouse]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     moveMouse();
-  }, [sizes?.width, menuElements]);
+  }, [sizes?.width, moveMouse]);
 
-  const handleClick = (i) => {
+  const handleClick = (i: number) => {
     const isDisabled = menuElements[i].disabled;
-    console.log(
-      "🚀 ~ file: TwoStateSlideAnimatedButton.tsx ~ line 124 ~ handleClick ~ i",
-      i
-    );
     if (isDisabled) return false;
     menuElements[i].action ? menuElements[i].action(i) : changeActive(i);
   };
 
   return (
     <Row id="verticalSlidingMenuRowXL">
-      {/* {resizeListener} */}
-      {/* Your content here. (div sizes are {sizes.width} x {sizes.height}) */}
-      <Buttons>
+      <Buttons colorScheme={{ background }}>
         {menuElements.map((el, index) => {
-          const { hide, disabled, label, colorScheme } = el;
+          const { hide, disabled, label } = el;
           if (hide) {
             return <div key={label}></div>;
           } else {
             return (
               <Element
                 key={label}
+                mobile={false}
                 disabled={disabled}
-                colorScheme={colorScheme}
                 isHighlighted={index === highlighted}
                 ref={usernameRefs.current[index]}
                 style={{ zIndex: 2 }}
@@ -165,11 +209,13 @@ const TwoStateSlideAnimatedButton = ({ changeActive, active }) => {
         })}
       </Buttons>
       <Highlighter
-        colorScheme={menuElements[highlighted]?.colorScheme}
+        disabled={false}
+        mobile={false}
+        colorScheme={{ background: clicked }}
         transition={{
-          bounceDamping: 5,
+          // bounceDamping: 5,
           duration: 0.2,
-          ease: "easeOut",
+          // ease: "easeOut",
         }}
         animate={{
           x: mousePosition.x,

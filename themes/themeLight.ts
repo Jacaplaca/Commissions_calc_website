@@ -8,10 +8,19 @@ const theme = {
         main: "#ff9b26",
         light: "#ffd29d",
       },
+      red: {
+        main: "#ec3951",
+        light: "#fa92a0",
+      },
+      blue: {
+        main: "#008de0",
+        light: "#85c0e3",
+      },
       pricing: {
         background: "#eaffff",
-        blueDark: "#48639c",
-        blueMedium: "rgba(72,99,156,0.2)",
+        dark: "#48639c",
+        medium: "rgba(72,99,156,0.2)",
+        light: "rgba(72,99,156,0.1)",
       },
       indexBackground: "#fdf8f1",
     },

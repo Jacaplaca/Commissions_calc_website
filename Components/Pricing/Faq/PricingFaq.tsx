@@ -1,22 +1,29 @@
 import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Collapse, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AngleDownRegular } from "../../NoCopy/Icons";
 
 const { Panel } = Collapse;
 
-type Props = {};
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   width: 650px;
+  padding: 25px 25px;
+  .headline {
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+    padding: 25px 0px;
+  }
 `;
 
 const CollapseStyled = styled(Collapse)`
   /* border: 8px solid lightgray; */
-  background-color: lightgray;
+  background-color: transparent;
   .ant-collapse-borderless {
   }
 `;
@@ -45,9 +52,19 @@ const Icon = styled(({ component, ...props }) =>
   transform-origin: center center;
 `;
 
+export type FaqMDXs = {
+  answer: MDXRemoteSerializeResult<Record<string, unknown>>;
+  question: string;
+}[];
+
+type Props = {
+  source: FaqMDXs;
+};
+
 const PricingFaq: FunctionComponent<Props> = ({ source }) => {
   return (
     <Wrapper>
+      <h3 className="headline">Answers to some questions you may have</h3>
       {/* {faqMdx.map(async ({ answer, question }, i) => {
         const answerMdx = await serialize(answer);
         return (

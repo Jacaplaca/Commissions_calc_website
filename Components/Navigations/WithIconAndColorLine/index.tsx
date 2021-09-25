@@ -12,7 +12,7 @@ const withLine = css`
   justify-content: flex-end;
 `;
 
-const Element = styled.button`
+const Element = styled.button<{ isActive: boolean }>`
   border: 0px solid transparent;
   ${withLine}
   cursor: pointer;
@@ -59,14 +59,9 @@ const elements = [
 const Icon = styled(({ component, ...props }) =>
   cloneElement(component, props)
 )`
-  /* margin-top: -10px !important; */
   margin-right: 5px;
-  /* transform: rotate(${({ rotate }) => rotate}deg) !important; */
   font-size: 1.1em !important;
   color: ${(p) => (p.isActive ? "red" : "lightgrey")}!important;
-  // background: green !important;
-  /* transition: transform 0.2s ease-in-out !important; */
-  /* transform-origin: center center; */
 `;
 
 const NavigationHorizontalWithIconAndColorLine: FunctionComponent<Props> =
@@ -78,13 +73,7 @@ const NavigationHorizontalWithIconAndColorLine: FunctionComponent<Props> =
           const isLast = elements.length - 1 === i;
           const { label, key, icon } = element;
           const isActive = activeKey === key;
-          // if (isLast) {
-          //   return (
-          //     <Element>
-          //       <div className="buttonWithIcon">{label}</div>
-          //     </Element>
-          //   );
-          // }
+
           return (
             <div className="elementWithSpacer" key={key}>
               <Element isActive={isActive}>

@@ -1,11 +1,11 @@
-import { createContext, useContext } from "react";
+import { createContext, FunctionComponent, useContext } from "react";
 import { ContextDevTool } from "react-context-devtool";
 import useMainStore from "./useMainStore";
 
 type UseSomeStoreType = ReturnType<typeof useMainStore>;
 const MainContext = createContext<UseSomeStoreType | null>(null);
 
-export const MainContextProvider = ({ children }) => {
+export const MainContextProvider: FunctionComponent = ({ children }) => {
   const store = useMainStore();
   return (
     <MainContext.Provider value={store}>
@@ -23,14 +23,4 @@ export const useMainContext = () => {
   }
 
   return context;
-};
-
-export const withMainContext = (Component) => {
-  return function contextComponent(props) {
-    return (
-      <MainContextProvider>
-        <Component {...props} />
-      </MainContextProvider>
-    );
-  };
 };

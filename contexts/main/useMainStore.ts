@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const useMainStore = () => {
   const [background, setBackground] = useState("#ffffff");
 
-  const updateBackground = (color) => {
+  const updateBackground = (color: string) => {
     setBackground(color);
   };
 

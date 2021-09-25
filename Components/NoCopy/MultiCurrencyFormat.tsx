@@ -1,22 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import AnimatedNumber from "react-animated-number";
-// import { useTheme } from "@material-ui/core/styles";
-import styled, { useTheme } from "styled-components";
-import { useRouter } from "next/router";
-
-const nameSpaces: I18NamespacesType[] = ["common"];
-
-const checkCurrencyPosition = (currency: string): "prefix" | "suffix" => {
-  const prefix = ["$"];
-  const suffix = ["PLN", "%"];
-  if (prefix.includes(currency)) {
-    return "prefix";
-  } else if (suffix.includes(currency)) {
-    return "suffix";
-  } else {
-    return "suffix";
-  }
-};
+import styled from "styled-components";
 
 type FormatNumber = (args: {
   value: number | string;
@@ -25,17 +8,24 @@ type FormatNumber = (args: {
   notShowZero?: boolean;
   style?: "decimal" | "percent" | "currency";
   language?: string;
+  browserLocale: string;
 }) => string;
 
 export const formatNumberLocale: FormatNumber = (props) => {
   // console.log("🚀 ~ file: MultiCurrencyFormat.tsx ~ line 33 ~ props", props);
-  const { value, currency, style, language = "en", decimals = 0 } = props;
-  const browserLocale = window?.navigator?.language;
+  const {
+    value,
+    currency,
+    style,
+    language = "en",
+    decimals = 0,
+    browserLocale = "en-US",
+  } = props;
 
   const isPercent = style === "percent";
   const notCurrency = !currency;
 
-  let valueParsed = parseFloat(value);
+  let valueParsed = parseFloat(String(value));
   valueParsed = isPercent ? valueParsed / 100 : valueParsed;
   const hasDecimal = valueParsed % 1 != 0;
   const currencyIsPercent = currency === "%" || isPercent;
@@ -84,91 +74,27 @@ type Props = {
 const MultiCurrencyFormat: FunctionComponent<Props> = ({
   value,
   currency,
-  anim,
-  animAdv,
   decimals = 0,
   style = "decimal",
-  minDecimals = 0,
 }) => {
-  const theme = useTheme();
-  const [animValue, setAnimValue] = useState(0);
-  const router = useRouter();
-
-  const notCurrency = style === "decimal" || style === "percent";
+  const [browserLocale, setBrowserLocale] = useState("en-US");
 
   useEffect(() => {
-    const frames = 20;
-    const step = Math.floor(value / frames);
-    let i = 1; //  set your counter to 1
-    if (anim) {
-      function myLoop(forIncrease) {
-        //  create a loop function
-        setTimeout(function () {
-          //  call a 3s setTimeout when the loop is called
-          i++; //  increment the counter
-          if (i < frames) {
-            // const no = Math.random() * 100        //  if the counter < 10, call the loop function
-            const increased = forIncrease + step;
-            setAnimValue(increased);
-            myLoop(increased); //  ..  again which will trigger another
-          } else if (i === frames) {
-            setAnimValue(value);
-          } //  ..  setTimeout()
-        }, 17 * (1 + i / 100));
-      }
-      myLoop(0);
-    } else {
-      setAnimValue(value);
-    }
-  }, [value]);
+    setBrowserLocale(window?.navigator?.language);
+  }, []);
 
-  // console.log(`multiCurrency ${value} ${typeof value}`);
-
-  if (animAdv) {
-    return (
-      <AnimatedNumber
-        component="text"
-        value={animValue}
-        style={{
-          transition: "0.8s ease-out",
-          fontSize: 17,
-          transitionProperty: "background-color, color, opacity",
-        }}
-        frameStyle={(perc) =>
-          perc === 100 ? {} : { color: theme.colors.antBlue.main }
-        }
-        stepPrecision={0}
-        duration={300}
-        formatValue={(n) =>
-          parseFloat(n).toLocaleString("en", {
-            minimumFractionDigits: notCurrency ? minDecimals : decimals,
-            maximumFractionDigits: decimals,
-          })
-        }
-      />
-    );
-  } else {
-    return (
-      <Shorter>
-        {formatNumberLocale({
-          value,
-          currency,
-          style,
-          language: "en",
-          decimals,
-        })}
-      </Shorter>
-      // <NumberFormat
-      //   value={notShowZero && parseInt(animValue) === 0 ? null : animValue}
-      //   displayType={"text"}
-      //   thousandSeparator={true}
-      //   prefix={currency && checkCurrencyPosition(currency) === "prefix" && `${currency} `}
-      //   suffix={currency && checkCurrencyPosition(currency) === "suffix" && ` ${currency} `}
-      //   fixedDecimalScale
-      //   decimalScale={noZeros ? 0 : decimals}
-      // />
-    );
-  }
+  return (
+    <Shorter>
+      {formatNumberLocale({
+        value,
+        currency,
+        style,
+        language: "en",
+        decimals,
+        browserLocale,
+      })}
+    </Shorter>
+  );
 };
 
 export default MultiCurrencyFormat;

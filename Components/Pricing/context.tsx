@@ -1,11 +1,11 @@
-import { createContext, useContext } from "react";
+import { createContext, FunctionComponent, useContext } from "react";
 import { ContextDevTool } from "react-context-devtool";
 import usePricingStore from "./usePricingStore";
 
 type UseSomeStoreType = ReturnType<typeof usePricingStore>;
 const PricingContext = createContext<UseSomeStoreType | null>(null);
 
-export const PricingContextProvider = ({ children }) => {
+export const PricingContextProvider: FunctionComponent = ({ children }) => {
   const store = usePricingStore();
   return (
     <PricingContext.Provider value={store}>
@@ -29,14 +29,4 @@ export const usePricingContext = () => {
   }
 
   return context;
-};
-
-export const withPricingContext = (Component) => {
-  return function contextComponent(props) {
-    return (
-      <PricingContextProvider>
-        <Component {...props} />
-      </PricingContextProvider>
-    );
-  };
 };

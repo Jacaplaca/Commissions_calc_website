@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 
-type Props = {};
+type Props = {
+  label: string;
+};
 const Button = styled.button`
   display: flex;
   outline: 0;
@@ -16,8 +18,9 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.text.midDarkBlue};
   transition: all 0.2s ease-in;
   &:hover {
-    background: ${({ theme }) => theme.colors.palette.darkBlue.main};
+    background: ${({ theme }) => theme.colors.palette.red.main};
     color: ${({ theme }) => theme.colors.text.light};
+    border: 1px solid ${({ theme }) => theme.colors.palette.red.main};
   }
 `;
 

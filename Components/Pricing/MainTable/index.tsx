@@ -1,30 +1,25 @@
 import styled from "styled-components";
-import {
-  cloneElement,
-  FunctionComponent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { motion } from "framer-motion";
-import Recommended from "./Recommended";
+import { FunctionComponent } from "react";
 import HeaderPlanBox from "./HeaderPlanBox";
 import { usePricingContext } from "../context";
 import ColumnContent from "./Styled/ColumnContent";
-import {
-  PuzzleFour,
-  PuzzleThree,
-  PuzzleTwo,
-  StopwatchRegular,
-} from "../../NoCopy/Icons";
+import { PuzzleFour, PuzzleThree, PuzzleTwo } from "../../NoCopy/Icons";
 import Features from "./Features";
+import { useMainContext } from "../../../contexts/main";
 
-type Props = {};
-
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   display: flex;
   position: relative;
-
+  width: 100%;
+  justify-content: center;
+  background-color: red;
+  /* background-color: white; */
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    ${(p) => p.backgroundColor} 200px,
+    white 100px
+  );
   .column {
     width: 389px;
     .description {
@@ -35,6 +30,8 @@ const Wrapper = styled.div`
   }
 `;
 
+type Props = {};
+
 const MainPricingTable: FunctionComponent<Props> = () => {
   const {
     recommendedPlan,
@@ -42,9 +39,14 @@ const MainPricingTable: FunctionComponent<Props> = () => {
     headerPlanBoxHeightSticky,
   } = usePricingContext();
 
+  const { background } = useMainContext();
+
   return (
     <>
-      <Wrapper marginTop={headerPlanBoxHeightFull - headerPlanBoxHeightSticky}>
+      <Wrapper
+        marginTop={headerPlanBoxHeightFull - headerPlanBoxHeightSticky}
+        backgroundColor={background}
+      >
         <div className="column">
           <ColumnContent
             highlight={recommendedPlan === 0}

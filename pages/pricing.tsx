@@ -7,16 +7,20 @@ import NavigationHorizontalWithIconAndColorLine from "../Components/Navigations/
 import MainMenu from "../Components/Navigations/MainMenu";
 import Layout from "../Components/Layout";
 import { useTheme } from "styled-components";
+import { FaqMDXs } from "../Components/Pricing/Faq/PricingFaq";
 
-const Home: NextPage = ({ faq }) => {
+type Props = {
+  faq: FaqMDXs;
+};
+
+const PricingPage: NextPage<Props> = ({ faq }) => {
   const theme = useTheme();
   return (
-    <Layout backgroundColor={theme.colors.palette.pricing.background}>
-      <PricingContextProvider>
-        <Pricing faq={faq} />;{/* <MainMenu /> */}
-        {/* <NavigationHorizontalWithIconAndColorLine /> */}
-      </PricingContextProvider>
-    </Layout>
+    <PricingContextProvider>
+      <Layout backgroundColor={theme.colors.palette.pricing.background}>
+        <Pricing faq={faq} />
+      </Layout>
+    </PricingContextProvider>
   );
 };
 
@@ -38,4 +42,4 @@ export async function getStaticProps() {
   // const mdxSource = await serialize(source);
 }
 
-export default Home;
+export default PricingPage;

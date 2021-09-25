@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import styled from "styled-components";
 
-const RecommendedStyled = styled(motion.div)`
-  --background: darkblue;
+const RecommendedStyled = styled(motion.div)<{ visible: boolean }>`
+  --background: ${(p) => p.theme.colors.palette.pricing.dark};
   /* --background: ${({ visible }) =>
     visible ? "darkblue" : "transparent"}; */
   position: absolute;
@@ -15,6 +15,10 @@ const RecommendedStyled = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border-color: "green"; */
+  /* border-width: 0px !important; */
+  /* border: 1px solid ${(p) =>
+    p.visible ? "var(--background)" : "transparent"}; */
 
   .recommended__content {
     border-top-left-radius: 10px;
@@ -23,16 +27,25 @@ const RecommendedStyled = styled(motion.div)`
     padding-top: 7px;
     padding-bottom: 7px;
     text-align: center;
-    background-color: var(--background);
+    background-color: ${(p) =>
+      p.visible ? "var(--background)" : "transparent"};
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    border: ${(p) => (p.visible ? 1 : 0)}px solid
+      ${(p) => (p.visible ? "var(--background)" : "transparent")};
+    /* border: 1px solid
+      ${(p) => (p.visible ? "var(--background)" : "transparent")}; */
   }
 `;
 
-const Recommended = ({ visible }) => {
+type Props = {
+  visible: boolean;
+};
+
+const Recommended: FunctionComponent<Props> = ({ visible }) => {
   const [y, setY] = useState(0);
 
   useEffect(() => {

@@ -1,6 +1,4 @@
-import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { useState, useEffect } from "react";
-import useDebouncedEffect from "../NoCopy/useDebouncedEffect";
 
 const yearFactor = 0.8333333333333333333;
 
@@ -9,6 +7,7 @@ const defaultPrices = [
     maxEmployees: 5,
     price: 0,
     disabled: false,
+    yearlyPrice: 0,
   },
   {
     price: 99,
@@ -27,13 +26,11 @@ const usePricingStore = () => {
   const [employees, setEmployees] = useState(5);
   const [employeesTemp, setEmployeesTemp] = useState(5);
   const [period, setPeriod] = useState(0);
-  const [plans, setPlans] = useState(defaultPrices);
+  const [plans, setPlans] = useState<typeof defaultPrices>(defaultPrices);
   const maxEmployeesOnSlider = 100;
   const freeEmployees = 5;
   const headerPlanBoxHeightFull = 340;
   const headerPlanBoxHeightSticky = 70;
-
-  // useDebouncedEffect(() => setEmployees(employeesTemp), [employeesTemp], 300);
 
   useEffect(() => {
     const free = employees <= freeEmployees;
@@ -52,13 +49,13 @@ const usePricingStore = () => {
         { ...defaultPrices[0], disabled: true },
         {
           ...defaultPrices[1],
-          price: parseInt(basicPrice),
-          yearlyPrice: parseInt(basicYearlyPrice),
+          price: Math.floor(basicPrice),
+          yearlyPrice: Math.floor(basicYearlyPrice),
         },
         {
           ...defaultPrices[2],
-          price: parseInt(proPrice),
-          yearlyPrice: parseInt(proYearlyPrice),
+          price: Math.floor(proPrice),
+          yearlyPrice: Math.floor(proYearlyPrice),
         },
       ]);
     } else {
@@ -66,11 +63,18 @@ const usePricingStore = () => {
     }
   }, [employees, period]);
 
-  const updateEmployees = (e, no) => {
-    setEmployees(no);
+  type UpdateEmployees = (
+    event: Event,
+    value: number | Array<number>,
+    activeThumb: number
+  ) => void;
+  const updateEmployees: UpdateEmployees = (e, no) => {
+    if (typeof no === "number") {
+      setEmployees(no);
+    }
   };
 
-  const updatePeriod = (period) => {
+  const updatePeriod = (period: number) => {
     setPeriod(period);
   };
 

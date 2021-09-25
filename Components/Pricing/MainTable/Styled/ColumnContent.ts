@@ -27,12 +27,12 @@ const tail = css`
   }
 `;
 
-const ColumnContent = styled.div`
+const ColumnContent = styled.div<{ highlight: boolean; showTail?: boolean }>`
   margin-left: -1px;
   --borderColor: ${({ highlight, theme }) =>
     highlight ? "darkblue" : "lightgrey"};
   --borderBottomWidth: ${({ highlight, theme }) => (highlight ? 0 : 1)}px;
-  --opacity: ${({ highlight, theme }) => (highlight ? "100%" : "80%")};
+  /* --opacity: ${({ highlight, theme }) => (highlight ? "100%" : "80%")}; */
   --blur: ${({ highlight, theme }) => (highlight ? "none" : ".5px")};
   --radius: ${({ highlight, theme }) => (highlight ? "0px" : "3px")};
   /* --scale: ${({ highlight, theme }) => (highlight ? 1.015 : 1)}; */
@@ -42,8 +42,7 @@ const ColumnContent = styled.div`
   border-radius: var(--radius);
   transform: scale(var(--scale));
   background: white;
-  /* animation: ${({ highlight }) =>
-    highlight ? fadeOut : fadeIn} 1s linear; */
+
   transition: transform 0.2s ease-in-out;
   /* opacity: ${({ highlight }) => (highlight ? 1 : 0.8)}; */
   z-index: ${({ highlight }) => (highlight ? 1 : 0)};

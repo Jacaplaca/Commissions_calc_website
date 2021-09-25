@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { FunctionComponent } from "react";
 import features from "../Data/features.json";
 
-type Props = {};
+type Props = { enabled: number[] };
 const Wrapper = styled.ul`
   /* display: flex; */
 `;
 
-const Feature = styled.li`
+const Feature = styled.li<{ disabled: boolean }>`
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */

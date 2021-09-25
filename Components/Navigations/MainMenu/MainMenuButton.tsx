@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { FunctionComponent } from "react";
 import Link from "next/link";
 
-type Props = {};
+type Props = {
+  label: string;
+  link: string;
+};
 const ButtonWrapper = styled.button`
   position: relative;
   cursor: pointer;

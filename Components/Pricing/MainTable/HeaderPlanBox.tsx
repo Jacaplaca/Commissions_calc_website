@@ -1,23 +1,31 @@
 import styled, { css } from "styled-components";
-import {
-  cloneElement,
-  FunctionComponent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { cloneElement, FunctionComponent } from "react";
 import Recommended from "./Recommended";
 import { usePricingContext } from "../context";
-import dynamic from "next/dynamic";
-
-type Props = {};
+import Comment from "./Comment";
+import MultiCurrencyFormat from "../../NoCopy/MultiCurrencyFormat";
 
 const shadowSticky = css`
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15) !important;
+  &:after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    /* background: red; */
+    bottom: 0;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15) !important;
+  }
+  /* border: 0px solid !important; */
 `;
 
-const Wrapper = styled.section`
+const Wrapper = styled.section<{
+  isSticky?: boolean;
+  isFooter?: boolean;
+  height?: number;
+  showOnTop?: boolean;
+}>`
   display: flex;
+  /* background-color: red; */
   position: ${({ isSticky, isFooter }) =>
     isSticky ? "sticky" : isFooter ? "relative" : "absolute"};
   /* position: absolute; */
@@ -31,7 +39,6 @@ const Wrapper = styled.section`
   border-bottom: 1px solid
     ${({ isFooter }) => (isFooter ? "transparent" : "lightgray")};
   z-index: ${({ showOnTop }) => (showOnTop ? 1 : 0)};
-  /* box-shadow: 0px 13px 24px -15px rgb(0 0 0 / 14%); */
   ${({ isSticky }) => isSticky && shadowSticky};
   .content {
     display: flex;
@@ -56,13 +63,19 @@ const Wrapper = styled.section`
       }
     }
     .price {
-      height: ${({ isSticky }) => (isSticky ? 30 : 50)}px;
+      height: ${({ isSticky }) => (isSticky ? 30 : 55)}px;
       display: flex;
       align-items: baseline;
       .amount {
-        margin-right: 5px;
-        font-size: ${({ isSticky }) => (isSticky ? 1.5 : 2)}em;
-        font-weight: 900;
+        /* margin-right: 5px; */
+        font-size: ${({ isSticky }) => (isSticky ? 1.5 : 2.5)}em;
+        font-weight: 600;
+        color: ${({ theme }) => theme.colors.text.midDarkBlue};
+      }
+      .period,
+      .startingAt {
+        font-size: 1em;
+        padding: 0 7px;
       }
     }
     .signUpButton {
@@ -71,95 +84,24 @@ const Wrapper = styled.section`
   }
 `;
 
-const MultiCurrencyFormat = dynamic(
-  () => import("../../NoCopy/MultiCurrencyFormat"),
-  { ssr: false }
-);
-
-const CommentStyled = styled.div`
-  display: flex;
-  .yearly {
-    display: flex;
-    margin-right: 5px;
-    .yearlyAmount {
-      margin-right: 3px;
-    }
-  }
-`;
-
-const Yearly = ({ period, yearlyPrice }) => {
-  if (period) {
-    return (
-      <span className={"yearly"}>
-        <span className={"yearlyAmount"}>
-          <MultiCurrencyFormat value={yearlyPrice} currency="usd" />
-        </span>
-        <span>yearly.</span>
-      </span>
-    );
-  }
-  return null;
-};
-
-const Comment = ({ plan }) => {
-  const {
-    plans,
-    period,
-    recommendedPlan,
-    freeEmployees,
-    employees,
-    maxEmployeesOnSlider,
-  } = usePricingContext();
-  const planData = plans[plan];
-  const { yearlyPrice } = planData;
-
-  if (plan === 0) {
-    return (
-      <CommentStyled>
-        <div>
-          Maximum <strong>{freeEmployees}</strong> employees
-        </div>
-      </CommentStyled>
-    );
-  }
-
-  if (plan === 1 || plan === 2) {
-    if (employees === maxEmployeesOnSlider) {
-      return (
-        <CommentStyled>
-          <div>
-            <u>
-              <a href="http://">Request a demo</a>
-            </u>{" "}
-            to talk our team.
-          </div>
-        </CommentStyled>
-      );
-    }
-    return (
-      <CommentStyled>
-        <Yearly yearlyPrice={yearlyPrice} period={period} />
-        <div>
-          For up to <strong>{employees}</strong> employees.
-        </div>
-      </CommentStyled>
-    );
-  }
-};
-
 const SignUpButtonStyled = styled.button`
   outline: none;
   border-radius: 50px;
-  background: darkblue;
+  background: ${({ theme }) => theme.colors.palette.red.main};
   cursor: pointer;
   color: white;
   border: 0px solid transparent;
-  padding: 7px 15px;
+  padding: 12px 20px;
   font-size: 1.23em;
   font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.2s linear;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
-const SignUpButton = ({ isFree }) => {
+const SignUpButton: FunctionComponent<{ isFree: boolean }> = ({ isFree }) => {
   const freeLabel = "Sign up free";
   const payingLabel = "Start free trial";
 
@@ -172,9 +114,16 @@ const Icon = styled(({ component, ...props }) =>
   cloneElement(component, props)
 )`
   font-size: 3.8em !important;
-  color: ${({ theme }) => "darkblue"};
+  color: ${({ theme }) => theme.colors.palette.red.main};
 `;
 
+type Props = {
+  title: string;
+  plan: number;
+  highlightPlan: boolean;
+  isFooter?: boolean;
+  icon: JSX.Element;
+};
 const HeaderPlanBox: FunctionComponent<Props> = ({
   title,
   plan,
@@ -185,9 +134,6 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
 }) => {
   const {
     plans,
-    period,
-    recommendedPlan,
-    freeEmployees,
     employees,
     maxEmployeesOnSlider,
     headerPlanBoxHeightFull,
@@ -248,6 +194,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             </div>
           ) : (
             <div className="price">
+              <div className="startingAt">Starting at</div>
               <div className="amount">
                 <MultiCurrencyFormat
                   value={plans[plan]?.price}
