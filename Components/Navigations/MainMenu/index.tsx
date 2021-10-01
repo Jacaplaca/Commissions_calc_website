@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import MainMenuButton from "./MainMenuButton";
 import MainNavigationBigButton from "../../Buttons/MainNavigationBigButton";
 
@@ -7,6 +7,7 @@ type Props = {};
 const Row = styled.section`
   display: flex;
   justify-content: flex-end;
+  position: relative;
 `;
 
 const Menu = styled.ul`
@@ -14,20 +15,39 @@ const Menu = styled.ul`
   margin-right: 15px;
 `;
 
-const elements = [
-  { label: "Musicians", key: "one", link: "/" },
-  { label: "Two And", key: "two", link: "/" },
-  { label: "Three", key: "three", link: "/pricing" },
-  { label: "Four More", key: "four", link: "/" },
-];
-
 const MainMenu: FunctionComponent<Props> = ({}) => {
+  const [featuresOpened, setFeaturesOpened] = useState<string>("");
+
+  const toggler = (key: string) => {
+    console.log("🚀 ~ file: index.tsx ~ line 21 ~ toggler ~ key", key);
+    if (featuresOpened === key) {
+      setFeaturesOpened("");
+    } else {
+      setFeaturesOpened(key);
+    }
+  };
+
+  const elements = [
+    { label: "Features", key: "one", action: () => toggler("one") },
+    { label: "Two And", key: "two", link: "/" },
+    { label: "Three", key: "three", link: "/pricing" },
+    { label: "Four More", key: "four", link: "/" },
+  ];
+
   return (
     <Row>
       <Menu>
         {elements.map((element) => {
-          const { label, key, link } = element;
-          return <MainMenuButton label={label} key={key} link={link} />;
+          const { label, key, link, action } = element;
+          return (
+            <MainMenuButton
+              label={label}
+              key={key}
+              link={link}
+              action={action}
+              clicked={featuresOpened === key}
+            />
+          );
         })}
       </Menu>
       <div>

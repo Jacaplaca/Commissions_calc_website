@@ -4,6 +4,7 @@ import Header from "./Header";
 import { AnimatePresence, motion } from "framer-motion";
 import usePrevious from "../../hooks/usePrevious";
 import { useMainContext } from "../../contexts/main";
+import Footer from "../Footer";
 
 type Props = {
   backgroundColor: string;
@@ -54,6 +55,7 @@ const Layout: FunctionComponent<Props> = ({ children, backgroundColor }) => {
       >
         {children}
       </Container>
+      <Footer />
     </Wrapper>
   );
 };

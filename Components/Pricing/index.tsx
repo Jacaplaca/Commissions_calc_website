@@ -69,7 +69,15 @@ const Wrapper = styled.section`
 
 const Headline = styled.h1`
   /* font-size: 2.1em; */
-  padding-bottom: 55px;
+  padding-bottom: 34px;
+  max-width: 700px;
+  text-align: center;
+`;
+
+const SubTitle = styled.h4`
+  max-width: 700px;
+  text-align: center;
+  padding-bottom: 25px; ;
 `;
 
 type Props = {
@@ -92,6 +100,7 @@ const Pricing: FunctionComponent<Props> = ({ faq }) => {
   return (
     <Wrapper>
       <Headline>Plans for every stage of your creator journey</Headline>
+      <SubTitle>How many email subscribers do you have?</SubTitle>
       {/* <Button>sdf</Button> */}
       <div className="sliderWrapper">
         <EmployeesSlider

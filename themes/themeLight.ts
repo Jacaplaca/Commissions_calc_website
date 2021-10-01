@@ -1,4 +1,10 @@
 const theme = {
+  shadows: {
+    subMenu: "0px 6px 9px 0px rgb(0 0 0 / 11%);",
+  },
+  sizes: {
+    headerWidth: "1170px",
+  },
   colors: {
     palette: {
       darkBlue: {
