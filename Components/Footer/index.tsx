@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
 import footerContent from "../../data/footerContent";
 import { FacebookFBrands } from "../NoCopy/Icons";
+import { useTranslation } from "react-i18next";
 
 type Props = {};
 const Wrapper = styled.section`

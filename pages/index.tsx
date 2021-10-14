@@ -25,9 +25,18 @@ const Home: NextPage = () => {
   const theme = useTheme();
   return (
     <Layout backgroundColor={theme.colors.palette.indexBackground}>
+      {/* <Portal portalId="portal_subMenu">
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa maiores
+          tempora at, laborum saepe atque dolore accusamus ab dolorem, fugit sit
+          minima debitis! Error exercitationem eligendi, ab obcaecati illum
+          eveniet.
+        </div>
+      </Portal> */}
+
       <h1>{t("h1")}</h1>
       <h2>{t("title")}</h2>
-      <Link href="/" locale={router.locale === "en" ? "de" : "en"}>
+      <Link href="/" locale={router.locale === "en" ? "pl" : "en"}>
         <a>
           <button>{t("change-locale")}</button>
         </a>
@@ -103,7 +112,11 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "footer"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "footer",
+        "subMenu",
+      ])),
       // indexContent: results,
     },
   };

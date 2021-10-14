@@ -23,7 +23,7 @@ const theme = {
         light: "#85c0e3",
       },
       pricing: {
-        background: "#eaffff",
+        background: "#f3f7ff",
         dark: "#48639c",
         medium: "rgba(72,99,156,0.2)",
         light: "rgba(72,99,156,0.1)",

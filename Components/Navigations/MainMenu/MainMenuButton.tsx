@@ -3,8 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cloneElement, FunctionComponent } from "react";
 import Link from "next/link";
 import { AngleDownRegular } from "../../NoCopy/Icons";
-import SubMenu from "./SubMenu";
-import Portal from "../../Portal";
+// import SubMenu from "./SubMenu";
+import SubMenuWrapper from "./SubMenu/Wrapper";
+import dynamic from "next/dynamic";
+import LanguageSwitcher from "./LanguageSwitcher";
+const Portal = dynamic(() => import("../../Portal").then((module) => module), {
+  ssr: false,
+});
 
 const ButtonWrapper = styled.button`
   position: relative;
@@ -15,6 +20,11 @@ const ButtonWrapper = styled.button`
   display: flex;
   align-items: center;
   background: transparent;
+
+  .under {
+    position: absolute;
+    top: 50px;
+  }
 
   .label {
     display: flex;
@@ -43,7 +53,7 @@ const Background = styled.div`
   background-color: ${({ theme }) => theme.colors.palette.orange.light};
   ${ButtonWrapper}:hover & {
     /* opacity: 0.5; */
-    height: 60%;
+    height: 10%;
   }
 `;
 
@@ -52,6 +62,8 @@ type Props = {
   link?: string;
   action?: () => void;
   clicked: boolean;
+  SubMenu?: FunctionComponent;
+  centerSubMenu?: boolean;
 };
 
 const Icon = styled(({ component, ...props }) =>
@@ -69,6 +81,8 @@ const MainMenuButton: FunctionComponent<Props> = ({
   link,
   action,
   clicked,
+  SubMenu,
+  centerSubMenu,
 }) => {
   if (link) {
     return (
@@ -82,22 +96,47 @@ const MainMenuButton: FunctionComponent<Props> = ({
       </Link>
     );
   }
-  if (action) {
+  if (action && centerSubMenu) {
     return (
       <ButtonWrapper onClick={action}>
         <AnimatePresence>
-          {clicked && (
-            <Portal id="portal_subMenu">
+          <Portal portalId="portal_subMenu">
+            {clicked && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <SubMenu />
+                <SubMenuWrapper>{SubMenu}</SubMenuWrapper>
               </motion.div>
-            </Portal>
-          )}
+            )}
+          </Portal>
         </AnimatePresence>
+
+        <div className="label">
+          <div>{label}</div>
+          <Icon component={<AngleDownRegular />} rotate={clicked ? 180 : 0} />
+        </div>
+        <Background></Background>
+      </ButtonWrapper>
+    );
+  }
+  if (action && !centerSubMenu) {
+    return (
+      <ButtonWrapper onClick={action}>
+        <div className="under">
+          <AnimatePresence>
+            {clicked && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <LanguageSwitcher />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         <div className="label">
           <div>{label}</div>

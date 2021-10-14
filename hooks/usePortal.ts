@@ -33,12 +33,17 @@ function addRootElement(rootElem) {
  * @returns {HTMLElement} The DOM node to use as the Portal target.
  */
 function usePortal(id) {
+  console.log("🚀 ~ file: usePortal.ts ~ line 36 ~ usePortal ~ id", id);
   const rootElemRef = useRef(null);
 
   useEffect(
     function setupElement() {
       // Look for existing target dom element to append to
       const existingParent = document.querySelector(`#${id}`);
+      console.log(
+        "🚀 ~ file: usePortal.ts ~ line 43 ~ setupElement ~ existingParent",
+        existingParent
+      );
       // console.log("🚀 ~ file: usePortal.ts ~ line 39 ~ setupElement ~ existingParent", existingParent);
       // Parent is either a new root or the existing dom element
       // const parentElem = existingParent || createRootElement(id);

@@ -10,11 +10,12 @@ import usePortal from "../../hooks/usePortal";
  */
 
 type Props = {
-  id: String;
+  portalId: String;
 };
 
-const Portal: FunctionComponent<Props> = ({ id, children }) => {
-  const target = usePortal(id);
+const Portal: FunctionComponent<Props> = ({ portalId, children }) => {
+  const target = usePortal(portalId);
+  console.log("🚀 ~ file: index.tsx ~ line 18 ~ target", target);
   if (target) {
     return createPortal(children, target);
   }

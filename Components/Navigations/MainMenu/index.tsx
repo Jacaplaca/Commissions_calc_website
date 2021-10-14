@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { FunctionComponent, useState } from "react";
 import MainMenuButton from "./MainMenuButton";
 import MainNavigationBigButton from "../../Buttons/MainNavigationBigButton";
+import { useTranslation } from "react-i18next";
+import SubMenu from "./SubMenu";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type Props = {};
 const Row = styled.section`
@@ -16,10 +19,13 @@ const Menu = styled.ul`
 `;
 
 const MainMenu: FunctionComponent<Props> = ({}) => {
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation("common");
   const [featuresOpened, setFeaturesOpened] = useState<string>("");
 
   const toggler = (key: string) => {
-    console.log("🚀 ~ file: index.tsx ~ line 21 ~ toggler ~ key", key);
     if (featuresOpened === key) {
       setFeaturesOpened("");
     } else {
@@ -28,17 +34,36 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
   };
 
   const elements = [
-    { label: "Features", key: "one", action: () => toggler("one") },
+    {
+      label: "Some",
+      key: "zero",
+      action: () => toggler("zero"),
+      SubMenu: <SubMenu />,
+      centerSubMenu: true,
+    },
+    {
+      label: "Features",
+      key: "one",
+      action: () => toggler("one"),
+      SubMenu: <SubMenu />,
+      centerSubMenu: true,
+    },
     { label: "Two And", key: "two", link: "/" },
     { label: "Three", key: "three", link: "/pricing" },
     { label: "Four More", key: "four", link: "/" },
+    {
+      label: language,
+      key: "five",
+      action: () => toggler("five"),
+      SubMenu: <LanguageSwitcher />,
+    },
   ];
 
   return (
     <Row>
       <Menu>
         {elements.map((element) => {
-          const { label, key, link, action } = element;
+          const { label, key, link, action, SubMenu, centerSubMenu } = element;
           return (
             <MainMenuButton
               label={label}
@@ -46,6 +71,8 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
               link={link}
               action={action}
               clicked={featuresOpened === key}
+              SubMenu={SubMenu}
+              centerSubMenu={centerSubMenu}
             />
           );
         })}
