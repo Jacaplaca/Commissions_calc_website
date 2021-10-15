@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
-import footerContent from "../../data/footerContent";
 import { FacebookFBrands } from "../NoCopy/Icons";
 import { useTranslation } from "react-i18next";
+import useFooterElements from "./useFooterElements";
 
 type Props = {};
 const Wrapper = styled.section`
@@ -97,6 +97,8 @@ const Icon = styled(({ component, ...props }) =>
 `;
 
 const Footer: FunctionComponent<Props> = ({}) => {
+  const { t } = useTranslation(["subMenu", "footer"]);
+  const footerContent = useFooterElements();
   return (
     <Wrapper>
       <Main>
@@ -104,7 +106,7 @@ const Footer: FunctionComponent<Props> = ({}) => {
           const { title, links } = el;
           return (
             <div key={title} className="column">
-              <div className="columnTitle">{title}</div>
+              <div className="columnTitle">{t(title)}</div>
               <div className="links">
                 {links.map((link) => {
                   const { path, label } = link;

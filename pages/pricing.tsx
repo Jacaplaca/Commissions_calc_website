@@ -7,6 +7,7 @@ import faqMdx from "../Components/Pricing/Data/faqMdx.js";
 import Layout from "../Components/Layout";
 import { useTheme } from "styled-components";
 import { FaqMDXs } from "../Components/Pricing/Faq/PricingFaq";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 type Props = {
   faq: FaqMDXs;
@@ -23,14 +24,23 @@ const PricingPage: NextPage<Props> = ({ faq }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: { locale: string }) {
   const promises = faqMdx.map(({ answer, question }, i) => {
     return serialize(answer).then((result) => {
       return { question, answer: result };
     });
   });
-  return Promise.all(promises).then((results) => {
-    return { props: { faq: results } };
+  return Promise.all(promises).then(async (results) => {
+    return {
+      props: {
+        faq: results,
+        ...(await serverSideTranslations(locale, [
+          "common",
+          "footer",
+          "subMenu",
+        ])),
+      },
+    };
   });
 }
 

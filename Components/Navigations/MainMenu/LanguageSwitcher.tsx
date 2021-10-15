@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import Link from "next/link";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { transparentize } from "polished";
+import { useRouter } from "next/router";
 
 type Props = {};
 
@@ -64,19 +66,35 @@ const Row = styled.button`
 
 const LanguageSwitcher: FunctionComponent<Props> = ({}) => {
   const { t, i18n } = useTranslation("common");
-  console.log("🚀 ~ file: LanguageSwitcher.tsx ~ line 18 ~ languages", i18n);
+  const router = useRouter();
+  console.log("🚀 ~ file: LanguageSwitcher.tsx ~ line 70 ~ router", router);
+  const { pathname } = router;
+
   return (
     <>
       <Arrow />
       <Wrapper>
-        <Row onClick={() => i18n.changeLanguage("en")}>
-          <img src={"/langs/en.png"} alt="eng_flag" />
-          <div className="language">EN</div>
-        </Row>
-        <Row onClick={() => i18n.changeLanguage("pl")}>
-          <img src={"/langs/pl.png"} alt="pl_flag" />
-          <div className="language">PL</div>
-        </Row>
+        <Link href={`${pathname}`} locale={false}>
+          <a>
+            <Row
+            // onClick={() => i18n.changeLanguage("en")}
+            >
+              <img src={"/langs/en.png"} alt="eng_flag" />
+              <div className="language">EN</div>
+            </Row>
+          </a>
+        </Link>
+
+        <Link href={`pl${pathname}`} locale={false}>
+          <a>
+            <Row
+            // onClick={() => i18n.changeLanguage("pl")}
+            >
+              <img src={"/langs/pl.png"} alt="pl_flag" />
+              <div className="language">PL</div>
+            </Row>
+          </a>
+        </Link>
       </Wrapper>
     </>
   );

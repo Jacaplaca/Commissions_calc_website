@@ -10,7 +10,7 @@ import EmployeesSlider from "./EmployeesSlider";
 import Wave from "../Decorations/Wave";
 import { useMainContext } from "../../contexts/main";
 
-const WaveStyled = styled(Wave)`
+const WaveStyled = styled(Wave)<{ backgroundColor: string }>`
   color: ${({ theme }) => theme.colors.palette.pricing.light};
   flex: 0;
   width: 100% !important;

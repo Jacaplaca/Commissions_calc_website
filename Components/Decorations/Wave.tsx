@@ -1,5 +1,10 @@
-import SvgIcon from "@material-ui/core/SvgIcon";
 import { FunctionComponent } from "react";
+
+type Props = {
+  height: string;
+  width: string;
+  fill: string;
+};
 
 export const Wave: FunctionComponent<Props> = ({ height, width, fill }) => (
   <svg

@@ -1,38 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-/**
- * Creates DOM element to be used as React root.
- * @returns {HTMLElement}
- */
-function createRootElement(id) {
-  const rootContainer = document.createElement("div");
-  rootContainer.setAttribute("id", id);
-  return rootContainer;
-}
-
-/**
- * Appends element as last child of body.
- * @param {HTMLElement} rootElem
- */
-function addRootElement(rootElem) {
-  document.body.insertBefore(
-    rootElem,
-    document.body.lastElementChild.nextElementSibling
-  );
-}
-
-/**
- * Hook to create a React Portal.
- * Automatically handles creating and tearing-down the root elements (no SRR
- * makes this trivial), so there is no need to ensure the parent target already
- * exists.
- * @example
- * const target = usePortal(id, [id]);
- * return createPortal(children, target);
- * @param {String} id The id of the target container, e.g 'modal' or 'spotlight'
- * @returns {HTMLElement} The DOM node to use as the Portal target.
- */
-function usePortal(id) {
+function usePortal(id: string) {
   console.log("🚀 ~ file: usePortal.ts ~ line 36 ~ usePortal ~ id", id);
   const rootElemRef = useRef(null);
 
@@ -40,10 +8,7 @@ function usePortal(id) {
     function setupElement() {
       // Look for existing target dom element to append to
       const existingParent = document.querySelector(`#${id}`);
-      console.log(
-        "🚀 ~ file: usePortal.ts ~ line 43 ~ setupElement ~ existingParent",
-        existingParent
-      );
+
       // console.log("🚀 ~ file: usePortal.ts ~ line 39 ~ setupElement ~ existingParent", existingParent);
       // Parent is either a new root or the existing dom element
       // const parentElem = existingParent || createRootElement(id);
@@ -55,7 +20,12 @@ function usePortal(id) {
       // }
 
       // Add the detached element to the parent
-      parentElem.appendChild(rootElemRef.current);
+      if (rootElemRef) {
+        const element = rootElemRef.current;
+        if (element) {
+          parentElem && parentElem.appendChild(element);
+        }
+      }
 
       // return function removeElement() {
       //   rootElemRef.current.remove();
@@ -79,6 +49,7 @@ function usePortal(id) {
    */
   function getRootElem() {
     if (!rootElemRef.current) {
+      // @ts-expect-error
       rootElemRef.current = document.createElement("div");
     }
     return rootElemRef.current;

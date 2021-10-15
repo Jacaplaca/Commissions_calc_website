@@ -93,7 +93,7 @@ const IconStyled = styled(({ component, ...props }) =>
 `;
 
 const SubMenu: FunctionComponent<Props> = ({}) => {
-  const { elements } = useSubMenuElements();
+  const elements = useSubMenuElements();
   return (
     <Wrapper>
       {elements.map((column) => {

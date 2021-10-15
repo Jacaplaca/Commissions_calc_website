@@ -19,21 +19,7 @@ import {
 
 const useSubMenuElements = () => {
   const { t } = useTranslation("subMenu");
-  // const elements = [
-  //   {
-  //     title: "Asdlkjfl slkdjdl",
-  //     rows: [
-  //       {
-  //         Icon: BellOnDuotone,
-  //         // Icon: "aa",
-  //         link: "/ss",
-  //         headline: "lskdj lskdj",
-  //         description:
-  //           "alkd alskdjfl lskdjf lskdfja;s ;sdkfdjdk asdfasdfasdfsdf",
-  //       },
-  //     ],
-  //   },
-  // ];
+
   const elements = [
     {
       title: t("informed"),
@@ -124,7 +110,7 @@ const useSubMenuElements = () => {
     },
   ];
 
-  return { elements };
+  return elements;
 };
 
 export default useSubMenuElements;

@@ -12,6 +12,7 @@ import { Router, useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { AppContextType } from "next/dist/shared/lib/utils";
+import staticPropsInitialize from "../utils/staticPropsInitialize";
 
 const Wrapper = styled.section`
   /* background: paleturquoise; */
@@ -25,17 +26,6 @@ const Home: NextPage = () => {
   const theme = useTheme();
   return (
     <Layout backgroundColor={theme.colors.palette.indexBackground}>
-      {/* <Portal portalId="portal_subMenu">
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa maiores
-          tempora at, laborum saepe atque dolore accusamus ab dolorem, fugit sit
-          minima debitis! Error exercitationem eligendi, ab obcaecati illum
-          eveniet.
-        </div>
-      </Portal> */}
-
-      <h1>{t("h1")}</h1>
-      <h2>{t("title")}</h2>
       <Link href="/" locale={router.locale === "en" ? "pl" : "en"}>
         <a>
           <button>{t("change-locale")}</button>
@@ -93,42 +83,6 @@ const Home: NextPage = () => {
   );
 };
 
-// export const getStaticProps = async ({ locale }) => ({
-//   props: {
-//     ...await serverSideTranslations(locale, ['common', 'footer']),
-//   },
-// })
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  console.log(
-    "🚀 ~ file: index.tsx ~ line 92 ~ getStaticProps ~ locale",
-    locale
-  );
-  // const promises = faqMdx.map(({ answer, question }, i) => {
-  //   return serialize(answer).then((result) => {
-  //     return { question, answer: result };
-  //   });
-  // });
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        "common",
-        "footer",
-        "subMenu",
-      ])),
-      // indexContent: results,
-    },
-  };
-}
-
-// export const getInitialProps = async (appContext: AppContextType<Router>) => {
-//   const appProps = await App.getInitialProps(appContext)
-//   const defaultProps = appContext.Component.defaultProps
-//   return {
-//       ...appProps,
-//           namespacesRequired: [...(appProps.pageProps.namespacesRequired || []), ...(defaultProps?.i18nNamespaces || [])]
-//   }
-// }
+export const getServerSideProps = staticPropsInitialize;
 
 export default Home;

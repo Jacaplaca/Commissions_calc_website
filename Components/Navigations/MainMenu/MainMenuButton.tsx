@@ -7,9 +7,14 @@ import { AngleDownRegular } from "../../NoCopy/Icons";
 import SubMenuWrapper from "./SubMenu/Wrapper";
 import dynamic from "next/dynamic";
 import LanguageSwitcher from "./LanguageSwitcher";
-const Portal = dynamic(() => import("../../Portal").then((module) => module), {
-  ssr: false,
-});
+import { PortalProps } from "../../Portal";
+
+const Portal = dynamic<PortalProps>(
+  () => import("../../Portal").then((module) => module),
+  {
+    ssr: false,
+  }
+);
 
 const ButtonWrapper = styled.button`
   position: relative;
@@ -62,7 +67,7 @@ type Props = {
   link?: string;
   action?: () => void;
   clicked: boolean;
-  SubMenu?: FunctionComponent;
+  SubMenu?: JSX.Element;
   centerSubMenu?: boolean;
 };
 
