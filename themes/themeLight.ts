@@ -33,6 +33,9 @@ const theme = {
         light: "rgba(72,99,156,0.1)",
       },
       notifications: "#f2fff3",
+      chat: "#fff9ff",
+      teams: "#fff8f0",
+      thresholds: "#f2fdff",
       indexBackground: "#fdf8f1",
     },
     text: {

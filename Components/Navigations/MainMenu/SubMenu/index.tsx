@@ -60,9 +60,11 @@ const LinkStyled = styled.a`
   }
   .fa-primary {
     color: ${({ theme }) => theme.colors.palette.orange.main};
+    opacity: 0.5;
   }
   .fa-secondary {
     color: ${({ theme }) => theme.colors.palette.blue.main};
+    opacity: 0.8;
   }
   .texts {
     .headline {

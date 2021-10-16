@@ -35,22 +35,13 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
 
   const elements = [
     {
-      label: "Some",
-      key: "zero",
-      action: () => toggler("zero"),
-      SubMenu: <SubMenu />,
-      centerSubMenu: true,
-    },
-    {
-      label: "Features",
+      label: t("common:featuresMenuLabel"),
       key: "one",
       action: () => toggler("one"),
       SubMenu: <SubMenu />,
       centerSubMenu: true,
     },
-    { label: "Two And", key: "two", link: "/" },
-    { label: "Three", key: "three", link: "/pricing" },
-    { label: "Four More", key: "four", link: "/" },
+    { label: t("common:pricingMenuLabel"), key: "two", link: "/pricing" },
     {
       label: language,
       key: "five",
@@ -78,7 +69,7 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
         })}
       </Menu>
       <div>
-        <MainNavigationBigButton label={"Sign up free"} />
+        <MainNavigationBigButton label={t("common:startFree")} />
       </div>
     </Row>
   );

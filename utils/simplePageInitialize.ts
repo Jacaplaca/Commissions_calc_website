@@ -2,24 +2,32 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getPageContent from "./getPageContent";
 
-// const initializeServer =
-//   store =>
-//   async ({ req, res, ...etc }) => {
-//     const { resolvedUrl } = etc;
-//     console.log("🚀 ~ file: initializeServer.ts ~ line 8 ~ resolvedUrl", resolvedUrl);
-//     const path = resolvedUrl.split("?")[0];
-//     await authenticateOrRedirect({ req, store, res, path });
-//     const helpSource = await getHelp({ req, path });
-//     return { props: { helpSource } };
-//   };
+const paths: any = {
+  notifications: "notifications",
+  chat: "chat",
+  teams: "teams",
+  thresholds: "thresholds",
+  transactions: "transactions",
+  rankings: "rankings",
+  items: "items",
+  systems: "systems",
+  system_creator: "system_creator",
+  timers: "timers",
+  users: "users",
+  organizations: "organizations",
+};
 
 type ExtendedProps = GetServerSidePropsContext & { locale: string };
 
 const simplePageInitialize: GetServerSideProps = async (props) => {
   const { locale, resolvedUrl, req } = props as ExtendedProps;
+
+  const path = resolvedUrl.split("/")[1];
+  const folder = paths[path] || "";
+
   const contentSource = await getPageContent({
     lang: locale,
-    url: resolvedUrl,
+    folder,
   });
   return {
     props: {
@@ -30,6 +38,7 @@ const simplePageInitialize: GetServerSideProps = async (props) => {
       ])),
       contentSource,
       url: resolvedUrl,
+      pageName: folder,
     },
   };
 };

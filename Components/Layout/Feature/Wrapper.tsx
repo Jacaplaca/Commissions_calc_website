@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useTranslation } from "react-i18next";
 import { transparentize } from "polished";
+import Layout from "../../Layout";
 
 const Wrapper = styled.section`
   display: flex;
@@ -32,13 +33,15 @@ const Wrapper = styled.section`
     /* color: #727272; */
     text-align: center;
     font-weight: 700;
+    max-width: 900px;
+    line-height: 1.3em;
     /* letter-spacing: 0.2em; */
   }
   .more {
     color: ${({ theme }) => theme.colors.text.dark};
     font-style: italic;
     font-size: 1.3em;
-    width: 500px;
+    max-width: 500px;
     text-align: center;
     font-weight: 500;
     opacity: 0.7;
@@ -47,6 +50,9 @@ const Wrapper = styled.section`
   .content {
     width: ${({ theme }) => theme.sizes.pageWidth};
     border-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* h1 {
       margin-bottom: 30px;
       margin-bottom: 30px;
@@ -60,6 +66,12 @@ const Wrapper = styled.section`
     } */
     p {
       margin-bottom: 12px;
+      width: 600px;
+      text-align: justify;
+      font-weight: 400;
+      font-size: 1.1em;
+      line-height: 1.7em;
+      font-family: "Open Sans", sans-serif;
     }
     .spacer {
       min-height: 20px;
@@ -131,29 +143,35 @@ const StartButton = styled.button`
 
 type Props = {
   content: MDXRemoteSerializeResult;
-  category: string;
-  page: string;
-  headline: string;
-  more: string;
+  backgroundColor: string;
+  pageName: string;
 };
 
-const PageWrapper: FunctionComponent<Props> = ({
+const FeatureWrapper: FunctionComponent<Props> = ({
+  pageName,
+  backgroundColor,
   content,
-  category,
-  page,
-  headline,
-  more,
 }) => {
   const { t } = useTranslation(["common", "subMenu"]);
+  const page = `subMenu:${pageName}`;
+  const headline = `subMenu:${pageName}Desc`;
+  const more = `subMenu:${pageName}More`;
   return (
-    <Wrapper>
-      <div className="path">{`${t(category)} > ${t(page)}`}</div>
-      <div className="headline">{t(headline)}</div>
-      <div className="more">{t(more)}</div>
-      <StartButton>{t("startFree")}</StartButton>
-      <div className="content">{content && <MDXRemote {...content} />}</div>
-    </Wrapper>
+    <Layout
+      backgroundColor={backgroundColor}
+      seoTitle={headline}
+      seoDescription={headline}
+      seoMore={more}
+    >
+      <Wrapper>
+        <div className="path">{`${t("features")} > ${t(page)}`}</div>
+        <div className="headline">{t(headline)}</div>
+        <div className="more">{t(more)}</div>
+        <StartButton>{t("startFree")}</StartButton>
+        <div className="content">{content && <MDXRemote {...content} />}</div>
+      </Wrapper>
+    </Layout>
   );
 };
 
-export default PageWrapper;
+export default FeatureWrapper;

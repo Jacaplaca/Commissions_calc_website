@@ -6,26 +6,48 @@
   "notifications": "Powiadomienia",
   "notificationsDesc": "Bądź na bieżąco z nowymi transakcjami",
   "notificationsMore": "O każdym zdażeniu związanym z Twoim zespołem czy organizacją również zostaniesz poinformowany.",
+
   "chat": "Chat",
-  "chatDesc": "Wysyłaj masowe wiadomości do grup użytkowników oraz prywatne",
+  "chatDesc": "Błyskawiczny kontakt z grupami",
+  "chatMore": "Wysyłaj masowe wiadomości do grup użytkowników oraz prywatne",
+
   "transactions": "Transakcje i raporty",
   "transactionsDesc": "Sortuj, filtruj i twórz szczegółowe raporty o transakcjach czy użytkownikach",
+  "transactionsMore": "Przeglądaj na bieżąco transakcje, dodawaj do nich komentarze i podejmuj skuteczne decyzje",
+
   "rankings": "Rankingi",
-  "rankingsDesc": "Twórz ranking użytkowników, produktów oraz usług. Udostępniaj je pracownikom",
+  "rankingsDesc": "Twórz ranking użytkowników, produktów oraz usług",
+  "rankingsMore": "Udostępniaj je pracownikom i wspomagaj konkurowanie między pracownikami",
+
   "timers": "Stopery",
   "timersDesc": "Mierz i rozliczaj czas projektów",
+  "timersMore": "Zarządzaj projektami rozliczanymi czasowo",
+
   "items": "Zarządzanie zdarzeniami",
   "itemsDesc": "Twórz grupy produktów, usług oraz zdarzeń",
+  "itemsMore": "Uporządkuj produkty, usługi czy zdarzenia aby łatwo tworzyć systemy prowizyjne",
+
   "teams": "Zespoły",
   "teamsDesc": "Zarządzaj zespołami, przydzielaj menadżerów",
+  "teamsMore": "Podziel organizację na zespoły i stwórz dla nich systemy prowizyjne",
+
   "users": "Zarządzanie użytkownikami",
-  "usersDesc": "Dodawaj i usuwaj użytkowników, przyznawaj i odbieraj uprawnienia",
+  "usersDesc": "Dodawaj i usuwaj użytkowników",
+  "usersMore": "Zapraszaj współpracowników, przyznawaj i odbieraj im uprawnienia",
+
   "organizations": "Zarządzanie organizacjami",
   "organizationsDesc": "Twórz systemy dla kilku organizacji",
+  "organizationsMore": "Możesz być członkiem albo twórcą wielu organizacji",
+
   "systems": "Systemy prowizyjne",
   "systemsDesc": "Zarządzaj systemami, dodawaj, kasuj, klonuj, deazaktywuj",
+  "systemsMore": "Wszystkie systemy pod ręką. Twórz nowe systemy na podstawie obecnych.",
+
   "thresholds": "Progi",
-  "thresholdsDesc": "Twórz prosto nawet najbardziej skomplikowane progi sprzedażowe i nie tylko",
+  "thresholdsDesc": "Twórz prosto nawet najbardziej skomplikowane progi wydajnościowe",
+  "thresholdsMore": "Ustal progi i pozwól swoim pracownikom obserwować jak się do nich zbliżają",
+
   "system_creator": "Prosty kreator systemów",
-  "system_creatorDesc": "Łatwy kreator nawet bardzo wyrafinowanych systemów prowizyjnych"
+  "system_creatorDesc": "Łatwy kreator systemów prowizyjnych",
+  "system_creatorMore": "Twórz szybko nawet bardzo wyrafinowane systemy prowizyjne"
 }

@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import Link from "next/link";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import MainMenu from "../../Navigations/MainMenu";
+
+const APPNAME = process.env.NEXT_PUBLIC_APPNAME;
 
 type Props = {};
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   max-width: ${(p) => p.theme.sizes.headerWidth};
-  /* padding: 0 20px; */
   flex: 0;
   width: 100%;
   position: relative;
@@ -26,8 +27,6 @@ const Wrapper = styled.section`
 const PortalStyled = styled.div`
   position: absolute;
   width: 100%;
-  /* background: aqua; */
-  /* margin: 0 auto; */
   display: flex;
   justify-content: center;
   top: 65px;
@@ -38,19 +37,19 @@ const Header: FunctionComponent<Props> = ({}) => {
   return (
     <Wrapper>
       <div className="content">
-        <Image
-          src="/calcaider_logo.svg"
-          alt="CalcAider Logo"
-          width={127 * 1.45}
-          height={22 * 1.45}
-        />
+        <Link href={`/`}>
+          <a>
+            <Image
+              src="/logo.svg"
+              alt={`${APPNAME}_logo`}
+              width={127 * 1.45}
+              height={22 * 1.45}
+            />
+          </a>
+        </Link>
         <MainMenu />
       </div>
-      <PortalStyled
-        // style={{ position: "relative" }}
-        id="portal_subMenu"
-        // style={{ height: 300, width: 300 }}
-      />
+      <PortalStyled id="portal_subMenu" />
     </Wrapper>
   );
 };

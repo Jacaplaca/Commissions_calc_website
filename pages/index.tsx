@@ -21,16 +21,9 @@ const Wrapper = styled.section`
 `;
 
 const Home: NextPage = () => {
-  const router = useRouter();
-  const { t } = useTranslation("common");
   const theme = useTheme();
   return (
     <Layout backgroundColor={theme.colors.palette.indexBackground}>
-      <Link href="/" locale={router.locale === "en" ? "pl" : "en"}>
-        <a>
-          <button>{t("change-locale")}</button>
-        </a>
-      </Link>
       <Wrapper>
         1Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
         laborum nihil perspiciatis. Iure reprehenderit, aut cum, vel repudiandae

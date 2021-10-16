@@ -6,5 +6,7 @@
   "error-without-status": "Auf dem Server ist ein Fehler aufgetreten",
   "title": "Hauptseite | next-i18next",
   "features": "Cechy",
-  "startFree": "Zacznij za darmo"
+  "startFree": "Zacznij za darmo",
+  "featuresMenuLabel": "Cechy",
+  "pricingMenuLabel": "Cennik"
 }
