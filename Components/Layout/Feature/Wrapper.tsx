@@ -100,7 +100,7 @@ const Wrapper = styled.section`
       max-width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0px 0px 20px -16px rgba(66, 68, 90, 1);
+      box-shadow: 0px 5px 20px -3px rgb(0 0 0 / 27%);
       /* background: yellow; */
       /* width: fit-content; */
     }

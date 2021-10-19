@@ -37,6 +37,13 @@ const theme = {
       teams: "#fff8f0",
       thresholds: "#f2fdff",
       indexBackground: "#fdf8f1",
+      items: "#f9ffec",
+      users: "#effcfc",
+      organizations: "#f1f1fa",
+      timers: "#fcf8fb",
+      system_creator: "#f4fdf4",
+      transactions: "#fcfcfe",
+      rankings: "#fffbfd",
     },
     text: {
       midDarkBlue: "#384f5d",
