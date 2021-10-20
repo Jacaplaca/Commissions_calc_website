@@ -67,8 +67,8 @@ const Row = styled.button`
 const LanguageSwitcher: FunctionComponent<Props> = ({}) => {
   const { t, i18n } = useTranslation("common");
   const router = useRouter();
-  console.log("🚀 ~ file: LanguageSwitcher.tsx ~ line 70 ~ router", router);
   const { pathname } = router;
+  console.log("🚀 ~ file: LanguageSwitcher.tsx ~ line 70 ~ router", router);
 
   return (
     <>
@@ -85,7 +85,7 @@ const LanguageSwitcher: FunctionComponent<Props> = ({}) => {
           </a>
         </Link>
 
-        <Link href={`pl${pathname}`} locale={false}>
+        <Link href={`${pathname}`} locale={"pl"}>
           <a>
             <Row
             // onClick={() => i18n.changeLanguage("pl")}

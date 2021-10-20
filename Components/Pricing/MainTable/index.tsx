@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import HeaderPlanBox from "./HeaderPlanBox";
 import { usePricingContext } from "../context";
 import ColumnContent from "./Styled/ColumnContent";
-import { PuzzleFour, PuzzleThree, PuzzleTwo } from "../../NoCopy/Icons";
+import { PuzzleFour, PuzzleThree, PuzzleTwo } from "../../Icons";
 import Features from "./Features";
 import { useMainContext } from "../../../contexts/main";
 
