@@ -8,15 +8,6 @@ import { usePricingContext } from "./context";
 import PricingFaq, { FaqMDXs } from "./Faq/PricingFaq";
 import EmployeesSlider from "./EmployeesSlider";
 import Wave from "../Decorations/Wave";
-import { useMainContext } from "../../contexts/main";
-
-const WaveStyled = styled(Wave)<{ backgroundColor: string }>`
-  color: ${({ theme }) => theme.colors.palette.pricing.light};
-  flex: 0;
-  width: 100% !important;
-  height: 92px !important;
-  /* color: ${({ backgroundColor }) => backgroundColor}; ; */
-`;
 
 const Wrapper = styled.section`
   display: flex;
@@ -38,7 +29,6 @@ const Wrapper = styled.section`
     margin-bottom: 85px;
   }
   .faq {
-    /* margin-top: 35px; */
     padding-top: 195px;
     background: white;
     flex: 0;
@@ -49,10 +39,6 @@ const Wrapper = styled.section`
     .waveContainer {
       width: 100%;
       height: 92px;
-      /* background: yellow; */
-      /* background-image: url("/vercel.svg"); */
-      /* background-image: url("${WaveStyled}"); */
-      /* background-size: 100% 100%; Fill width, retain proportions */
     }
     .faqContent {
       flex: 0;

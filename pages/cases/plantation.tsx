@@ -12,7 +12,7 @@ const Case: FunctionComponent<CasePageProps> = ({
   return (
     <CaseWrapper
       pageName={pageName}
-      backgroundColor={theme.colors.palette.cases.dentist}
+      backgroundColor={theme.colors.palette.cases.plantation}
       content={contentSource}
     />
   );

@@ -17,6 +17,7 @@ const Wrapper = styled.section`
   gap: 25px;
   align-items: center;
   margin-bottom: 20px;
+  z-index: 1;
 `;
 
 const TopPage: FunctionComponent<Props> = ({
