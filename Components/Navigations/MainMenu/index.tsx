@@ -5,6 +5,7 @@ import MainNavigationBigButton from "../../Buttons/MainNavigationBigButton";
 import { useTranslation } from "react-i18next";
 import SubMenu from "./SubMenu";
 import LanguageSwitcher from "./LanguageSwitcher";
+import CasesSubMenu from "./CasesSubMenu";
 
 type Props = {};
 const Row = styled.section`
@@ -39,6 +40,13 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
       key: "one",
       action: () => toggler("one"),
       SubMenu: <SubMenu />,
+      centerSubMenu: true,
+    },
+    {
+      label: t("common:casesMenuLabel"),
+      key: "cases",
+      action: () => toggler("cases"),
+      SubMenu: <CasesSubMenu />,
       centerSubMenu: true,
     },
     { label: t("common:pricingMenuLabel"), key: "two", link: "/pricing" },

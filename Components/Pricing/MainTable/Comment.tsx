@@ -1,12 +1,7 @@
 import { usePricingContext } from "../context";
 import styled from "styled-components";
-import MultiCurrencyFormat from "../../NoCopy/MultiCurrencyFormat";
+import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 import { FunctionComponent } from "react";
-
-// const MultiCurrencyFormat = dynamic(
-//   () => import("../../NoCopy/MultiCurrencyFormat"),
-//   { ssr: false }
-// );
 
 const CommentStyled = styled.div`
   display: flex;

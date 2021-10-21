@@ -12,7 +12,6 @@ type FormatNumber = (args: {
 }) => string;
 
 export const formatNumberLocale: FormatNumber = (props) => {
-  // console.log("🚀 ~ file: MultiCurrencyFormat.tsx ~ line 33 ~ props", props);
   const {
     value,
     currency,

@@ -1,5 +1,3 @@
-// import { AngleDownRegular } from "./../../../NoCopy/Icons/index";
-import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   AngleDownRegular,
@@ -15,7 +13,7 @@ import {
   TasksAltDuotone,
   UsersClassDuotone,
   UsersDuotone,
-} from "../../../NoCopy/Icons";
+} from "../../../Icons";
 
 const useSubMenuElements = () => {
   const { t } = useTranslation("subMenu");

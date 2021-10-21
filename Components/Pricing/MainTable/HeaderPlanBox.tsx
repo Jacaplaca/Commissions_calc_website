@@ -3,7 +3,7 @@ import { cloneElement, FunctionComponent } from "react";
 import Recommended from "./Recommended";
 import { usePricingContext } from "../context";
 import Comment from "./Comment";
-import MultiCurrencyFormat from "../../NoCopy/MultiCurrencyFormat";
+import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 
 const shadowSticky = css`
   &:after {
@@ -11,11 +11,9 @@ const shadowSticky = css`
     content: "";
     height: 2px;
     width: 100%;
-    /* background: red; */
     bottom: 0;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15) !important;
   }
-  /* border: 0px solid !important; */
 `;
 
 const Wrapper = styled.section<{
@@ -211,7 +209,6 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <SignUpButton isFree={isFree} />
           </div>
         </div>
-        {/* </ColumnContent> */}
         <Recommended visible={highlightPlan} />
       </Wrapper>
     </>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { cloneElement, FunctionComponent } from "react";
 import Link from "next/link";
-import { AngleDownRegular } from "../../NoCopy/Icons";
+import { AngleDownRegular } from "../../Icons";
 // import SubMenu from "./SubMenu";
 import SubMenuWrapper from "./SubMenu/Wrapper";
 import dynamic from "next/dynamic";

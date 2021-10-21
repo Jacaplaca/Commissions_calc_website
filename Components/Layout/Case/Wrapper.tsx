@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { useTranslation } from "react-i18next";
 import Layout from "../../Layout";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import PageLayout from "../Page";
 import PageContent from "../Page/Content";
 import TopPage from "../Page/Top";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   content: MDXRemoteSerializeResult;
@@ -12,27 +12,27 @@ type Props = {
   pageName: string;
 };
 
-const FeatureWrapper: FunctionComponent<Props> = ({
+const CaseWrapper: FunctionComponent<Props> = ({
   pageName,
-  backgroundColor,
+  backgroundColor = "lightblue",
   content,
 }) => {
   const { t } = useTranslation(["common", "subMenu"]);
-  const page = `subMenu:${pageName}`;
-  const headline = `subMenu:${pageName}Desc`;
-  const more = `subMenu:${pageName}More`;
+  const page = `${pageName}SeoTitle`;
+  const subHeadline = `${pageName}Quote`;
+  const description = `${pageName}Desc`;
+
   return (
     <Layout
       backgroundColor={backgroundColor}
-      seoTitle={headline}
-      seoDescription={headline}
-      seoMore={more}
+      seoTitle={page}
+      seoDescription={description}
     >
       <PageLayout>
         <TopPage
-          pathElements={[t("features"), t(page)]}
-          headline={t(headline)}
-          subHeadline={t(more)}
+          headline={t(page)}
+          subHeadline={t(subHeadline)}
+          pathElements={[t("cases"), t(pageName)]}
         />
         <PageContent content={content} />
       </PageLayout>
@@ -40,4 +40,4 @@ const FeatureWrapper: FunctionComponent<Props> = ({
   );
 };
 
-export default FeatureWrapper;
+export default CaseWrapper;

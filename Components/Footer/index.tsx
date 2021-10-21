@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
-import { FacebookFBrands } from "../NoCopy/Icons";
+import { FacebookFBrands } from "../Icons";
 import { useTranslation } from "react-i18next";
 import useFooterElements from "./useFooterElements";
 

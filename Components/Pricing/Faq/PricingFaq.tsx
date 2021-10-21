@@ -3,7 +3,7 @@ import { cloneElement, FunctionComponent } from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Collapse, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { AngleDownRegular } from "../../NoCopy/Icons";
+import { AngleDownRegular } from "../../Icons";
 
 const { Panel } = Collapse;
 
