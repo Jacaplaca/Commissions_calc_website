@@ -5,7 +5,6 @@ import {
   CutRegular,
   PhoneOfficeDuotone,
   PhoneOfficeRegular,
-  StopwatchRegular,
   ToothbrushDuotone,
   ToothbrushRegular,
   TractorDuotone,
@@ -13,6 +12,7 @@ import {
 } from "../Icons/index";
 import { useTranslation } from "next-i18next";
 const appName = process.env.NEXT_PUBLIC_APPNAME;
+const FOLDER = "/cases";
 
 const useCaseMenuElements = () => {
   const { t } = useTranslation("common");
@@ -25,7 +25,7 @@ const useCaseMenuElements = () => {
       IconTopMenu: PhoneOfficeDuotone,
       description: t("distributorDesc"),
       quote: t("distributorQuote"),
-      path: "/distributor",
+      path: `${FOLDER}/distributor`,
       more: t("distributorMore"),
     },
     {
@@ -35,7 +35,7 @@ const useCaseMenuElements = () => {
       IconTopMenu: CutDuotone,
       description: t("beauty_salonDesc"),
       quote: t("beauty_salonQuote", { appName }),
-      path: "/beauty_salon",
+      path: `${FOLDER}/beauty_salon`,
       more: t("beauty_salonMore"),
     },
     {
@@ -45,7 +45,7 @@ const useCaseMenuElements = () => {
       IconTopMenu: ToothbrushDuotone,
       description: t("dentistDesc"),
       quote: t("dentistQuote", { appName }),
-      path: "/dentist",
+      path: `${FOLDER}/dentist`,
       more: t("dentistMore"),
     },
     {
@@ -55,7 +55,7 @@ const useCaseMenuElements = () => {
       IconTopMenu: BoxOpenDuotone,
       description: t("packingDesc", { appName }),
       quote: t("packingQuote", { appName }),
-      path: "/packing",
+      path: `${FOLDER}/packing`,
       more: t("packingMore"),
     },
     {
@@ -65,7 +65,7 @@ const useCaseMenuElements = () => {
       IconTopMenu: TractorDuotone,
       description: t("plantationDesc"),
       quote: t("plantationQuote", { appName }),
-      path: "/plantation",
+      path: `${FOLDER}/plantation`,
       more: t("plantationMore"),
     },
   ];
