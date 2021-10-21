@@ -30,7 +30,7 @@ const PortalStyled = styled.div`
   display: flex;
   justify-content: center;
   top: 65px;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const Header: FunctionComponent<Props> = ({}) => {

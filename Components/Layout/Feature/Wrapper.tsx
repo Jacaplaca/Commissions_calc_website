@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useTranslation } from "react-i18next";
@@ -5,12 +6,31 @@ import Layout from "../../Layout";
 import PageLayout from "../Page";
 import PageContent from "../Page/Content";
 import TopPage from "../Page/Top";
+import Wave from "../../Decorations/Wave";
 
 type Props = {
   content: MDXRemoteSerializeResult;
   backgroundColor: string;
   pageName: string;
 };
+
+const WaveContainer = styled.div`
+  width: 100%;
+  height: 115px;
+  transform: translateY(-130px);
+  z-index: 0;
+`;
+
+const PageContentWrapper = styled.div`
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -130px;
+  /* padding-top: 80px; */
+  padding-bottom: 80px;
+`;
 
 const FeatureWrapper: FunctionComponent<Props> = ({
   pageName,
@@ -34,7 +54,12 @@ const FeatureWrapper: FunctionComponent<Props> = ({
           headline={t(headline)}
           subHeadline={t(more)}
         />
-        <PageContent content={content} />
+        <WaveContainer>
+          <Wave height="100%" width="100%" fill={"white"} />
+        </WaveContainer>
+        <PageContentWrapper>
+          <PageContent content={content} />
+        </PageContentWrapper>
       </PageLayout>
     </Layout>
   );

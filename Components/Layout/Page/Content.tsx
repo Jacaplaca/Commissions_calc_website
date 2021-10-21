@@ -19,6 +19,7 @@ const Wrapper = styled.section`
     font-size: 1.1em;
     line-height: 1.7em;
     font-family: "Open Sans", sans-serif;
+    text-indent: 4em;
   }
   .spacer {
     min-height: 20px;
@@ -43,7 +44,7 @@ const Wrapper = styled.section`
     justify-content: center;
   }
   .one_image {
-    margin: 30px 0px;
+    margin: 40px 0px;
     max-width: 100%;
     height: auto;
     border-radius: 10px;

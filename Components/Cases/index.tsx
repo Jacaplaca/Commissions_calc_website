@@ -4,6 +4,7 @@ import { FunctionComponent, useState } from "react";
 import NavigationHorizontalWithIconAndColorLine from "../Navigations/WithIconAndColorLine";
 import useCaseMenuElements from "./useCaseMenuElements";
 import { LongArrowRightAlt } from "../Icons";
+import BigPictureCase from "./BigPicture";
 
 type Element = {
   label: string;
@@ -87,7 +88,7 @@ const Content = ({
       <div className="quote">&ldquo;{quote}&rdquo;</div>
       <div className="description">{description}</div>
       <div className="link">
-        <Link href={`cases/${path}`}>
+        <Link href={`${path}`}>
           <a>
             {more}
             <div className="arrow">
@@ -125,7 +126,7 @@ const Cases: FunctionComponent<Props> = ({}) => {
         <Content activeCase={activeCase} color={COLOR} />
       </div>
       <div className="picture">
-        <BigPicture />
+        <BigPictureCase path={`/pages/cases/${activeKey}/slider.png`} />
       </div>
     </Wrapper>
   );
