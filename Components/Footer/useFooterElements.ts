@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import useCaseMenuElements from "../Cases/useCaseMenuElements";
 import useSubMenuElements from "../Navigations/MainMenu/SubMenu/useSubMenuElements";
 
 const useFooterElements = () => {
@@ -9,19 +8,16 @@ const useFooterElements = () => {
       links: [],
     },
     {
-      title: "Use Cases",
-      links: [
-        { label: "First", path: "/" },
-        { label: "Second", path: "/" },
-      ],
+      title: "common:casesMenuLabel",
+      links: [],
     },
-    {
-      title: "Education",
-      links: [
-        { label: "First", path: "/" },
-        { label: "Second", path: "/" },
-      ],
-    },
+    // {
+    //   title: "Education",
+    //   links: [
+    //     { label: "First", path: "/" },
+    //     { label: "Second", path: "/" },
+    //   ],
+    // },
     {
       title: "Company",
       links: [
@@ -31,6 +27,7 @@ const useFooterElements = () => {
     },
   ];
   const features = useSubMenuElements();
+  const cases = useCaseMenuElements();
 
   const makeFeatures = () => {
     features.forEach((group) => {
@@ -42,7 +39,15 @@ const useFooterElements = () => {
     });
   };
 
+  const makeCases = () => {
+    cases.forEach((group) => {
+      const { path, label } = group;
+      content[1].links.push({ label, path });
+    });
+  };
+
   makeFeatures();
+  makeCases();
   // const [footerContent, setFooterContent] = useState(content);
 
   return content;

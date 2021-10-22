@@ -22,8 +22,11 @@ const Wrapper = styled.section`
 `;
 
 const LinkStyled = styled.div`
+  padding: 1.8px 0;
   a {
     transition: opacity 0.2s linear;
+    font-size: 0.87em;
+    font-weight: 600;
   }
   a:hover {
     color: inherit;
@@ -34,7 +37,7 @@ const LinkStyled = styled.div`
 const Main = styled.section`
   display: flex;
   max-width: ${(p) => p.theme.sizes.headerWidth};
-  color: white;
+  color: ${({ theme }) => theme.colors.text.light};
   justify-content: space-between;
   width: 100%;
   padding: 35px 15px;
@@ -58,7 +61,7 @@ const Bottom = styled.section`
   display: flex;
   flex-direction: row;
   max-width: ${(p) => p.theme.sizes.headerWidth};
-  color: white;
+  color: ${({ theme }) => theme.colors.text.light};
   width: 100%;
   padding: 15px 15px;
   padding-bottom: 35px;
@@ -97,7 +100,7 @@ const Icon = styled(({ component, ...props }) =>
 `;
 
 const Footer: FunctionComponent<Props> = ({}) => {
-  const { t } = useTranslation(["subMenu", "footer"]);
+  const { t } = useTranslation(["common", "subMenu", "footer"]);
   const footerContent = useFooterElements();
   return (
     <Wrapper>
