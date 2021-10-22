@@ -40,6 +40,10 @@ const PanelStyled = styled(Panel)`
     font-size: 1.1em;
     font-weight: 600;
   }
+  p {
+    text-indent: 30px;
+    margin-bottom: 15px;
+  }
 `;
 
 const Icon = styled(({ component, ...props }) =>

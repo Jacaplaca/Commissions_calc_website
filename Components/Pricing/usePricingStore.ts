@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+const maxFreeEmp = parseInt(process.env.NEXT_PUBLIC_MAXEMP4FREE || "0");
 
 const yearFactor = 0.8333333333333333333;
 
 const defaultPrices = [
   {
-    maxEmployees: 5,
+    maxEmployees: maxFreeEmp,
     price: 0,
     disabled: false,
     yearlyPrice: 0,
@@ -23,12 +24,12 @@ const defaultPrices = [
 
 const usePricingStore = () => {
   const [recommendedPlan, setRecommendedPlan] = useState(0);
-  const [employees, setEmployees] = useState(5);
-  const [employeesTemp, setEmployeesTemp] = useState(5);
+  const [employees, setEmployees] = useState(maxFreeEmp);
+  const [employeesTemp, setEmployeesTemp] = useState(maxFreeEmp);
   const [period, setPeriod] = useState(0);
   const [plans, setPlans] = useState<typeof defaultPrices>(defaultPrices);
   const maxEmployeesOnSlider = 100;
-  const freeEmployees = 5;
+  const freeEmployees = maxFreeEmp;
   const headerPlanBoxHeightFull = 340;
   const headerPlanBoxHeightSticky = 70;
 
