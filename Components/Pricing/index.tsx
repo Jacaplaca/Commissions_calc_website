@@ -68,9 +68,10 @@ const SubTitle = styled.h4`
 
 type Props = {
   faq: FaqMDXs;
+  // features
 };
 
-const Pricing: FunctionComponent<Props> = ({ faq }) => {
+const Pricing: FunctionComponent<Props> = ({ faq, features }) => {
   const {
     updateEmployees,
     employees,
@@ -105,7 +106,7 @@ const Pricing: FunctionComponent<Props> = ({ faq }) => {
           }}
         />
       </div>
-      <MainPricingTable />
+      <MainPricingTable features={features} />
       <div className="faq">
         <div className="waveContainer">
           <Wave

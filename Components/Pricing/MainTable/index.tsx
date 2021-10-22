@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import HeaderPlanBox from "./HeaderPlanBox";
 import { usePricingContext } from "../context";
 import ColumnContent from "./Styled/ColumnContent";
@@ -23,7 +23,7 @@ const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   .column {
     width: 389px;
     .description {
-      padding: 33px;
+      /* padding: 33px; */
       padding-bottom: 0px;
       margin-top: ${({ marginTop }) => marginTop}px;
     }
@@ -32,7 +32,7 @@ const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
 
 type Props = {};
 
-const MainPricingTable: FunctionComponent<Props> = () => {
+const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
   const {
     recommendedPlan,
     headerPlanBoxHeightFull,
@@ -40,6 +40,12 @@ const MainPricingTable: FunctionComponent<Props> = () => {
   } = usePricingContext();
 
   const { background } = useMainContext();
+
+  const [featureRowHighlighted, setFeatureRowHighlighted] = useState(null);
+
+  const highlightRow = (rowIndex) => {
+    setFeatureRowHighlighted(rowIndex);
+  };
 
   return (
     <>
@@ -59,7 +65,12 @@ const MainPricingTable: FunctionComponent<Props> = () => {
               icon={<PuzzleTwo />}
             />
             <div className="description">
-              <Features enabled={[0, 1, 2, 3]} />
+              <Features
+                features={features}
+                plan={0}
+                highlightedRow={featureRowHighlighted}
+                highlight={highlightRow}
+              />
             </div>
             <HeaderPlanBox
               highlightPlan={recommendedPlan === 0}
@@ -82,7 +93,12 @@ const MainPricingTable: FunctionComponent<Props> = () => {
               icon={<PuzzleThree />}
             />
             <div className="description">
-              <Features enabled={[0, 1, 2, 3, 4, 5, 6, 7]} />
+              <Features
+                features={features}
+                plan={1}
+                highlightedRow={featureRowHighlighted}
+                highlight={highlightRow}
+              />
             </div>
             <HeaderPlanBox
               highlightPlan={recommendedPlan === 1}
@@ -105,7 +121,12 @@ const MainPricingTable: FunctionComponent<Props> = () => {
               icon={<PuzzleFour />}
             />
             <div className="description">
-              <Features enabled={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+              <Features
+                features={features}
+                plan={2}
+                highlightedRow={featureRowHighlighted}
+                highlight={highlightRow}
+              />
             </div>
             <HeaderPlanBox
               highlightPlan={recommendedPlan === 2}

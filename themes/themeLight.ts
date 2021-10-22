@@ -52,6 +52,9 @@ const theme = {
         plantation: "#f9fcf5",
       },
     },
+    borderColors: {
+      lightGrey: "#e0e0e0",
+    },
     text: {
       midDarkBlue: "#384f5d",
       darker: "#313131",
