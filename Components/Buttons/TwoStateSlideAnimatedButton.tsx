@@ -81,34 +81,9 @@ const Element = styled.div`
   }
 `;
 
-const menuElements: {
-  label: string;
-  key: string;
-  disabled: boolean;
-  action?: any;
-  hide?: boolean;
-}[] = [
-  {
-    label: "Monthly",
-    key: "monthly",
-    disabled: false,
-    action: null,
-    hide: false,
-  },
-  {
-    label: "Yearly",
-    key: "yearly",
-    disabled: false,
-    action: null,
-    hide: false,
-  },
-  // {
-  //   label: "2Yearly",
-  //   key: "2year",
-  // },
-];
-
 type Props = {
+  labelLeft: string;
+  labelRight: string;
   changeActive: (e: number) => void;
   active: number;
   colorScheme: {
@@ -121,7 +96,36 @@ const TwoStateSlideAnimatedButton: FunctionComponent<Props> = ({
   changeActive,
   active,
   colorScheme,
+  labelLeft,
+  labelRight,
 }) => {
+  const menuElements: {
+    label: string;
+    key: string;
+    disabled: boolean;
+    action?: any;
+    hide?: boolean;
+  }[] = [
+    {
+      label: labelLeft,
+      key: labelLeft,
+      disabled: false,
+      action: null,
+      hide: false,
+    },
+    {
+      label: labelRight,
+      key: labelLeft,
+      disabled: false,
+      action: null,
+      hide: false,
+    },
+    // {
+    //   label: "2Yearly",
+    //   key: "2year",
+    // },
+  ];
+
   const { background, clicked } = colorScheme;
   const sizes = { width: 500, height: 10 };
   const [mousePosition, setMousePosition] = useState<{
@@ -131,13 +135,7 @@ const TwoStateSlideAnimatedButton: FunctionComponent<Props> = ({
     i: number;
   }>({ x: 0, y: 0, width: 0, i: 0 });
   const [highlighted, setHighlighted] = useState(0);
-  // const [active, setActive] = useState(0);
   let usernameRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-  // const [resizeListener, sizes] = useResizeObserver(350);
-
-  // const action = (i) => {
-  //   changeActi(i);
-  // };
 
   const moveMouse = useCallback(() => {
     // const i = menuElements.findIndex((x) => x.key === active);

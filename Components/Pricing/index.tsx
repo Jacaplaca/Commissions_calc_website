@@ -9,6 +9,10 @@ import PricingFaq, { FaqMDXs } from "./Faq/PricingFaq";
 import EmployeesSlider from "./EmployeesSlider";
 import Wave from "../Decorations/Wave";
 
+import { useTranslation } from "react-i18next";
+import HeadlinePage from "../Layout/Page/Headline";
+import SubHeadlinePage from "../Layout/Page/SubHeadline";
+
 const Wrapper = styled.section`
   display: flex;
   /* background-color: lightgrey; */
@@ -19,6 +23,15 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  .top {
+    margin-bottom: 45px;
+    margin-top: 45px;
+    gap: 30px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
   .sliderWrapper {
     max-width: 650px;
     width: 100%;
@@ -53,19 +66,6 @@ const Wrapper = styled.section`
   }
 `;
 
-const Headline = styled.h1`
-  /* font-size: 2.1em; */
-  padding-bottom: 34px;
-  max-width: 700px;
-  text-align: center;
-`;
-
-const SubTitle = styled.h4`
-  max-width: 700px;
-  text-align: center;
-  padding-bottom: 25px; ;
-`;
-
 type Props = {
   faq: FaqMDXs;
   // features
@@ -80,14 +80,17 @@ const Pricing: FunctionComponent<Props> = ({ faq, features }) => {
     maxEmployeesOnSlider,
     employeesTemp,
   } = usePricingContext();
+  const { t, i18n } = useTranslation("pricing");
 
   const theme = useTheme();
   // const { background } = useMainContext();
 
   return (
     <Wrapper>
-      <Headline>Plans for every stage of your creator journey</Headline>
-      <SubTitle>How many email subscribers do you have?</SubTitle>
+      <div className="top">
+        <HeadlinePage>{t("pricing:title")}</HeadlinePage>
+        <SubHeadlinePage>{t("subTitle")}</SubHeadlinePage>
+      </div>
       {/* <Button>sdf</Button> */}
       <div className="sliderWrapper">
         <EmployeesSlider
@@ -98,6 +101,8 @@ const Pricing: FunctionComponent<Props> = ({ faq, features }) => {
       </div>
       <div className="periodWrapper">
         <TwoStateSlideAnimatedButton
+          labelLeft={t("monthly")}
+          labelRight={t("yearly")}
           active={period}
           changeActive={updatePeriod}
           colorScheme={{

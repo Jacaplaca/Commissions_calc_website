@@ -43,9 +43,10 @@ const RecommendedStyled = styled(motion.div)<{ visible: boolean }>`
 
 type Props = {
   visible: boolean;
+  label: string;
 };
 
-const Recommended: FunctionComponent<Props> = ({ visible }) => {
+const Recommended: FunctionComponent<Props> = ({ visible, label }) => {
   const [y, setY] = useState(0);
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const Recommended: FunctionComponent<Props> = ({ visible }) => {
         y,
       }}
     >
-      <div className="recommended__content">Recommended</div>
+      <div className="recommended__content">{label}</div>
     </RecommendedStyled>
   );
 };

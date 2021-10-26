@@ -4,50 +4,50 @@
   "config": "Easy configuration",
 
   "notifications": "Notifications",
-  "notificationsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "notificationsMore": "Asdfk asldkfjasldkfjasldk asd;lfkajsd;lfkj asdfalsdkfjs;ldkf",
+  "notificationsDesc": "Keep up to date with new deals",
+  "notificationsMore": "Any incident related to your team or organization will also be notified.",
 
   "chat": "Chat",
-  "chatDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "chatMore": "Wysyłaj masowe wiadomości do grup użytkowników oraz prywatne",
+  "chatDesc": "Instant contact with groups",
+  "chatMore": "Send bulk messages to user groups and private messages",
 
   "transactions": "Transactions & reports",
-  "transactionsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "transactionsMore": "Przeglądaj na bieżąco transakcje, dodawaj do nich komentarze i podejmuj skuteczne decyzje",
+  "transactionsDesc": "Sort, filter and create detailed reports about transactions or users",
+  "transactionsMore": "View transactions in real-time, add comments to them and make effective decisions",
 
   "rankings": "Rankings",
-  "rankingsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "rankingsMore": "Udostępniaj je pracownikom i wspomagaj konkurowanie między pracownikami",
+  "rankingsDesc": "Create rankings of users, products, and services",
+  "rankingsMore": "Make them available to employees and support competition between employees",
 
-  "timers": "Timers",
-  "timersDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "timersMore": "Zarządzaj projektami rozliczanymi czasowo",
+  "timers": "Stopwatches",
+  "timersDesc": "Measure and account for project time",
+  "timersMore": "Manage time-billed projects",
 
   "items": "Items",
-  "itemsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "itemsMore": "Uporządkuj produkty, usługi czy zdarzenia aby łatwo tworzyć systemy prowizyjne",
+  "itemsDesc": "Create product, service and event groups",
+  "itemsMore": "Organize products, services or events to create commission systems easily",
 
   "teams": "Teams",
-  "teamsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "teamsMore": "Podziel organizację na zespoły i stwórz dla nich systemy prowizyjne",
+  "teamsDesc": "Manage teams, assign managers",
+  "teamsMore": "Divide the organization into teams and create commission systems for them",
 
   "users": "Users management",
-  "usersDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "usersMore": "Zapraszaj współpracowników, przyznawaj i odbieraj im uprawnienia",
+  "usersDesc": "Add and delete users",
+  "usersMore": "Invite colleagues, grant and revoke permissions",
 
   "organizations": "Organizations management",
-  "organizationsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "organizationsMore": "Możesz być członkiem albo twórcą wielu organizacji",
+  "organizationsDesc": "Create systems for several organizations",
+  "organizationsMore": "You can be a member or creator of multiple organizations",
 
   "systems": "Commissions systems",
-  "systemsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "systemsMore": "Wszystkie systemy pod ręką. Twórz nowe systemy na podstawie obecnych.",
+  "systemsDesc": "Manage systems, add, delete, clone, deactivate",
+  "systemsMore": "All systems at hand. Create new systems based on your current systems.",
 
   "thresholds": "Thresholds",
-  "thresholdsDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "thresholdsMore": "Ustal progi i pozwól swoim pracownikom obserwować jak się do nich zbliżają",
+  "thresholdsDesc": "Create even the most complex performance thresholds simply",
+  "thresholdsMore": "Set thresholds and let your employees watch as they approach them",
 
   "system_creator": "Quick & Easy system creator",
-  "system_creatorDesc": "asldkfjsdld alsdkjf sldkjflskdjf sdlkfj",
-  "system_creatorMore": "Twórz szybko nawet bardzo wyrafinowane systemy prowizyjne"
+  "system_creatorDesc": "Easy commission systems wizard",
+  "system_creatorMore": "Create even very sophisticated commission systems quickly"
 }

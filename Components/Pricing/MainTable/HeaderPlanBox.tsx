@@ -5,6 +5,8 @@ import { usePricingContext } from "../context";
 import Comment from "./Comment";
 import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 
+import { useTranslation } from "react-i18next";
+
 const shadowSticky = css`
   &:after {
     position: absolute;
@@ -138,6 +140,8 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
     headerPlanBoxHeightSticky,
   } = usePricingContext();
 
+  const { t, i18n } = useTranslation("pricing");
+
   const maxEmployeesReached = employees === maxEmployeesOnSlider;
   const isFree = plan === 0;
 
@@ -149,7 +153,8 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
         <div className="content">
           {maxEmployeesReached && (
             <div className="overMax">
-              Over <strong>{maxEmployeesOnSlider}</strong> employees
+              {t("over")} <strong>{maxEmployeesOnSlider}</strong>{" "}
+              {t("employees")}
             </div>
           )}
           <div className="comment">
@@ -176,7 +181,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <div className="amount">
               <MultiCurrencyFormat value={plans[plan]?.price} currency="usd" />
             </div>
-            <div className="period">/month</div>
+            <div className="period">/{t("month")}</div>
           </div>
         </div>
       </Wrapper>
@@ -188,18 +193,19 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
           <h2 className="title">{title}</h2>
           {maxEmployeesReached ? (
             <div className="overMax">
-              Over <strong>{maxEmployeesOnSlider}</strong> employees
+              {t("over")} <strong>{maxEmployeesOnSlider}</strong>{" "}
+              {t("employees")}
             </div>
           ) : (
             <div className="price">
-              <div className="startingAt">Starting at</div>
+              <div className="startingAt">{t("startingAt")}</div>
               <div className="amount">
                 <MultiCurrencyFormat
                   value={plans[plan]?.price}
                   currency="usd"
                 />
               </div>
-              <div className="period">/month</div>
+              <div className="period">/{t("month")}</div>
             </div>
           )}
           <div className="comment">
@@ -209,7 +215,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <SignUpButton isFree={isFree} />
           </div>
         </div>
-        <Recommended visible={highlightPlan} />
+        <Recommended visible={highlightPlan} label={t("recommended")} />
       </Wrapper>
     </>
   );

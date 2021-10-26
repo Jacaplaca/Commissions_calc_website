@@ -1,7 +1,10 @@
+import Link from "next/link";
 import { usePricingContext } from "../context";
 import styled from "styled-components";
 import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 import { FunctionComponent } from "react";
+
+import { useTranslation } from "react-i18next";
 
 const CommentStyled = styled.div`
   display: flex;
@@ -14,11 +17,20 @@ const CommentStyled = styled.div`
   }
 `;
 
+const AskInquiry = styled.a`
+  outline: none;
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 type YProps = {
   period: number;
   yearlyPrice: number;
 };
 const Yearly: FunctionComponent<YProps> = ({ period, yearlyPrice }) => {
+  const { t, i18n } = useTranslation("pricing");
   if (period) {
     return (
       <span className={"yearly"}>
@@ -45,6 +57,7 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     employees,
     maxEmployeesOnSlider,
   } = usePricingContext();
+  const { t, i18n } = useTranslation("pricing");
   const planData = plans[plan];
   const { yearlyPrice } = planData;
 
@@ -52,7 +65,7 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     return (
       <CommentStyled>
         <div>
-          Maximum <strong>{freeEmployees}</strong> employees
+          {t("maximum")} <strong>{freeEmployees}</strong> {t("employees")}
         </div>
       </CommentStyled>
     );
@@ -62,12 +75,9 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     if (employees === maxEmployeesOnSlider) {
       return (
         <CommentStyled>
-          <div>
-            <u>
-              <a href="http://">Request a demo</a>
-            </u>{" "}
-            to talk our team.
-          </div>
+          <Link href="/ask" passHref>
+            <AskInquiry>{t("inquiry")}</AskInquiry>
+          </Link>
         </CommentStyled>
       );
     }
@@ -75,7 +85,7 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
       <CommentStyled>
         <Yearly yearlyPrice={yearlyPrice} period={period} />
         <div>
-          For up to <strong>{employees}</strong> employees.
+          {t("upTo")} <strong>{employees}</strong> {t("employees")}.
         </div>
       </CommentStyled>
     );
