@@ -44,6 +44,7 @@ const theme = {
       system_creator: "#dff9df",
       transactions: "#efeffa",
       rankings: "#ffecf5",
+      contact: "#f0fbf5",
       cases: {
         dentist: "#ecfdff",
         beauty_salon: "#fff0fb",
