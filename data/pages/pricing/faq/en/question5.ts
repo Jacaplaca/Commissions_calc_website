@@ -11,8 +11,8 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Rozumiemy że czasami klient może zmienić zdanie lub przekonać że aplikacja nie spełnia jego wymagań, dlatego (w planie miesięcznym jak i rocznym) przez  30 dni od zakończeniu planu testowego oferujemy pełny zwrot tego co zapłaciłeś. Pieniądze powinieneś otrzymać z powrotem w ciągu 3-5dni. Wystarczy że się z nami skontaktujesz.
+We understand that sometimes a customer may change his mind or find that the application doesn't meet his requirements, that's why (in both monthly and annual plans) for 30 days after the end of the test plan we offer a full refund of what you paid. You should get your money back within 3-5 days. All you have to do is contact us.
 
 `;
 
-export const question = `Nie podoba mi się ${appName}, czy mogę liczyć na oddanie pieniędzy?`;
+export const question = `I don't like ${appName}, can I count on a refund?`;

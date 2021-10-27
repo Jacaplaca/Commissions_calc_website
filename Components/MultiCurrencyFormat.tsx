@@ -8,7 +8,7 @@ type FormatNumber = (args: {
   notShowZero?: boolean;
   style?: "decimal" | "percent" | "currency";
   language?: string;
-  browserLocale: string;
+  browserLocale: string | null;
 }) => string;
 
 export const formatNumberLocale: FormatNumber = (props) => {
@@ -16,7 +16,7 @@ export const formatNumberLocale: FormatNumber = (props) => {
     value,
     currency,
     style,
-    language = "en",
+    language = "en-US",
     decimals = 0,
     browserLocale = "en-US",
   } = props;
@@ -39,7 +39,7 @@ export const formatNumberLocale: FormatNumber = (props) => {
 
   return isNaN(valueParsed)
     ? ""
-    : valueParsed.toLocaleString(browserLocale || language, {
+    : valueParsed.toLocaleString(language || browserLocale || "en-US", {
         style: currencyHasStringAndNotPercent
           ? "currency"
           : currencyIsPercent
@@ -68,6 +68,7 @@ type Props = {
   decimals?: number;
   notShowZero?: boolean;
   style?: "decimal" | "percent" | "currency";
+  locale?: string;
 };
 
 const MultiCurrencyFormat: FunctionComponent<Props> = ({
@@ -75,8 +76,9 @@ const MultiCurrencyFormat: FunctionComponent<Props> = ({
   currency,
   decimals = 0,
   style = "decimal",
+  locale = "en-US",
 }) => {
-  const [browserLocale, setBrowserLocale] = useState("en-US");
+  const [browserLocale, setBrowserLocale] = useState<string | null>(null);
 
   useEffect(() => {
     setBrowserLocale(window?.navigator?.language);
@@ -88,7 +90,7 @@ const MultiCurrencyFormat: FunctionComponent<Props> = ({
         value,
         currency,
         style,
-        language: "en",
+        language: locale,
         decimals,
         browserLocale,
       })}

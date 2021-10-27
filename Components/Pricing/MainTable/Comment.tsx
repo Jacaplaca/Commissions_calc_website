@@ -5,9 +5,13 @@ import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 import { FunctionComponent } from "react";
 
 import { useTranslation } from "react-i18next";
+import { useMainContext } from "../../../contexts/main";
 
 const CommentStyled = styled.div`
   display: flex;
+  .lowerCase {
+    text-transform: lowercase;
+  }
   .yearly {
     display: flex;
     margin-right: 5px;
@@ -31,13 +35,18 @@ type YProps = {
 };
 const Yearly: FunctionComponent<YProps> = ({ period, yearlyPrice }) => {
   const { t, i18n } = useTranslation("pricing");
+  const { currency, locale } = useMainContext();
   if (period) {
     return (
       <span className={"yearly"}>
         <span className={"yearlyAmount"}>
-          <MultiCurrencyFormat value={yearlyPrice} currency="usd" />
+          <MultiCurrencyFormat
+            value={yearlyPrice}
+            currency={currency}
+            locale={locale}
+          />
         </span>
-        <span>yearly.</span>
+        <span className="lowerCase">{`${t("yearly")}.`}</span>
       </span>
     );
   }

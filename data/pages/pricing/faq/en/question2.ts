@@ -11,13 +11,13 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Jeśli masz małą firmę do ${maxFreeEmp} pracowników oraz nie chcesz rozliczać prowizji od marży, tworzyć reguł dla grup, projektować progów dla zespołów, udostępniać rankingi swoim pracownikom oraz korzystać z chatu, możesz używać planu darmowego. 
+If you have a small business with up to ${maxFreeEmp} employees and don't want to make commissions on margins, create rules for groups, design thresholds for teams, share rankings with your employees, and use chat, you can use the free plan. 
 
-Plan ${THIRDPLAN} posiada te same funkcjonalności co ${SECONDPLAN} i dodatkowo możliwość grupowania produktów czy usług i opcję tworzenia progów dla zespołów. Pozwala też utworzyć firmowy chat oraz wysyłać wiadomości do różnych grup pracowników np. członków danego zespołu/systemu czy samych menadżerów.
+The ${THIRDPLAN} plan has the same functionality as ${SECONDPLAN} plus the ability to group products or services and the option to create thresholds for teams. It also allows you to create a company chat and send messages to different employees, such as members of a particular team/system or managers themselves.
 
-Staje się bardziej opłacalny przy ${THIRDPLANEMP} pracownikach. Nie stoi jednak nic na przeszkodzie skorzystać z ${THIRDPLAN} przy ilości pracowników mniejszej niż ${maxFreeEmp}
+It becomes more profitable with higher amount of employees. However, nothing is stopping you from using ${THIRDPLAN} with less than ${maxFreeEmp} employees.
 
 
 `;
 
-export const question = `Z którego planu powinienem skorzystać?`;
+export const question = `Which plan should I use?`;

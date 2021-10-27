@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { MDXRemote } from "next-mdx-remote";
+import { pricingFeatureType } from "../../../Types/pricingFeaturesType";
+import { useTranslation } from "react-i18next";
 // import features from "../Data/features.json";
 
-type Props = { enabled: number[] };
 const Wrapper = styled.div`
   /* display: flex; */
 `;
@@ -29,12 +30,20 @@ const Feature = styled.div<{ disabled: boolean; highlighted: boolean }>`
     highlighted ? theme.colors.palette.pricing.background : "transparent"}; ;
 `;
 
+type Props = {
+  features: pricingFeatureType;
+  plan: number;
+  highlightedRow: number | null;
+  highlight: (i: number) => void;
+};
+
 const Features: FunctionComponent<Props> = ({
   features,
   plan,
   highlightedRow,
   highlight,
 }) => {
+  const { t } = useTranslation("pricingFeatures");
   return (
     <Wrapper>
       {features.map(({ feat, plans }, i) => (
@@ -44,7 +53,8 @@ const Features: FunctionComponent<Props> = ({
           onMouseEnter={(e) => highlight(i)}
           highlighted={highlightedRow === i}
         >
-          <MDXRemote {...feat} />
+          {/* <MDXRemote {...feat} /> */}
+          <div>{t(feat)}</div>
         </Feature>
       ))}
     </Wrapper>

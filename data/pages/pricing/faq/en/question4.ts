@@ -11,8 +11,8 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Wystarczy że się zarejestrujesz w wybranym dla Ciebie planie a przez pierwsze 30 dni nie będzie konieczności uiszczenia opłaty. Przez ten czas będziesz mógł swobodnie korzystać ze wszystkich funkcjonalności swojego pakietu.
+All you need to do is register to the plan of your choice, and for the first 30 days, you will not have to pay a fee. During this time, you will be able to use all the functionalities of your package freely.
 
 `;
 
-export const question = `Jak działa okres próbny?`;
+export const question = `How does the trial period work?`;

@@ -7,7 +7,6 @@ const FREEPLAN = process.env.[`NEXT_PUBLIC_FREEPLANNAME_${LANGUAGE}`];
 const SECONDPLAN = process.env.[`NEXT_PUBLIC_SECONDPLANNAME_${LANGUAGE}`];
 const THIRDPLAN = process.env.[`NEXT_PUBLIC_THIRDPLANNAME_${LANGUAGE}`]
 
-const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
@@ -15,7 +14,7 @@ Jeśli masz małą firmę do ${maxFreeEmp} pracowników oraz nie chcesz rozlicza
 
 Plan ${THIRDPLAN} posiada te same funkcjonalności co ${SECONDPLAN} i dodatkowo możliwość grupowania produktów czy usług i opcję tworzenia progów dla zespołów. Pozwala też utworzyć firmowy chat oraz wysyłać wiadomości do różnych grup pracowników np. członków danego zespołu/systemu czy samych menadżerów.
 
-Staje się bardziej opłacalny przy ${THIRDPLANEMP} pracownikach. Nie stoi jednak nic na przeszkodzie skorzystać z ${THIRDPLAN} przy ilości pracowników mniejszej niż ${maxFreeEmp}
+Staje się bardziej opłacalny przy większej liczbie pracowników. Nie stoi jednak nic na przeszkodzie skorzystać z ${THIRDPLAN} przy ilości pracowników mniejszej niż ${maxFreeEmp}
 
 
 `;

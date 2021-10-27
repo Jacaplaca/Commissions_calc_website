@@ -1,0 +1,20 @@
+{
+  "systemCreator": "Kreator systemów prowizyjnych",
+  "thresholdsCreator": "Kreator i symulator progów sprzedażowych",
+  "thresholdsIndividual": "Indywidualne progi dla każdego uczestnika",
+  "thresholdsTeam": "Progi zespołowe",
+  "rulesItemsGroups": "Reguły dla grup produktów/usług/zdarzeń",
+  "rulesItemsIndividual": "Reguły dla indywidualnych produktów/usług/zdarzeń",
+  "commissionsFixedPercentage": "Prowizje stałe i procentowe",
+  "commissionsMargin": "Prowizje uzależnione od marży",
+  "transactionsAddedByEmployee": "Dodawanie transakcji przez pracowników",
+  "rankItems": "Rankingi produktów",
+  "rankEmployees": "Rankingi pracowników",
+  "rankForEverybody": "Rankingi uczestników systemu widoczne dla wszystkich jego członków",
+  "thresholdsFollowsByEmployee": "Pracownik na swoim koncie może śledzić swoje postępy na drodze do kolejnych progów prowizyjnych",
+  "reports": "Szczegółowe raporty",
+  "chat": "Firmowy chat. Masowe wiadomości do uczestników poszczególnych grup pracowników",
+  "chatTransaction": "Wysyłanie wiadomości związanych z konkretną transakcją",
+  "roles": "Dodawanie pracowników oraz menadżerów",
+  "timers": "Rozliczanie czasu spędzonego nad zadaniem"
+}

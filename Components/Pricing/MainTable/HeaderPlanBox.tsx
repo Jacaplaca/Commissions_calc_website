@@ -6,6 +6,9 @@ import Comment from "./Comment";
 import MultiCurrencyFormat from "../../MultiCurrencyFormat";
 
 import { useTranslation } from "react-i18next";
+import ForEmployees from "./ForEmployees";
+import SignUpButton from "../../Buttons/SignUpButton";
+import { useMainContext } from "../../../contexts/main";
 
 const shadowSticky = css`
   &:after {
@@ -84,32 +87,6 @@ const Wrapper = styled.section<{
   }
 `;
 
-const SignUpButtonStyled = styled.button`
-  outline: none;
-  border-radius: 50px;
-  background: ${({ theme }) => theme.colors.palette.red.main};
-  cursor: pointer;
-  color: white;
-  border: 0px solid transparent;
-  padding: 12px 20px;
-  font-size: 1.23em;
-  font-weight: 500;
-  opacity: 0.8;
-  transition: opacity 0.2s linear;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const SignUpButton: FunctionComponent<{ isFree: boolean }> = ({ isFree }) => {
-  const freeLabel = "Sign up free";
-  const payingLabel = "Start free trial";
-
-  return (
-    <SignUpButtonStyled>{isFree ? freeLabel : payingLabel}</SignUpButtonStyled>
-  );
-};
-
 const Icon = styled(({ component, ...props }) =>
   cloneElement(component, props)
 )`
@@ -140,10 +117,13 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
     headerPlanBoxHeightSticky,
   } = usePricingContext();
 
+  const { currency, locale } = useMainContext();
+
   const { t, i18n } = useTranslation("pricing");
 
   const maxEmployeesReached = employees === maxEmployeesOnSlider;
   const isFree = plan === 0;
+  const isDisabled = plans[plan].disabled;
 
   const headerPlanBoxHeightFooter = 150;
 
@@ -161,7 +141,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <Comment plan={plan} />
           </div>
           <div className="signUpButton">
-            <SignUpButton isFree={isFree} />
+            <SignUpButton isFree={isFree} disabled={isDisabled} />
           </div>
         </div>
       </Wrapper>
@@ -179,7 +159,11 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
           <div className="title">{title}</div>
           <div className="price">
             <div className="amount">
-              <MultiCurrencyFormat value={plans[plan]?.price} currency="usd" />
+              <MultiCurrencyFormat
+                value={plans[plan]?.price}
+                currency={currency}
+                locale={locale}
+              />
             </div>
             <div className="period">/{t("month")}</div>
           </div>
@@ -202,17 +186,21 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
               <div className="amount">
                 <MultiCurrencyFormat
                   value={plans[plan]?.price}
-                  currency="usd"
+                  currency={currency}
+                  locale={locale}
                 />
               </div>
               <div className="period">/{t("month")}</div>
             </div>
           )}
+          <div className="forEmployee">
+            <ForEmployees plan={plan} />
+          </div>
           <div className="comment">
             <Comment plan={plan} />
           </div>
           <div className="signUpButton">
-            <SignUpButton isFree={isFree} />
+            <SignUpButton isFree={isFree} disabled={isDisabled} />
           </div>
         </div>
         <Recommended visible={highlightPlan} label={t("recommended")} />

@@ -56,6 +56,8 @@ type Props = {
   ) => void;
 };
 
+const STEP = 1;
+
 const EmployeesSlider: FunctionComponent<Props> = ({
   value,
   max,
@@ -71,7 +73,7 @@ const EmployeesSlider: FunctionComponent<Props> = ({
       onChange={onChange}
       marks={marks}
       valueLabelDisplay="on"
-      step={5}
+      step={STEP}
     />
   );
 };

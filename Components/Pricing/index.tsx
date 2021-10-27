@@ -12,6 +12,7 @@ import Wave from "../Decorations/Wave";
 import { useTranslation } from "react-i18next";
 import HeadlinePage from "../Layout/Page/Headline";
 import SubHeadlinePage from "../Layout/Page/SubHeadline";
+import { pricingFeatureType } from "../../Types/pricingFeaturesType";
 
 const Wrapper = styled.section`
   display: flex;
@@ -68,7 +69,7 @@ const Wrapper = styled.section`
 
 type Props = {
   faq: FaqMDXs;
-  // features
+  features: pricingFeatureType;
 };
 
 const Pricing: FunctionComponent<Props> = ({ faq, features }) => {

@@ -6,6 +6,7 @@ import ColumnContent from "./Styled/ColumnContent";
 import { PuzzleFour, PuzzleThree, PuzzleTwo } from "../../Icons";
 import Features from "./Features";
 import { useMainContext } from "../../../contexts/main";
+import { pricingFeatureType } from "../../../Types/pricingFeaturesType";
 
 const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   display: flex;
@@ -30,7 +31,9 @@ const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   }
 `;
 
-type Props = {};
+type Props = {
+  features: pricingFeatureType;
+};
 
 const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
   const {
@@ -41,9 +44,11 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
 
   const { background } = useMainContext();
 
-  const [featureRowHighlighted, setFeatureRowHighlighted] = useState(null);
+  const [featureRowHighlighted, setFeatureRowHighlighted] = useState<
+    number | null
+  >(null);
 
-  const highlightRow = (rowIndex) => {
+  const highlightRow = (rowIndex: number) => {
     setFeatureRowHighlighted(rowIndex);
   };
 

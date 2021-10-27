@@ -11,9 +11,8 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Jest to możliwe w każdym momencie. Wystarczy że wypełnisz ten formularz, my zmienimy Ci plan i wyślemy dodatkowe informacje na Twojego maila.
-
+Is this possible at any time? Just fill in this form. We will change your plan and send you additional information in your email.
 
 `;
 
-export const question = `Chciałbym zmienić plan na wyższy lub niższy w trakcje korzystania z aplikacji.`;
+export const question = `I want to change to a higher or lower plan while using the app.`;

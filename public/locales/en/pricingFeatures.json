@@ -1,0 +1,21 @@
+{
+  "systemCreator": "Commission System Wizard",
+
+  "thresholdsCreator": "Sales threshold wizard and simulator",
+  "thresholdsIndividual": "The same thresholds for all system participants",
+  "thresholdsTeam": "Team thresholds",
+  "rulesItemsGroups": "Rules for groups of products/services/events",
+  "rulesItemsIndividual": "Rules for individual products/services/events ",
+  "commissionsFixedPercentage": "Fixed and percentage commissions ",
+  "commissionsMargin": "Margin-based commissions",
+  "transactionsAddedByEmployee": "Adding transactions by employees",
+  "rankItems": "Product rankings",
+  "rankEmployees": "Employee rankings ",
+  "rankForEverybody": "Rankings of system participants can be visible for all system members",
+  "thresholdsFollowsByEmployee": "An employee can track his progress on his account on the way to subsequent commission thresholds",
+  "reports": "Detailed reports",
+  "chat": "Company chat. Mass messages to participants of particular groups of employees",
+  "chatTransaction": "Sending messages related to a specific transaction",
+  "roles": "Adding employees and managers",
+  "timers": "Accounting of time spent on a task"
+}

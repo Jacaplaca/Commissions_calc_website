@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { Collapse, Space } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Collapse } from "antd";
 import { AngleDownRegular } from "../../Icons";
+import { useTranslation } from "react-i18next";
 
 const { Panel } = Collapse;
 
@@ -66,17 +66,10 @@ type Props = {
 };
 
 const PricingFaq: FunctionComponent<Props> = ({ source }) => {
+  const { t, i18n } = useTranslation("pricing");
   return (
     <Wrapper>
-      <h3 className="headline">Answers to some questions you may have</h3>
-      {/* {faqMdx.map(async ({ answer, question }, i) => {
-        const answerMdx = await serialize(answer);
-        return (
-          <div key={i}>
-            <MDXRemote {...answerMdx} />
-          </div>
-        );
-      })} */}
+      <h3 className="headline">{t("answers")}</h3>
       {source.map(({ answer, question }, i) => {
         return (
           <CollapseStyled

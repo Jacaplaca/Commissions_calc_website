@@ -11,8 +11,8 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Do póki utrzymasz ilość pracowników nie większą niż ${maxFreeEmp} oraz będziesz akceptował mniejszą funkcjonalność niż przy wyższych planach,  ${FREEPLAN} pozostanie w pełni bezpłatny. Podczas rejestracji do tego planu nie ma potrzeby podawania karty kredytowej.
+If you keep the number of employees no higher than ${maxFreeEmp} and accept less functionality than with higher plans, ${FREEPLAN} will remain fully free. No credit card is required when signing up for this plan.
 
 `;
 
-export const question = `Czy Plan ${FREEPLAN} będzie zawsze darmowy?`;
+export const question = `Will ${FREEPLAN} plan always be free?`;

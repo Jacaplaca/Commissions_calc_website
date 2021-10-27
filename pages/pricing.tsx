@@ -9,9 +9,11 @@ import { useTheme } from "styled-components";
 import { FaqMDXs } from "../Components/Pricing/Faq/PricingFaq";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import asyncForEach from "../utils/asyncForEach";
+import { pricingFeatureType } from "../Types/pricingFeaturesType";
 
 type Props = {
   faq: FaqMDXs;
+  features: pricingFeatureType;
 };
 
 const PricingPage: NextPage<Props> = ({ faq, features }) => {
@@ -42,17 +44,8 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   const serialized = [];
 
-  const features = (
-    await import(`../data/pages/pricing/features/${locale}/features.json`)
-  ).default;
-
-  const featuresSerialized = [];
-
-  await asyncForEach(features, async (feature) => {
-    const { plans, feat } = feature;
-    const serializedFeature = await serialize(feat);
-    featuresSerialized.push({ feat: serializedFeature, plans });
-  });
+  const features = (await import(`../data/pages/pricing/features.json`))
+    .default;
 
   await asyncForEach(fileNamesInFolder, async (fileName) => {
     const { question, answer } = await import(
@@ -65,12 +58,13 @@ export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       faq: serialized,
-      features: featuresSerialized,
+      features,
       ...(await serverSideTranslations(locale, [
         "common",
         "footer",
         "subMenu",
         "pricing",
+        "pricingFeatures",
       ])),
     },
   };

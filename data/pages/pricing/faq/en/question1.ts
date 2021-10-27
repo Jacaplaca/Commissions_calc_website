@@ -3,12 +3,11 @@ const appName = process.env.NEXT_PUBLIC_APPNAME;
 
 export const answer = `
 
-Jeśli już posiadasz w swojej firmie system prowizyjny, którego rozliczenie pochłania dużo cennego czasu, skontaktuj się z nami sprawdzimy czy uda nam się wprowadzić Twoje wypracowane reguły do ${appName}. Być może uda nam się zaoszczędzić Twój cenny czas, dodając nowe elementy usprawniające Twój obecny system prowizyjny.
+If you already have a commission system in your company that takes up a lot of your valuable time, contact us to see if we can implement your earned rules into ${appName}. Maybe we can save your valuable time by adding new elements to improve your current commission system.
 
-Chciałbyś zacząć rozliczać pracowników za efekty? Tak, ${appName} jest dla Ciebie. Skorzystaj z okresu testowego aby się o tym przekonać.
-
+Would you like to start billing your employees for results? Yes, ${appName} is for you. Take advantage of the trial period to find out.
 
 
 `;
 
-export const question = `Czy ${appName} jest dla takich osób jak ja?`;
+export const question = `Is ${appName} for people like me?`;

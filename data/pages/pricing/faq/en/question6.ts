@@ -11,8 +11,8 @@ const THIRDPLANEMP = "UNDEFINED";
 
 export const answer = `
 
-Tak. Przeprowadzamy również integrację z różnymi systemami księgowymi czy innymi systemami transakcyjnymi. Co firma to różne rozwiązanie, skontaktuj się więc z nami w tej sprawie abyśmy poznali Twoje rozwiązania i dokonali wyceny integracji. Koszt integracji w przypadku prostych rozwiązań oraz dużej ilość pracowników może być całkowicie bezpłatny.
+Yes, we also do integrations with various accounting systems or other transaction systems. Every company has its solution, so don't hesitate to get in touch with us, and we will get to know your solution and estimate the integration. In some cases, the cost of integration in the case of simple solutions and a large number of employees can be completely free. Contact us to be sure.
 
 `;
 
-export const question = `Zbieram już transakcję ale chciałbym móc je rozliczać w ${appName}, czy to możliwe?`;
+export const question = `I'm already collecting transactions, but I would like to settle them in ${appName}. Is it possible?`;

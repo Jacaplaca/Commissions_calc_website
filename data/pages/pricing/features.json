@@ -1,0 +1,35 @@
+[
+  { "feat": "systemCreator", "plans": [1, 1, 1] },
+  { "feat": "thresholdsCreator", "plans": [1, 1, 1] },
+  { "feat": "thresholdsIndividual", "plans": [0, 1, 1] },
+  { "feat": "thresholdsTeam", "plans": [1, 1, 1] },
+  { "feat": "rulesItemsGroups", "plans": [1, 1, 1] },
+  {
+    "feat": "rulesItemsIndividual",
+    "plans": [0, 0, 1]
+  },
+  { "feat": "commissionsFixedPercentage", "plans": [1, 1, 1] },
+  { "feat": "commissionsMargin", "plans": [0, 1, 1] },
+  { "feat": "transactionsAddedByEmployee", "plans": [1, 1, 1] },
+  { "feat": "rankItems", "plans": [1, 1, 1] },
+  { "feat": "rankEmployees", "plans": [1, 1, 1] },
+  {
+    "feat": "rankForEverybody",
+    "plans": [0, 1, 1]
+  },
+  {
+    "feat": "thresholdsFollowsByEmployee",
+    "plans": [1, 1, 1]
+  },
+  { "feat": "reports", "plans": [1, 1, 1] },
+  {
+    "feat": "chat",
+    "plans": [0, 1, 1]
+  },
+  {
+    "feat": "chatTransaction",
+    "plans": [0, 1, 1]
+  },
+  { "feat": "roles", "plans": [1, 1, 1] },
+  { "feat": "timers", "plans": [0, 1, 1] }
+]
