@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 import { FunctionComponent } from "react";
 import Layout from "../../Layout";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -7,7 +6,6 @@ import PageLayout from "../Page";
 import PageContent from "../Page/Content";
 import TopPage from "../Page/Top";
 import { useTranslation } from "react-i18next";
-import useCaseMenuElements from "../../Cases/useCaseMenuElements";
 import Wave from "../../Decorations/Wave";
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 
@@ -16,25 +14,6 @@ type Props = {
   backgroundColor: string;
   pageName: string;
 };
-
-const shimmer = (w: string, h: string) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-const toBase64 = (str: string) =>
-  typeof window === "undefined"
-    ? Buffer.from(str).toString("base64")
-    : window.btoa(str);
 
 const ImageContainer = styled.div`
   width: 700px;
@@ -88,13 +67,20 @@ const PageContentWrapper = styled.div`
   padding-bottom: 130px;
 `;
 
+const CaseImage = styled.img`
+  margin: 40px 0px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px -3px rgb(0 0 0 / 27%);
+`;
+
 const CaseWrapper: FunctionComponent<Props> = ({
   pageName,
   backgroundColor = "lightblue",
   content,
 }) => {
   const { t } = useTranslation(["common", "subMenu"]);
-  // const cases  = useCaseMenuElements()
 
   const page = `${pageName}SeoTitle`;
 
@@ -115,21 +101,7 @@ const CaseWrapper: FunctionComponent<Props> = ({
           pathElements={[t("cases", { appName }), t(pageName)]}
         />
         <ImageContainer>
-          <Image
-            // placeholder="blur"
-            // blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            //   shimmer(700, 475)
-            // )}`}
-            // loader={myLoader}
-            src={coverPath}
-            alt="Picture of the author"
-            layout="fill"
-            // objectFit="contain"
-            className={"image shadow-drop-bottom"}
-            // objectPosition=""
-            // objectFit="scale-down"
-            // style={{ width: 400 }}
-          />
+          <CaseImage src={coverPath} alt="add_buttons" />
         </ImageContainer>
         <WaveContainer>
           <Wave height="100%" width="100%" fill={"white"} />

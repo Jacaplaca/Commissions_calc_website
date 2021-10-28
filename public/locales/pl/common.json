@@ -31,5 +31,13 @@
   "packingSeoTitle": "System prowizyjny w firmie pakującej",
   "plantationSeoTitle": "System prowizyjny w salonie piękności",
   "signUpFree": "Darmowy plan",
-  "startFreeTrial": "Zacznij za darmo"
+  "startFreeTrial": "Zacznij za darmo",
+  "contactTitle": "Masz jakieś pytania?",
+  "contactSend": "Wyślij",
+  "contactEmail": "Twój email",
+  "contactMessage": "wiadomość",
+  "contactAfterSend": "Dziękujemy za zapytanie, postaramy się odpowiedzieć tak szybko jak to tylko możliwe.",
+  "contactSent": "Wiadomość wysłana!",
+  "correctEmail": "Potrzebujemy prawidłowego adresu aby wysłać odpowiedź",
+  "required": "Pole wymagane"
 }

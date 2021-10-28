@@ -31,5 +31,13 @@
   "packingSeoTitle": "Commission system at a packaging company",
   "plantationSeoTitle": "Commission system at a plantation",
   "signUpFree": "Sign up free",
-  "startFreeTrial": "Start free trial"
+  "startFreeTrial": "Start free trial",
+  "contactTitle": "Have you any question?",
+  "contactSend": "Send",
+  "contactEmail": "email",
+  "contactMessage": "message",
+  "contactAfterSend": "Thank you for your inquiry. We will try to respond as soon as possible.",
+  "contactSent": "Message sent!",
+  "correctEmail": "We need correct email to send response",
+  "required": "Required field"
 }
