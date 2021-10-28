@@ -3,10 +3,14 @@ import { FunctionComponent } from "react";
 import useSubMenuElements from "./useSubMenuElements";
 import SubMenuButton from "../SubMenuButton";
 
-type Props = {};
+type Props = {
+  mobile?:boolean
+};
 const Wrapper = styled.section`
   display: flex;
   justify-content: center;
+  flex-direction: ${({ mobile }) => mobile ? 'column' : 'row'};
+  overflow: scroll;
   .column {
     .title {
       text-transform: uppercase;
@@ -24,10 +28,10 @@ const Wrapper = styled.section`
   }
 `;
 
-const SubMenu: FunctionComponent<Props> = ({}) => {
+const SubMenu: FunctionComponent<Props> = ({mobile}) => {
   const elements = useSubMenuElements();
   return (
-    <Wrapper>
+    <Wrapper mobile={mobile}>
       {elements.map((column) => {
         const { title, rows } = column;
         return (
@@ -43,6 +47,7 @@ const SubMenu: FunctionComponent<Props> = ({}) => {
                     Icon={Icon}
                     headline={headline}
                     description={description}
+                    mobile={mobile}
                   />
                 );
               })}

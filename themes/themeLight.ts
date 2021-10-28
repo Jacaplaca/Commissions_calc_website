@@ -15,6 +15,7 @@ const theme = {
         main: "#263240",
       },
       orange: {
+        dark: "#e88000",
         main: "#ff9b26",
         light: "#ffd29d",
       },

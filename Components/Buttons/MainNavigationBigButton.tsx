@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 
 type Props = {
   label: string;
+  mobile? :boolean
 };
 const Button = styled.button`
   display: flex;
@@ -24,7 +25,27 @@ const Button = styled.button`
   }
 `;
 
-const MainNavigationBigButton: FunctionComponent<Props> = ({ label }) => {
+const ButtonMobile = styled.button`
+  display: flex;
+  outline: 0;
+  border: 0px solid ${({ theme }) => theme.colors.text.midDarkBlue};
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  padding: 7px 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .9em;
+  background: ${({ theme }) => theme.colors.palette.orange.dark};
+  color: ${({ theme }) => 'white'};
+  transition: all 0.2s ease-in;
+`;
+
+const MainNavigationBigButton: FunctionComponent<Props> = ({ label, mobile }) => {
+  if (mobile) {
+    return <ButtonMobile>{label}</ButtonMobile>;
+    
+  }
   return <Button>{label}</Button>;
 };
 

@@ -70,6 +70,7 @@ type Props = {
   headline: string;
   description?: string;
   quote?: string;
+  mobile?:boolean
 };
 
 const SubMenuButton: FunctionComponent<Props> = ({
@@ -78,6 +79,7 @@ const SubMenuButton: FunctionComponent<Props> = ({
   headline,
   description,
   quote,
+  mobile
 }) => {
   return (
     <Link href={link} key={link} passHref>

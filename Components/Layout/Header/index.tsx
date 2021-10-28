@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import MainMenu from "../../Navigations/MainMenu";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import MainMenuMobile from '../../Navigations/MainMenuMobile';
 
 const APPNAME = process.env.NEXT_PUBLIC_APPNAME;
 
@@ -34,6 +36,7 @@ const PortalStyled = styled.div`
 `;
 
 const Header: FunctionComponent<Props> = ({}) => {
+  const screen = useBreakpoint()
   return (
     <Wrapper>
       <div className="content">
@@ -47,7 +50,7 @@ const Header: FunctionComponent<Props> = ({}) => {
             />
           </a>
         </Link>
-        <MainMenu />
+        {screen.lg ? <MainMenu /> : <MainMenuMobile />}
       </div>
       <PortalStyled id="portal_subMenu" />
     </Wrapper>

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import SubMenu from "./SubMenu";
 import LanguageSwitcher from "./LanguageSwitcher";
 import CasesSubMenu from "./CasesSubMenu";
+import useMainMenuElements from '../useMainMenuElements';
 
 type Props = {};
 const Row = styled.section`
@@ -20,43 +21,12 @@ const Menu = styled.ul`
 `;
 
 const MainMenu: FunctionComponent<Props> = ({}) => {
+  const {elements, featuresOpened} = useMainMenuElements()
   const {
     t,
     i18n: { language },
   } = useTranslation("common");
-  const [featuresOpened, setFeaturesOpened] = useState<string>("");
 
-  const toggler = (key: string) => {
-    if (featuresOpened === key) {
-      setFeaturesOpened("");
-    } else {
-      setFeaturesOpened(key);
-    }
-  };
-
-  const elements = [
-    {
-      label: t("common:featuresMenuLabel"),
-      key: "one",
-      action: () => toggler("one"),
-      SubMenu: <SubMenu />,
-      centerSubMenu: true,
-    },
-    {
-      label: t("common:casesMenuLabel"),
-      key: "cases",
-      action: () => toggler("cases"),
-      SubMenu: <CasesSubMenu />,
-      centerSubMenu: true,
-    },
-    { label: t("common:pricingMenuLabel"), key: "two", link: "/pricing" },
-    {
-      label: language,
-      key: "five",
-      action: () => toggler("five"),
-      SubMenu: <LanguageSwitcher />,
-    },
-  ];
 
   return (
     <Row>
