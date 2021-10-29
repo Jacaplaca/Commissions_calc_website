@@ -298,9 +298,9 @@ const MainMenuMobile: FunctionComponent<Props> = ({}) => {
     }, SLIDERIGHTANIMATIONDURATION);
   };
 
-  const openSub = (action) => {
+  const openSub = (action?: () => void) => {
     setMenuElementClass("swing-out-top-bck");
-    action();
+    action && action();
   };
 
   return (
