@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import ForEmployees from "./ForEmployees";
 import SignUpButton from "../../Buttons/SignUpButton";
 import { useMainContext } from "../../../contexts/main";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 const shadowSticky = css`
   &:after {
@@ -27,6 +28,9 @@ const Wrapper = styled.section<{
   height?: number;
   showOnTop?: boolean;
 }>`
+  @media ${antdBreakpoints.mdMax} {
+    display: ${({ isFooter }) => (isFooter ? "none" : "flex")};
+  }
   display: flex;
   /* background-color: red; */
   position: ${({ isSticky, isFooter }) =>
@@ -45,14 +49,31 @@ const Wrapper = styled.section<{
   ${({ isSticky }) => isSticky && shadowSticky};
   .content {
     display: flex;
+    @media ${antdBreakpoints.mdMax} {
+      display: ${({ isSticky }) => isSticky && "none"};
+    }
     flex-direction: column;
     justify-content: ${({ isSticky }) => (isSticky ? "flex-start" : "center")};
     align-items: center;
     flex: auto;
     background-color: white;
     /* z-index: 1; */
+    .planBox__content__header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @media ${antdBreakpoints.smMax} {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-bottom: 15px;
+      }
+    }
     .icon {
-      height: 85px;
+      height: 65px;
+      @media ${antdBreakpoints.mdMax} {
+        /* height: ; */
+      }
     }
     .title {
       font-size: ${({ isSticky }) => (isSticky ? 1.2 : 1.6)}em;
@@ -69,6 +90,14 @@ const Wrapper = styled.section<{
       height: ${({ isSticky }) => (isSticky ? 30 : 55)}px;
       display: flex;
       align-items: baseline;
+      @media ${antdBreakpoints.smMax} {
+        flex-direction: column;
+      }
+
+      .price__amountAndPeriod {
+        align-items: baseline;
+        display: flex;
+      }
       .amount {
         /* margin-right: 5px; */
         font-size: ${({ isSticky }) => (isSticky ? 1.5 : 2.5)}em;
@@ -83,6 +112,11 @@ const Wrapper = styled.section<{
     }
     .signUpButton {
       margin-top: 28px;
+      @media ${antdBreakpoints.smMax} {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 `;
@@ -173,26 +207,35 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
       <Wrapper height={headerPlanBoxHeightFull}>
         {/* <ColumnContent highlight={highlightPlan}> */}
         <div className="content">
-          <div className="icon">{icon && <Icon component={icon} />}</div>
-          <h2 className="title">{title}</h2>
-          {maxEmployeesReached ? (
-            <div className="overMax">
-              {t("over")} <strong>{maxEmployeesOnSlider}</strong>{" "}
-              {t("employees")}
+          <div className="planBox__content__header">
+            <div className="planBox__content__header__brand">
+              <div className="icon">{icon && <Icon component={icon} />}</div>
+              <h2 className="title">{title}</h2>
             </div>
-          ) : (
-            <div className="price">
-              <div className="startingAt">{t("startingAt")}</div>
-              <div className="amount">
-                <MultiCurrencyFormat
-                  value={plans[plan]?.price}
-                  currency={currency}
-                  locale={locale}
-                />
-              </div>
-              <div className="period">/{t("month")}</div>
+            <div className="planBox__content__header__price">
+              {maxEmployeesReached ? (
+                <div className="overMax">
+                  {t("over")} <strong>{maxEmployeesOnSlider}</strong>{" "}
+                  {t("employees")}
+                </div>
+              ) : (
+                <div className="price">
+                  <div className="startingAt">{t("startingAt")}</div>
+                  <div className="price__amountAndPeriod">
+                    <div className="amount">
+                      <MultiCurrencyFormat
+                        value={plans[plan]?.price}
+                        currency={currency}
+                        locale={locale}
+                      />
+                    </div>
+                    <div className="period">/{t("month")}</div>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
+
           <div className="forEmployee">
             <ForEmployees plan={plan} />
           </div>

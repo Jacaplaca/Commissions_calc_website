@@ -3,7 +3,10 @@ import { FunctionComponent, useState } from "react";
 
 const WIDTH = 100;
 
-type Props = {};
+type Props = {
+  opened: boolean;
+  onClick: () => void;
+};
 const Wrapper = styled.button`
   outline: none;
   background: transparent;

@@ -1,3 +1,4 @@
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { NextPage } from "next";
 const fs = require("fs");
 import Pricing from "../Components/Pricing";
@@ -35,19 +36,20 @@ export async function getStaticProps({ locale }: { locale: string }) {
   async function listDir() {
     try {
       const files = await fs.promises.readdir(testFolder);
-      files.forEach((file) => fileNamesInFolder.push(file));
+      files.forEach((file: string) => fileNamesInFolder.push(file));
     } catch (err) {
       console.error("Error occured while reading directory!", err);
     }
   }
   await listDir();
 
-  const serialized = [];
+  const serialized: { question: string; answer: MDXRemoteSerializeResult }[] =
+    [];
 
   const features = (await import(`../data/pages/pricing/features.json`))
     .default;
 
-  await asyncForEach(fileNamesInFolder, async (fileName) => {
+  await asyncForEach(fileNamesInFolder, async (fileName: string) => {
     const { question, answer } = await import(
       `../data/pages/pricing/faq/${locale}/${fileName}`
     );

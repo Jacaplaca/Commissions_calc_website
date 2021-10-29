@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  width: 650px;
+  max-width: 650px;
   padding: 25px 25px;
   .headline {
     font-size: 2em;

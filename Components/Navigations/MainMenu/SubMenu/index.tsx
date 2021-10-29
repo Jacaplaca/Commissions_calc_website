@@ -2,19 +2,24 @@ import styled from "styled-components";
 import { FunctionComponent } from "react";
 import useSubMenuElements from "./useSubMenuElements";
 import SubMenuButton from "../SubMenuButton";
+import { transparentize } from "polished";
 
 type Props = {
-  mobile?:boolean
+  mobile?: boolean;
 };
-const Wrapper = styled.section`
+const Wrapper = styled.section<{ mobile?: boolean }>`
   display: flex;
   justify-content: center;
-  flex-direction: ${({ mobile }) => mobile ? 'column' : 'row'};
+  flex-direction: ${({ mobile }) => (mobile ? "column" : "row")};
   overflow: scroll;
   .column {
+    border-top: ${({ mobile }) => (mobile ? 1 : 0)}px solid
+      ${({ theme }) => transparentize(0.8, theme.colors.palette.darkBlue.main)};
     .title {
+      padding-top: ${({ mobile }) => (mobile ? 20 : 0)}px;
+      padding-left: ${({ mobile }) => (mobile ? 20 : 0)}px;
       text-transform: uppercase;
-      padding-bottom: 25px;
+      padding-bottom: ${({ mobile }) => (mobile ? 12 : 25)}px;
       color: ${(p) => p.theme.colors.text.midDarkBlue};
       opacity: 0.5;
       font-size: 0.85em;
@@ -28,7 +33,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const SubMenu: FunctionComponent<Props> = ({mobile}) => {
+const SubMenu: FunctionComponent<Props> = ({ mobile }) => {
   const elements = useSubMenuElements();
   return (
     <Wrapper mobile={mobile}>

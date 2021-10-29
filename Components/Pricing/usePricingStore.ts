@@ -1,3 +1,4 @@
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -67,7 +68,8 @@ const usePricingStore = () => {
   const [plans, setPlans] = useState<typeof defaultPrices>(defaultPrices);
   const maxEmployeesOnSlider = 100;
   const freeEmployees = maxFreeEmp;
-  const headerPlanBoxHeightFull = 350;
+  const screen = useBreakpoint();
+  const headerPlanBoxHeightFull = screen.sm ? 350 : 300;
   const headerPlanBoxHeightSticky = 70;
 
   useEffect(() => {

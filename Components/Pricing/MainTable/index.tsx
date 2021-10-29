@@ -7,14 +7,20 @@ import { PuzzleFour, PuzzleThree, PuzzleTwo } from "../../Icons";
 import Features from "./Features";
 import { useMainContext } from "../../../contexts/main";
 import { pricingFeatureType } from "../../../Types/pricingFeaturesType";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   display: flex;
   position: relative;
+  flex-direction: row;
+
+  @media ${antdBreakpoints.mdMax} {
+    flex-direction: column;
+  }
+
   width: 100%;
   justify-content: center;
   background-color: red;
-  /* background-color: white; */
   height: 100%;
   background: linear-gradient(
     180deg,
@@ -23,6 +29,11 @@ const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   );
   .column {
     width: 389px;
+    @media ${antdBreakpoints.mdMax} {
+      width: auto;
+      margin: 30px;
+    }
+
     .description {
       /* padding: 33px; */
       padding-bottom: 0px;

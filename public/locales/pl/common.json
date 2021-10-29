@@ -39,5 +39,7 @@
   "contactAfterSend": "Dziękujemy za zapytanie, postaramy się odpowiedzieć tak szybko jak to tylko możliwe.",
   "contactSent": "Wiadomość wysłana!",
   "correctEmail": "Potrzebujemy prawidłowego adresu aby wysłać odpowiedź",
-  "required": "Pole wymagane"
+  "required": "Pole wymagane",
+  "goBackButtonLabel": "Powrót",
+  "seePlanSummary": "Szczegóły planu"
 }

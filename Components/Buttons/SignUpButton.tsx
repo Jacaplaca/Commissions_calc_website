@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import antdBreakpoints from "../../themes/antdBreakpoints";
 
 const SignUpButtonStyled = styled.button`
+  @media ${antdBreakpoints.smMax} {
+    /* width: auto; */
+    padding: 6px;
+    margin: 0 15px;
+  }
   outline: none;
   border-radius: 50px;
   background: ${({ theme }) => theme.colors.palette.red.main};

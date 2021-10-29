@@ -3,13 +3,17 @@ import styled from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
 import { transparentize } from "polished";
 
-const LinkStyled = styled.a`
+const LinkStyled = styled.a<{ mobile?: boolean }>`
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-left: 15px;
-  border-left: 1px solid
+  padding-left: ${({ mobile }) => (mobile ? 25 : 15)}px;
+  padding-right: ${({ mobile }) => (mobile ? 25 : 5)}px;
+  border-left: ${({ mobile }) => (mobile ? 0 : 1)}px solid
     ${({ theme }) => transparentize(0.8, theme.colors.palette.darkBlue.main)};
-  width: 300px;
+  /* border-bottom: ${({ mobile }) => (mobile ? 1 : 0)}px solid
+    ${({ theme }) =>
+    transparentize(0.8, theme.colors.palette.darkBlue.main)}; */
+  width: ${({ mobile }) => (mobile ? "100%" : "300px")};
   display: flex;
   margin-right: 25px;
   cursor: pointer;
@@ -70,7 +74,7 @@ type Props = {
   headline: string;
   description?: string;
   quote?: string;
-  mobile?:boolean
+  mobile?: boolean;
 };
 
 const SubMenuButton: FunctionComponent<Props> = ({
@@ -79,11 +83,11 @@ const SubMenuButton: FunctionComponent<Props> = ({
   headline,
   description,
   quote,
-  mobile
+  mobile,
 }) => {
   return (
     <Link href={link} key={link} passHref>
-      <LinkStyled>
+      <LinkStyled mobile={mobile}>
         <div className="icon">{<IconStyled component={<Icon />} />}</div>
         <div className="texts">
           <div className="headline">{headline}</div>

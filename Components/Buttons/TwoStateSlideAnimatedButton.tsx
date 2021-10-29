@@ -71,7 +71,7 @@ const Element = styled.div`
   align-items: center;
   justify-content: center;
   /* background-color: yellow; */
-  z-index: 2;
+  z-index: 1 !important;
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   font-weight: 600;
   opacity: ${({ isHighlighted, disabled }) =>
