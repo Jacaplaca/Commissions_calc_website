@@ -30,17 +30,14 @@ const Wrapper = styled.section<{
 }>`
   @media ${antdBreakpoints.mdMax} {
     display: ${({ isFooter }) => (isFooter ? "none" : "flex")};
+    visibility: ${({ isSticky }) => (isSticky ? "hidden" : "visible")};
   }
   display: flex;
-  /* background-color: red; */
   position: ${({ isSticky, isFooter }) =>
     isSticky ? "sticky" : isFooter ? "relative" : "absolute"};
-  /* position: absolute; */
   top: ${({ isSticky }) => (isSticky ? -1 : 0)}px;
   flex: auto;
   width: 100%;
-  /* margin-bottom: 340px; */
-  /* height: 340px; */
   height: ${({ height }) => height}px;
   opacity: ${({ isSticky }) => (isSticky ? 1 : 1)};
   border-bottom: 1px solid
@@ -101,6 +98,9 @@ const Wrapper = styled.section<{
       .amount {
         /* margin-right: 5px; */
         font-size: ${({ isSticky }) => (isSticky ? 1.5 : 2.5)}em;
+        @media ${antdBreakpoints.smMax} {
+          font-size: 2em;
+        }
         font-weight: 600;
         color: ${({ theme }) => theme.colors.text.midDarkBlue};
       }
