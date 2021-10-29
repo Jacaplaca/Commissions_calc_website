@@ -31,6 +31,9 @@ const Wrapper = styled.section`
     }
     margin-bottom: 45px;
     margin-top: 45px;
+    @media ${antdBreakpoints.smMax} {
+      margin-top: 25px;
+    }
     gap: 30px 0px;
     display: flex;
     justify-content: center;

@@ -8,6 +8,7 @@ const SignUpButtonStyled = styled.button`
     /* width: auto; */
     padding: 6px;
     margin: 0 15px;
+    font-size: 1em;
   }
   outline: none;
   border-radius: 50px;

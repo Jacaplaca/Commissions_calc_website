@@ -4,6 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Collapse } from "antd";
 import { AngleDownRegular } from "../../Icons";
 import { useTranslation } from "react-i18next";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 const { Panel } = Collapse;
 
@@ -14,6 +15,10 @@ const Wrapper = styled.section`
   max-width: 650px;
   padding: 25px 25px;
   .headline {
+    @media ${antdBreakpoints.smMax} {
+      font-size: 1.5em;
+    }
+
     font-size: 2em;
     width: 100%;
     text-align: center;

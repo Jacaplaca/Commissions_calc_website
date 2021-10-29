@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 type Props = {};
 const Wrapper = styled.section`
+  @media ${antdBreakpoints.smMax} {
+    font-size: 2em;
+    line-height: 1.22em;
+  }
   font-size: 2.4em;
   text-transform: none;
   color: ${({ theme }) => theme.colors.text.dark};
