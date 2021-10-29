@@ -40,19 +40,17 @@ const Main = styled.section`
   color: ${({ theme }) => theme.colors.text.light};
   justify-content: space-between;
   width: 100%;
-  padding: 35px 15px;
+  padding: 35px 20px;
+  flex-wrap: wrap;
+  gap: 25px 15px;
   .column {
+    min-width: 100px;
     .columnTitle {
       text-transform: uppercase;
       font-weight: 600;
       opacity: 0.6;
       margin-bottom: 12px;
       font-size: 1em;
-    }
-    .links {
-      /* .link {
-        
-      } */
     }
   }
 `;
