@@ -20,9 +20,8 @@ const StartButton = styled.button`
   background: ${({ theme }) => theme.colors.palette.orange.light};
   color: ${({ theme }) => theme.colors.text.dark};
   padding: 15px 25px;
-  margin-top: 40px;
+
   font-weight: 600;
-  margin-bottom: 30px;
 
   &:hover {
     background: ${({ theme }) => theme.colors.palette.orange.main};

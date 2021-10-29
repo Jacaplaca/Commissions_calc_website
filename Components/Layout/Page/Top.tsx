@@ -5,6 +5,7 @@ import HeadlinePage from "./Headline";
 import SubHeadlinePage from "./SubHeadline";
 import { useTranslation } from "react-i18next";
 import RiseButton from "../../Buttons/RiseButton";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 type Props = {
   pathElements: string[];
@@ -17,7 +18,20 @@ const Wrapper = styled.section`
   gap: 25px;
   align-items: center;
   margin-bottom: 20px;
+  @media ${antdBreakpoints.smMax} {
+    margin-bottom: 10px;
+  }
   z-index: 1;
+  padding: 0 ${({ theme }) => theme.sizes.paddingLayoutHorizontal};
+  .riseButtonWrapper {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    @media ${antdBreakpoints.smMax} {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      /* margin-bottom: 10px; */
+    }
+  }
 `;
 
 const TopPage: FunctionComponent<Props> = ({
@@ -31,7 +45,9 @@ const TopPage: FunctionComponent<Props> = ({
       <Path elements={pathElements} />
       <HeadlinePage>{headline}</HeadlinePage>
       <SubHeadlinePage>{subHeadline}</SubHeadlinePage>
-      <RiseButton onClick={() => {}}>{t("startFree")}</RiseButton>
+      <div className="riseButtonWrapper">
+        <RiseButton onClick={() => {}}>{t("startFree")}</RiseButton>
+      </div>
     </Wrapper>
   );
 };

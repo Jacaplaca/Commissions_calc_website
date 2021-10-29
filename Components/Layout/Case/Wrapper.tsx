@@ -7,6 +7,7 @@ import PageContent from "../Page/Content";
 import TopPage from "../Page/Top";
 import { useTranslation } from "react-i18next";
 import Wave from "../../Decorations/Wave";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 
 type Props = {
@@ -16,8 +17,11 @@ type Props = {
 };
 
 const ImageContainer = styled.div`
-  width: 700px;
+  max-width: 700px;
   margin-bottom: 40px;
+  @media ${antdBreakpoints.smMax} {
+    margin-bottom: 20px;
+  }
   z-index: 1;
 
   > div {
@@ -54,6 +58,10 @@ const WaveContainer = styled.div`
   height: 115px;
   transform: translateY(-130px);
   z-index: 0;
+  @media ${antdBreakpoints.smMax} {
+    /* height: 45px; */
+    display: none;
+  }
 `;
 
 const PageContentWrapper = styled.div`

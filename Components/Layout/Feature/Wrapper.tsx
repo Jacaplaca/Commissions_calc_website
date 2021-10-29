@@ -7,6 +7,7 @@ import PageLayout from "../Page";
 import PageContent from "../Page/Content";
 import TopPage from "../Page/Top";
 import Wave from "../../Decorations/Wave";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 type Props = {
   content: MDXRemoteSerializeResult;
@@ -17,6 +18,10 @@ type Props = {
 const WaveContainer = styled.div`
   width: 100%;
   height: 115px;
+  @media ${antdBreakpoints.smMax} {
+    height: 45px;
+    transform: translateY(-45px);
+  }
   transform: translateY(-130px);
   z-index: 0;
 `;
@@ -28,6 +33,9 @@ const PageContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: -130px;
+  @media ${antdBreakpoints.smMax} {
+    margin-top: -45px;
+  }
   /* padding-top: 80px; */
   padding-bottom: 80px;
 `;

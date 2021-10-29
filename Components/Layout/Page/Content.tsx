@@ -1,25 +1,31 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 type Props = {
   content: MDXRemoteSerializeResult;
 };
 const Wrapper = styled.section`
-  width: ${({ theme }) => theme.sizes.pageWidth};
-  border-top: 30px;
+  max-width: ${({ theme }) => theme.sizes.pageWidth};
+  /* border-top: 30px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   p {
     margin-bottom: 12px;
-    width: 600px;
+    max-width: 600px;
     text-align: justify;
     font-weight: 400;
     font-size: 1.1em;
     line-height: 1.7em;
     font-family: "Open Sans", sans-serif;
     text-indent: 4em;
+    padding: 0 ${({ theme }) => theme.sizes.paddingLayoutHorizontal};
+    @media ${antdBreakpoints.smMax} {
+      line-height: 1.5em;
+      font-size: 1.03em;
+    }
   }
   .spacer {
     min-height: 20px;

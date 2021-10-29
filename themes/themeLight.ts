@@ -8,6 +8,8 @@ const theme = {
     headerWidth: "1170px",
     pageWidth: "970px",
     distanceFromMenu: "80px",
+    distanceFromMenuMobile: "30px",
+    paddingLayoutHorizontal: "20px",
   },
   colors: {
     palette: {
