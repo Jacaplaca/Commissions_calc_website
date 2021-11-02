@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { cloneElement, FunctionComponent } from "react";
+import antdBreakpoints from "../../../themes/antdBreakpoints";
 
 const withLine = css`
   display: flex;
@@ -7,6 +8,9 @@ const withLine = css`
   flex-direction: column;
   border-top: 1px solid lightgray;
   justify-content: flex-end;
+  @media ${antdBreakpoints.smMax} {
+    border-top: 0px solid lightgray;
+  }
 `;
 
 const Element = styled.button<{ isActive: boolean; color: string }>`
@@ -16,6 +20,10 @@ const Element = styled.button<{ isActive: boolean; color: string }>`
   outline: none;
   background: transparent;
   height: 45px;
+  @media ${antdBreakpoints.smMax} {
+    height: 30px;
+  }
+
   border-color: ${(p) => (p.isActive ? p.color : "lightgrey")};
 
   &:hover {
@@ -37,6 +45,10 @@ const Element = styled.button<{ isActive: boolean; color: string }>`
 
 const Row = styled.section`
   display: flex;
+  flex-wrap: wrap;
+  @media ${antdBreakpoints.smMax} {
+    justify-content: center;
+  }
   .spacer {
     ${withLine}
     width: 25px;

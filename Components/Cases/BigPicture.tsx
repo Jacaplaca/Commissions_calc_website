@@ -6,8 +6,13 @@ type Props = {
 };
 const Wrapper = styled.section`
   display: flex;
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
+  /* width: auto; */
+  /* height: auto; */
+  img {
+    width: 100%;
+  }
 `;
 
 const BigPictureCase: FunctionComponent<Props> = ({ path }) => {

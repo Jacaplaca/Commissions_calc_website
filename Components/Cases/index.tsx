@@ -5,6 +5,8 @@ import NavigationHorizontalWithIconAndColorLine from "../Navigations/WithIconAnd
 import useCaseMenuElements from "./useCaseMenuElements";
 import { LongArrowRightAlt } from "../Icons";
 import BigPictureCase from "./BigPicture";
+import antdBreakpoints from "../../themes/antdBreakpoints";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 type Element = {
   label: string;
@@ -21,20 +23,22 @@ type Props = {};
 
 const Wrapper = styled.section`
   display: flex;
-  .content {
-    width: 650px;
+  @media ${antdBreakpoints.lgMax} {
+    flex-direction: column;
+    align-items: center;
   }
-`;
-
-const BigPicture = styled.div`
-  background: grey;
-  width: 500px;
-  height: 500px;
+  .content {
+    max-width: 650px;
+  }
 `;
 
 const ContentStyled = styled.div`
   padding: 20px 10px;
   padding-right: 30px;
+  @media ${antdBreakpoints.smMax} {
+    padding: 5px 10px;
+    padding-right: 15px;
+  }
   .quote {
     margin-top: 20px;
     margin-bottom: 40px;
@@ -43,6 +47,12 @@ const ContentStyled = styled.div`
     font-weight: bold;
     color: ${({ theme }) => theme.colors.text.dark};
     padding: 10px 15px;
+    @media ${antdBreakpoints.smMax} {
+      font-size: 1.2em;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 0px 5px;
+    }
   }
   .description {
     border-left: 1px solid ${({ color }) => color};
@@ -50,6 +60,10 @@ const ContentStyled = styled.div`
     font-size: 1.05em;
     line-height: 1.63em;
     margin-bottom: 20px;
+    @media ${antdBreakpoints.smMax} {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
   }
   .link {
     a {
@@ -101,18 +115,21 @@ const Content = ({
   );
 };
 
-const Cases: FunctionComponent<Props> = ({}) => {
+const CasesTeaser: FunctionComponent<Props> = ({}) => {
   const elements = useCaseMenuElements();
   const [activeKey, setActiveKey] = useState<string>(elements[0].key);
   const [activeCase, setActiveCase] = useState<Element>(elements[0]);
   const theme = useTheme();
   const COLOR = theme.colors.palette.orange.main;
+  const screen = useBreakpoint();
 
   const handelChangeActiveKey = (key: string) => {
     setActiveKey(key);
     const activeCase = elements.find((x) => x.key === key);
     activeCase && setActiveCase(activeCase);
   };
+
+  const image = `/pages/cases/${activeKey}/slider.png`;
 
   return (
     <Wrapper>
@@ -123,13 +140,23 @@ const Cases: FunctionComponent<Props> = ({}) => {
           changeActiveKey={handelChangeActiveKey}
           color={COLOR}
         />
+        {screen.lg ? (
+          <Content activeCase={activeCase} color={COLOR} />
+        ) : (
+          <div className="picture">
+            <BigPictureCase path={image} />
+          </div>
+        )}
+      </div>
+      {screen.lg ? (
+        <div className="picture">
+          <BigPictureCase path={image} />
+        </div>
+      ) : (
         <Content activeCase={activeCase} color={COLOR} />
-      </div>
-      <div className="picture">
-        <BigPictureCase path={`/pages/cases/${activeKey}/slider.png`} />
-      </div>
+      )}
     </Wrapper>
   );
 };
 
-export default Cases;
+export default CasesTeaser;
