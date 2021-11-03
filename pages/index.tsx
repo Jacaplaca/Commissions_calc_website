@@ -4,20 +4,24 @@ import Layout from "../Components/Layout";
 import staticPropsInitialize from "../utils/staticPropsInitialize";
 import CasesTeaser from "../Components/Cases";
 import HelpWith from "../Components/HelpWith";
+import MainSlider from "../Components/MainSlider";
 
 const Wrapper = styled.section`
   flex: 0;
-  /* display: flex; */
   width: 100%;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   flex-direction: column;
   .wrapper__content {
-    max-width: ${({ theme }) => theme.sizes.pageWidth};
+    max-width: ${({ theme }) => theme.sizes.headerWidth};
+    .slider,
+    .helpWith,
+    .cases {
+      padding: 50px 0px;
+    }
+    .slider {
+      /* margin: 60px 0px; */
+    }
   }
 `;
 
@@ -27,8 +31,15 @@ const Home: NextPage = () => {
     <Layout backgroundColor={theme.colors.palette.indexBackground}>
       <Wrapper>
         <div className="wrapper__content">
-          <HelpWith />
-          <CasesTeaser />
+          <div className="slider">
+            <MainSlider />
+          </div>
+          <div className="helpWith">
+            <HelpWith />
+          </div>
+          <div className="cases">
+            <CasesTeaser />
+          </div>
         </div>
       </Wrapper>
     </Layout>

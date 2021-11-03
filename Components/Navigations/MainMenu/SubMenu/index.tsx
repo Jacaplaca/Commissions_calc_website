@@ -11,7 +11,7 @@ const Wrapper = styled.section<{ mobile?: boolean }>`
   display: flex;
   justify-content: center;
   flex-direction: ${({ mobile }) => (mobile ? "column" : "row")};
-  overflow: scroll;
+  /* overflow: scroll; */
   .column {
     border-top: ${({ mobile }) => (mobile ? 1 : 0)}px solid
       ${({ theme }) => transparentize(0.8, theme.colors.palette.darkBlue.main)};

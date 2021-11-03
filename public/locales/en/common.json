@@ -41,5 +41,9 @@
   "correctEmail": "We need correct email to send response",
   "required": "Required field",
   "goBackButtonLabel": "Go back",
-  "seePlanSummary": "See plan summary"
+  "seePlanSummary": "See plan summary",
+  "getStartedFree": "Get started for free",
+  "mainSliderTitle1": "Create the most advanced commission system that can calculate live",
+  "mainSliderSubTitle1": "Give your employees and managers access to their and their team's progress and thresholds",
+  "mainSliderSubTitle2": "You never go back to Excel"
 }

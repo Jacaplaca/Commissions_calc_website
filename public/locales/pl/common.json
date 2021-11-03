@@ -41,5 +41,9 @@
   "correctEmail": "Potrzebujemy prawidłowego adresu aby wysłać odpowiedź",
   "required": "Pole wymagane",
   "goBackButtonLabel": "Powrót",
-  "seePlanSummary": "Szczegóły planu"
+  "seePlanSummary": "Szczegóły planu",
+  "getStartedFree": "Sprawdź za darmo",
+  "mainSliderTitle1": "Stwórz nawet najbardziej wyrafinowany system prowizyjny, który sam będzie się liczył w czasie rzeczywistym",
+  "mainSliderSubTitle1": "Daj pracownikom i menadżerom wgląd w ich postępy oraz ich zespołów w realizacji progów",
+  "mainSliderSubTitle2": "Już nigdy nie wrócisz do Excela podczas liczenia prowizji"
 }

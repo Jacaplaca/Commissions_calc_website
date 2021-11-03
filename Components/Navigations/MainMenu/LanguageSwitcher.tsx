@@ -34,6 +34,7 @@ const Wrapper = styled.section<{ mobile?: boolean }>`
   padding-bottom: 10px;
   box-shadow: ${({ theme }) => theme.shadows.subMenu};
   position: relative;
+  z-index: 1;
 `;
 
 const Row = styled.button<{ mobile?: boolean }>`
