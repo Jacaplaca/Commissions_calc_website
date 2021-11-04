@@ -12,14 +12,14 @@ const Wrapper = styled(motion.div)<{ height: number; width: number }>`
   display: flex;
   /* height: 100%; */
   /* width: 100%; */
-  height: ${(p) => p.height}px;
-  width: ${(p) => p.width}px;
+  max-height: ${(p) => p.height}px;
+  max-width: ${(p) => p.width}px;
   /* background-color: red; */
   align-items: center;
   justify-content: center;
-  img {
+  /* img {
     width: 50%;
-  }
+  } */
 `;
 
 const Perspective: FunctionComponent<Props> = ({ children, width, height }) => {

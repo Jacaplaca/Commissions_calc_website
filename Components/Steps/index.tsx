@@ -19,6 +19,10 @@ const Wrapper = styled.section`
 
 const Step = styled.div`
   position: relative;
+  width: 33%;
+  @media ${antdBreakpoints.mdMax} {
+    width: 100%;
+  }
   .title__number {
     font-family: "Architects Daughter", cursive;
     font-size: 1.7em;
@@ -30,7 +34,7 @@ const Step = styled.div`
   }
 `;
 
-const Icon = styled(ArrowDrawRight)<{ rotate: boolean }>`
+const Icon = styled(ArrowDrawRight)<{ rotate: number }>`
   font-size: 2.5em !important;
   opacity: 0.7;
   position: absolute;
@@ -53,7 +57,7 @@ const Steps: FunctionComponent<Props> = ({ steps }) => {
         return (
           <Step key={number}>
             <h4 className="title">
-              {!isLast && <Icon rotate={isOdd} />}
+              {!isLast && <Icon rotate={isOdd ? 1 : 0} />}
               <span className="title__number">{number}</span>
               <span className="title__content">{title}</span>
             </h4>

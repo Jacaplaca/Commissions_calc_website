@@ -13,7 +13,7 @@ const withLine = css`
   }
 `;
 
-const Element = styled.button<{ isActive: boolean; color: string }>`
+const Element = styled.button<{ isActive: number; color: string }>`
   border: 0px solid transparent;
   ${withLine}
   cursor: pointer;
@@ -89,14 +89,14 @@ const NavigationHorizontalWithIconAndColorLine: FunctionComponent<Props> = ({
         return (
           <div className="elementWithSpacer" key={key}>
             <Element
-              isActive={isActive}
+              isActive={isActive ? 1 : 0}
               onClick={() => changeActiveKey(key)}
               color={color}
             >
               <div className="buttonWithIcon">
                 <IconStyled
                   component={<Icon />}
-                  isActive={isActive}
+                  isActive={isActive ? 1 : 0}
                   color={color}
                 />
                 <div className="label">{label}</div>

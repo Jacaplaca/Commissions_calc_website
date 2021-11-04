@@ -10,7 +10,6 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.palette.darkBlue.main};
-  /* justify-content: center; */
   align-items: center;
   width: 100%;
   .divider {
@@ -73,13 +72,11 @@ const Bottom = styled.section`
     display: flex;
     flex-direction: column;
     .claim {
-      /* font-size: 1.4em !important; */
       color: white;
       opacity: 0.45;
     }
     .bottomLinks {
       .copyright {
-        /* font-size: 1.2em; */
         font-weight: 400;
       }
       gap: 0 20px;
@@ -143,10 +140,7 @@ const Footer: FunctionComponent<Props> = ({}) => {
           </div>
         </div>
         <div className="socialsIcons">
-          <Icon
-            component={<FacebookFBrands />}
-            // rotate={isActive ? 180 : 0}
-          />
+          <Icon component={<FacebookFBrands />} />
         </div>
       </Bottom>
     </Wrapper>

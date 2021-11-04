@@ -1,4 +1,4 @@
-const LANGUAGE = "pl";
+const LANGUAGE = "EN";
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 
 export const answer = `

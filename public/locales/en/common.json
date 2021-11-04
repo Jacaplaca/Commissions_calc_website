@@ -45,5 +45,12 @@
   "getStartedFree": "Get started for free",
   "mainSliderTitle1": "Create the most advanced commission system that can calculate live",
   "mainSliderSubTitle1": "Give your employees and managers access to their and their team's progress and thresholds",
-  "mainSliderSubTitle2": "You never go back to Excel"
+  "mainSliderSubTitle2": "You never go back to Excel",
+  "helpWithMainTitle": "{{appName}} will help you with",
+  "helpWith1Title": "Create a commission system",
+  "helpWith1Description": "Use our intuitive creator and share it with your employees",
+  "helpWith2Title": "Collect transactions",
+  "helpWith2Description": "Collect transactions or add for yourself and have live access to teams or individual employee progress. You can share it with your employees",
+  "helpWith3Title": "Create reports",
+  "helpWith3Description": "Create reports and contact via {{appName}} with teams and system members or people responsible for a specific transaction"
 }

@@ -5,6 +5,7 @@ import staticPropsInitialize from "../utils/staticPropsInitialize";
 import CasesTeaser from "../Components/Cases";
 import HelpWith from "../Components/HelpWith";
 import MainSlider from "../Components/MainSlider";
+import antdBreakpoints from "../themes/antdBreakpoints";
 
 const Wrapper = styled.section`
   flex: 0;
@@ -18,6 +19,9 @@ const Wrapper = styled.section`
     .helpWith,
     .cases {
       padding: 50px 0px;
+      @media ${antdBreakpoints.mdMax} {
+        padding: 23px 0px;
+      }
     }
     .slider {
       /* margin: 60px 0px; */

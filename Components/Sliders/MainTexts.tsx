@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import useSlider from "../../hooks/useSlider";
+import antdBreakpoints from "../../themes/antdBreakpoints";
 
 type SlideType = { title: string; subTitle: string; button: JSX.Element };
 
@@ -43,20 +44,48 @@ const SlideStyled = styled.div<{ duration: number }>`
     animation: slide-in-left ${(p) => p.duration / 1000}s
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
-
+  h1,
+  h2 {
+    @media ${antdBreakpoints.mdMax} {
+      padding: 0 15px;
+    }
+  }
   h1 {
     color: ${({ theme }) => theme.colors.text.dark};
     font-weight: 800;
     font-size: 2em;
-    line-height: 1.2em;
+    @media ${antdBreakpoints.mdMax} {
+      font-size: 1.8em;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    line-height: 1.3em;
   }
   h3 {
     font-weight: 400;
     font-size: 1.3em;
     height: 40px;
+    display: flex;
+    align-items: center;
+    @media ${antdBreakpoints.lgMax} {
+      font-size: 1.2em;
+      line-height: 1.3em;
+      height: 50px;
+    }
+    @media ${antdBreakpoints.mdMax} {
+      font-size: 1.1em;
+      justify-content: center;
+      margin-top: 10px;
+    }
   }
   .button {
     padding-top: 35px;
+    @media ${antdBreakpoints.mdMax} {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
   }
   display: flex;
   flex-direction: column;

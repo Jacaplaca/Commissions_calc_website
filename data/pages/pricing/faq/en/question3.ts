@@ -1,4 +1,4 @@
-const LANGUAGE = "PL";
+const LANGUAGE = "EN";
 
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 const maxFreeEmp = process.env.NEXT_PUBLIC_MAXEMP4FREE;

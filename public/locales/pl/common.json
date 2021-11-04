@@ -45,5 +45,12 @@
   "getStartedFree": "Sprawdź za darmo",
   "mainSliderTitle1": "Stwórz nawet najbardziej wyrafinowany system prowizyjny, który sam będzie się liczył w czasie rzeczywistym",
   "mainSliderSubTitle1": "Daj pracownikom i menadżerom wgląd w ich postępy oraz ich zespołów w realizacji progów",
-  "mainSliderSubTitle2": "Już nigdy nie wrócisz do Excela podczas liczenia prowizji"
+  "mainSliderSubTitle2": "Już nigdy nie wrócisz do Excela podczas liczenia prowizji",
+  "helpWithMainTitle": "{{appName}} pomoże Ci",
+  "helpWith1Title": "Stworzyć system prowizyjny",
+  "helpWith1Description": "Stwórz za pomocą intuicyjnego kreatora system prowizyjny i udostępnij do pracownikom",
+  "helpWith2Title": "Zbierać transakcje",
+  "helpWith2Description": "Zbieraj/dodawaj transakcję i obserwuj na bieżąco postępy zespołów oraz pojedynczych pracowników. Możesz udostępniać te dane pracownikom",
+  "helpWith3Title": "Tworzyć raporty",
+  "helpWith3Description": "Twórz raporty i kontaktuj się za pomocą {{appName}} z członkami systemów czy poszczególnymi osobami odpowiedzialnymi za dane transakcje"
 }
