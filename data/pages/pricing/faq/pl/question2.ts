@@ -11,7 +11,7 @@ export const answer = `
 
 Jeśli masz małą firmę do ${maxFreeEmp} pracowników oraz nie chcesz rozliczać prowizji od marży, tworzyć reguł dla grup, projektować progów dla zespołów, udostępniać rankingi swoim pracownikom oraz korzystać z chatu, możesz używać planu darmowego. 
 
-Plan ${THIRDPLAN} posiada te same funkcjonalności co ${SECONDPLAN} i dodatkowo możliwość grupowania produktów czy usług i opcję tworzenia progów dla zespołów. Pozwala też utworzyć firmowy chat oraz wysyłać wiadomości do różnych grup pracowników np. członków danego zespołu/systemu czy samych menadżerów.
+Plan ${THIRDPLAN} posiada te same funkcjonalności co ${SECONDPLAN} ale dodatkowo Twoje dane zostaną umieszczone na prywatnym serwerze, niezależnym od naszej infrastruktury. Możliwość uruchomienia na swojej własnej domenie.
 
 Staje się bardziej opłacalny przy większej liczbie pracowników. Nie stoi jednak nic na przeszkodzie skorzystać z ${THIRDPLAN} przy ilości pracowników mniejszej niż ${maxFreeEmp}
 

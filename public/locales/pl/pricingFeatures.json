@@ -16,5 +16,6 @@
   "chat": "Firmowy chat. Masowe wiadomości do uczestników poszczególnych grup pracowników",
   "chatTransaction": "Wysyłanie wiadomości związanych z konkretną transakcją",
   "roles": "Dodawanie pracowników oraz menadżerów",
-  "timers": "Rozliczanie czasu spędzonego nad zadaniem"
+  "timers": "Rozliczanie czasu spędzonego nad zadaniem",
+  "privateServer": "Prywatny server, oddzielna domena. Możliwość uruchomienia na swojej domenie."
 }

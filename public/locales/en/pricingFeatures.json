@@ -17,5 +17,6 @@
   "chat": "Company chat. Mass messages to participants of particular groups of employees",
   "chatTransaction": "Sending messages related to a specific transaction",
   "roles": "Adding employees and managers",
-  "timers": "Accounting of time spent on a task"
+  "timers": "Accounting of time spent on a task",
+  "privateServer": "Private server, separate domain. Possibility to run on your own domain."
 }

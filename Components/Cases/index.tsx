@@ -68,12 +68,12 @@ const ContentStyled = styled.div`
   .link {
     a {
       display: flex;
-      color: darkBlue;
+      color: ${({ theme }) => theme.colors.text.dark}!important;
       gap: 0 10px;
       font-size: 1.1em;
       font-weight: bold;
       &:hover {
-        color: ${({ theme }) => theme.colors.text.dark}!important;
+        opacity: 0.9;
       }
       &:hover .arrow {
         transform: translateX(7px);

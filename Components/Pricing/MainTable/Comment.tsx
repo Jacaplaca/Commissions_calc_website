@@ -6,6 +6,7 @@ import { FunctionComponent } from "react";
 
 import { useTranslation } from "react-i18next";
 import { useMainContext } from "../../../contexts/main";
+import paths from "../../../data/paths";
 
 const CommentStyled = styled.div`
   display: flex;
@@ -84,7 +85,7 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     if (employees === maxEmployeesOnSlider) {
       return (
         <CommentStyled>
-          <Link href="/ask" passHref>
+          <Link href={paths.contact} passHref>
             <AskInquiry>{t("inquiry")}</AskInquiry>
           </Link>
         </CommentStyled>

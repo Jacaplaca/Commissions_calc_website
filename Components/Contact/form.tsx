@@ -1,12 +1,11 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { FunctionComponent } from "react";
-import { Input, Button, notification, Select } from "antd";
-import { useForm, Resolver, Controller } from "react-hook-form";
+import { Input, Button, notification } from "antd";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
-
-const { Option } = Select;
+import submitContactForm from "./submitContactForm";
 
 const { TextArea } = Input;
 
@@ -21,20 +20,16 @@ const Wrapper = styled.section`
   flex: 0;
   display: flex;
   justify-content: center;
-  width: 500px;
 `;
 
 const Form = styled.form`
-  width: inherit;
+  width: 100%;
   .buttons {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    gap: 0px 13px;
   }
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: flex-end; */
-  /* flex: 0; */
 `;
 
 const SendButton = styled(Button)`
@@ -48,14 +43,13 @@ const Field = styled.div`
     height: 15px;
     padding: 0;
     margin: 0;
-    padding-left:10px;
-    /* font-weight: bold; */
+    padding-left: 10px;
   }
   input,
   .ant-select-selector,
   .ant-input-affix-wrapper,
   textarea {
-    border-radius: 10px!important;
+    border-radius: 10px !important;
     padding: 7px;
   }
   padding-bottom: 10px;
@@ -76,60 +70,24 @@ const ContactForm: FunctionComponent<Props> = () => {
   const defaultValues = { email: "", message: "" };
 
   const {
-    register,
     handleSubmit,
     control,
-    formState: { errors, isValid },
-    formState,
+    formState: { errors },
     reset,
-    setValue,
   } = useForm<FormValues>({ resolver, defaultValues });
 
   const onSubmit = handleSubmit((data) => {
-    // console.log(data);
-
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then((res) => {
-      console.log('Response received')
-      if (res.status === 200) {
-        console.log('Response succeeded!')
-      }
-    })
-
-    notification["success"]({
-      message: t("contactSent"),
-      description: t("contactAfterSend"),
-      duration: 10,
-    });
-    // reset(defaultValues); // share the same reference
+    submitContactForm<FormValues>(data, t);
+    reset();
   });
 
-  // function onChange(value) {
-  //   console.log(`selected ${value}`);
-  // }
-
-  // function onBlur() {
-  //   console.log("blur");
-  // }
-
-  // function onFocus() {
-  //   console.log("focus");
-  // }
-
-  // function onSearch(val) {
-  //   console.log("search:", val);
-  // }
+  const handleClearForm = () => {
+    reset();
+  };
 
   return (
     <Wrapper>
       <Form onSubmit={onSubmit}>
-        {/* <input {...register("firstName")} placeholder="Bill" /> */}
         <Field>
           <Controller
             control={control}
@@ -171,41 +129,11 @@ const ContactForm: FunctionComponent<Props> = () => {
             {errors?.message ? errors.message.message : ""}
           </p>
         </Field>
-        {/* <Field>
-          <Controller
-            control={control}
-            name="subject"
-            render={({
-              field: { onChange, onBlur, value, name, ref },
-              fieldState: { invalid, isTouched, isDirty, error },
-            }) => (
-              <Select
-                showSearch
-                style={{ width: 200 }}
-                placeholder="Select a person"
-                optionFilterProp="children"
-                onChange={onChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onSearch={onSearch}
-                filterOption={(input, option) =>
-                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
-                  0
-                }
-              >
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="tom">Tom</Option>
-              </Select>
-            )}
-          />
 
-          <p className="error">
-            {errors?.message ? errors.message.message : ""}
-          </p>
-        </Field> */}
-        {/* <input {...register("lastName")} placeholder="Luo" /> */}
         <div className="buttons">
+          <SendButton type="ghost" htmlType="button" onClick={handleClearForm}>
+            {t("clearButton")}
+          </SendButton>
           <SendButton type="primary" htmlType="submit">
             {t("contactSend")}
           </SendButton>

@@ -23,9 +23,6 @@ const Wrapper = styled.section`
         padding: 23px 0px;
       }
     }
-    .slider {
-      /* margin: 60px 0px; */
-    }
   }
 `;
 

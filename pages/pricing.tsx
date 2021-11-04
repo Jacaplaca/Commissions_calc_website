@@ -1,6 +1,6 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { NextPage } from "next";
-const fs = require("fs");
+
 import Pricing from "../Components/Pricing";
 import { PricingContextProvider } from "../Components/Pricing/context";
 import { serialize } from "next-mdx-remote/serialize";
@@ -11,6 +11,7 @@ import { FaqMDXs } from "../Components/Pricing/Faq/PricingFaq";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import asyncForEach from "../utils/asyncForEach";
 import { pricingFeatureType } from "../Types/pricingFeaturesType";
+import listDir from "../utils/listDir";
 
 type Props = {
   faq: FaqMDXs;
@@ -31,17 +32,7 @@ const PricingPage: NextPage<Props> = ({ faq, features }) => {
 export async function getStaticProps({ locale }: { locale: string }) {
   const testFolder = `./data/pages/pricing/faq/${locale}/`;
 
-  const fileNamesInFolder: any[] = [];
-
-  async function listDir() {
-    try {
-      const files = await fs.promises.readdir(testFolder);
-      files.forEach((file: string) => fileNamesInFolder.push(file));
-    } catch (err) {
-      console.error("Error occured while reading directory!", err);
-    }
-  }
-  await listDir();
+  const fileNamesInFolder: any[] = await listDir(testFolder);
 
   const serialized: { question: string; answer: MDXRemoteSerializeResult }[] =
     [];

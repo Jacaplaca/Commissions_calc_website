@@ -4,6 +4,9 @@ import { cloneElement, FunctionComponent } from "react";
 import { FacebookFBrands } from "../Icons";
 import { useTranslation } from "react-i18next";
 import useFooterElements from "./useFooterElements";
+import paths from "../../data/paths";
+
+const appName = process.env.NEXT_PUBLIC_APPNAME;
 
 type Props = {};
 const Wrapper = styled.section`
@@ -76,6 +79,8 @@ const Bottom = styled.section`
       opacity: 0.45;
     }
     .bottomLinks {
+      flex-wrap: wrap;
+      align-items: baseline;
       .copyright {
         font-weight: 400;
       }
@@ -126,15 +131,15 @@ const Footer: FunctionComponent<Props> = ({}) => {
         <div className="bottomLeft">
           <h4 className="claim">Some Bold Statement</h4>
           <div className="bottomLinks">
-            <div className="copyright">CalcAider©2021</div>
+            <div className="copyright">{`${appName} ©2021`}</div>
             <LinkStyled className="bottomLink">
-              <Link href={"/"}>
-                <a>Privacy Policy</a>
+              <Link href={paths.privacy}>
+                <a>{t("footer:privacy")}</a>
               </Link>
             </LinkStyled>
             <LinkStyled className="bottomLink">
-              <Link href={"/"}>
-                <a>Terms of Service</a>
+              <Link href={paths.terms}>
+                <a>{t("footer:terms")}</a>
               </Link>
             </LinkStyled>
           </div>
