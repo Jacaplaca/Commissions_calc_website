@@ -13,11 +13,11 @@ const Wrapper = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
-  .wrapper__content {
+  #wrapper__content {
     max-width: ${({ theme }) => theme.sizes.headerWidth};
-    .slider,
-    .helpWith,
-    .cases {
+    #slider,
+    #helpWith,
+    #cases {
       padding: 50px 0px;
       @media ${antdBreakpoints.mdMax} {
         padding: 23px 0px;
@@ -31,14 +31,14 @@ const Home: NextPage = () => {
   return (
     <Layout backgroundColor={theme.colors.palette.indexBackground}>
       <Wrapper>
-        <div className="wrapper__content">
-          <div className="slider">
+        <div id="wrapper__content">
+          <div id="slider">
             <MainSlider />
           </div>
-          <div className="helpWith">
+          <div id="helpWith">
             <HelpWith />
           </div>
-          <div className="cases">
+          <div id="cases">
             <CasesTeaser />
           </div>
         </div>

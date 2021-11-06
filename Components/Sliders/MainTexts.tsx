@@ -79,7 +79,7 @@ const SlideStyled = styled.div<{ duration: number }>`
       margin-top: 10px;
     }
   }
-  .button {
+  #mainSlider__button {
     padding-top: 35px;
     @media ${antdBreakpoints.mdMax} {
       display: flex;
@@ -100,9 +100,11 @@ const Slide = ({ slide, duration }: { slide: SlideType; duration: number }) => {
 
   return (
     <SlideStyled key={title} duration={duration}>
-      <h1 className="title">{title}</h1>
-      <h3 className="subTitle slide-in-left">{subTitle}</h3>
-      <div className="button">{button}</div>
+      <h1 id="mainSlider__title">{title}</h1>
+      <h3 id="mainSlider__subTitle" className="slide-in-left">
+        {subTitle}
+      </h3>
+      <div id="mainSlider__button">{button}</div>
     </SlideStyled>
   );
 };

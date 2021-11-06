@@ -11,38 +11,41 @@ type UseGetImageResponsiveSizeArgs = {
   default: { width: number; height: number };
 };
 
+export const getImageResponsiveSize = (
+  screen: Partial<Record<Breakpoint, boolean>>,
+  sizes: UseGetImageResponsiveSizeArgs
+) => {
+  const { xs, sm, md, lg, xl } = screen;
+
+  if (xl) {
+    return sizes.xl;
+  }
+
+  if (lg) {
+    return sizes.lg;
+  }
+
+  if (md) {
+    return sizes.md;
+  }
+
+  if (!md && sm && !xs) {
+    return sizes.sm;
+  }
+
+  if (!md && !sm && xs) {
+    return sizes.xs;
+  }
+
+  return sizes.default;
+};
+
 const useGetImageResponsiveSize = (sizes: UseGetImageResponsiveSizeArgs) => {
   const screen = useBreakpoint();
   const [size, setSize] = useState({ width: 570, height: 570 });
 
-  const getSize = (screen: Partial<Record<Breakpoint, boolean>>) => {
-    const { xs, sm, md, lg, xl } = screen;
-
-    if (xl) {
-      return sizes.xl;
-    }
-
-    if (lg) {
-      return sizes.lg;
-    }
-
-    if (md) {
-      return sizes.md;
-    }
-
-    if (!md && sm && !xs) {
-      return sizes.sm;
-    }
-
-    if (!md && !sm && xs) {
-      return sizes.xs;
-    }
-
-    return sizes.default;
-  };
-
   useEffect(() => {
-    const size = getSize(screen);
+    const size = getImageResponsiveSize(screen, sizes);
     setSize(size);
   }, [screen]);
 

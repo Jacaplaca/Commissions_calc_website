@@ -38,6 +38,7 @@
   "contactMessage": "wiadomość",
   "contactAfterSend": "Dziękujemy za zapytanie, postaramy się odpowiedzieć tak szybko jak to tylko możliwe.",
   "contactSent": "Wiadomość wysłana!",
+  "contactNotSent": "Wiadomość nie wysłana. Spróbuj później.",
   "correctEmail": "Potrzebujemy prawidłowego adresu aby wysłać odpowiedź",
   "required": "Pole wymagane",
   "goBackButtonLabel": "Powrót",

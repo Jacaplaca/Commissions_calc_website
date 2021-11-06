@@ -38,6 +38,7 @@
   "contactMessage": "message",
   "contactAfterSend": "Thank you for your inquiry. We will try to respond as soon as possible.",
   "contactSent": "Message sent!",
+  "contactNotSent": "Message not sent! Try later.",
   "correctEmail": "We need correct email to send response",
   "required": "Required field",
   "goBackButtonLabel": "Go back",

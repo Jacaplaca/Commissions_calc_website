@@ -30,7 +30,7 @@ const MainSliderButton: FunctionComponent<Props> = ({}) => {
   return (
     <Link href={paths.freePlan} passHref>
       <a>
-        <Wrapper>{t("getStartedFree")}</Wrapper>
+        <Wrapper name="slider__button__freePlan">{t("getStartedFree")}</Wrapper>
       </a>
     </Link>
   );

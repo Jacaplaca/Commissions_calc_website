@@ -24,7 +24,7 @@ const SimpleMdxLayout: FunctionComponent<Props> = (props) => {
     <Layout backgroundColor={"#ffffff"}>
       <Wrapper>
         <div className="content">
-          <MDXRemote {...mdxSerialized} />
+          {mdxSerialized && <MDXRemote {...mdxSerialized} />}
         </div>
       </Wrapper>
     </Layout>

@@ -76,9 +76,9 @@ const ContactForm: FunctionComponent<Props> = () => {
     reset,
   } = useForm<FormValues>({ resolver, defaultValues });
 
-  const onSubmit = handleSubmit((data) => {
-    submitContactForm<FormValues>(data, t);
-    reset();
+  const onSubmit = handleSubmit(async (data) => {
+    const sent = await submitContactForm<FormValues>(data, t);
+    sent && reset();
   });
 
   const handleClearForm = () => {

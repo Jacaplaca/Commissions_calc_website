@@ -1,25 +1,29 @@
 import { notification } from "antd";
 
-const submitContactForm = <D>(data: D, t: (e: string) => string) => {
-  fetch("/api/contact", {
+const submitContactForm = async <D>(data: D, t: (e: string) => string) => {
+  const response = await fetch("/api/contact", {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).then((res) => {
-    console.log("Response received");
-    if (res.status === 200) {
-      console.log("Response succeeded!");
-    }
   });
 
-  notification["success"]({
-    message: t("contactSent"),
-    description: t("contactAfterSend"),
-    duration: 10,
-  });
+  if (response.status === 200) {
+    notification["success"]({
+      message: t("contactSent"),
+      description: t("contactAfterSend"),
+      duration: 10,
+    });
+    return true;
+  } else {
+    notification["error"]({
+      message: t("contactNotSent"),
+      duration: 10,
+    });
+    return false;
+  }
 };
 
 export default submitContactForm;

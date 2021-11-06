@@ -63,7 +63,7 @@ const IconStyled = styled(({ component, color, ...props }) =>
 )`
   margin-right: 5px;
   font-size: 1.1em !important;
-  color: ${(p) => (p.isActive ? p.color : "lightgrey")}!important;
+  color: ${(p) => (p.active ? p.color : "lightgrey")}!important;
 `;
 
 type Props = {
@@ -96,7 +96,7 @@ const NavigationHorizontalWithIconAndColorLine: FunctionComponent<Props> = ({
               <div className="buttonWithIcon">
                 <IconStyled
                   component={<Icon />}
-                  isActive={isActive ? 1 : 0}
+                  active={isActive ? 1 : 0}
                   color={color}
                 />
                 <div className="label">{label}</div>
