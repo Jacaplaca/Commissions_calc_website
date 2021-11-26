@@ -54,5 +54,7 @@
   "helpWith2Description": "Collect transactions or add for yourself and have live access to teams or individual employee progress. You can share it with your employees",
   "helpWith3Title": "Create reports",
   "helpWith3Description": "Create reports and contact via {{appName}} with teams and system members or people responsible for a specific transaction",
-  "clearButton": "Clear"
+  "clearButton": "Clear",
+  "closeButton": "Close",
+  "claim": "Simple way to create effective commission systems"
 }

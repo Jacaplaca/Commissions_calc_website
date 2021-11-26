@@ -3,6 +3,7 @@ import { red } from "@material-ui/core/colors";
 const theme = {
   shadows: {
     subMenu: "0px 6px 9px 0px rgb(0 0 0 / 11%);",
+    contactForm: "-7px 7px 24px -20px rgba(66, 68, 90, 1);",
   },
   sizes: {
     headerWidth: "1170px",
@@ -17,6 +18,7 @@ const theme = {
         main: "#263240",
       },
       orange: {
+        darker: "#a65b00",
         dark: "#e88000",
         main: "#ff9b26",
         light: "#ffd29d",
@@ -54,6 +56,19 @@ const theme = {
         distributor: "#eff0fc",
         packing: "#ffffe8",
         plantation: "#f9fcf5",
+      },
+      gray: {
+        main: "#f5f5f5",
+        light: "#fafafa",
+        dark: "#eaeaea",
+        darker: "#dcdcdc",
+        darkest: "#cbcbcb",
+        darkestest: "#b3b3b3",
+        darkestestest: "#9b9b9b",
+        darkestestestest: "#7a7a7a",
+        darkestestestestest: "#5a5a5a",
+        darkestestestestestest: "#3a3a3a",
+        darkestestestestestestest: "#1a1a1a",
       },
     },
     borderColors: {

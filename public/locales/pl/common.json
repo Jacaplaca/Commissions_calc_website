@@ -54,5 +54,7 @@
   "helpWith2Description": "Zbieraj/dodawaj transakcję i obserwuj na bieżąco postępy zespołów oraz pojedynczych pracowników. Możesz udostępniać te dane pracownikom",
   "helpWith3Title": "Tworzyć raporty",
   "helpWith3Description": "Twórz raporty i kontaktuj się za pomocą {{appName}} z członkami systemów czy poszczególnymi osobami odpowiedzialnymi za dane transakcje",
-  "clearButton": "Czyść"
+  "clearButton": "Czyść",
+  "closeButton": "Zamknij",
+  "claim": "Prosty sposób na skuteczne systemy prowizyjne"
 }

@@ -15,7 +15,9 @@ type FormValues = {
   subject: string;
 };
 
-type Props = {};
+type Props = {
+  close: () => void;
+};
 const Wrapper = styled.section`
   flex: 0;
   display: flex;
@@ -33,7 +35,31 @@ const Form = styled.form`
 `;
 
 const SendButton = styled(Button)`
+  font-weight: 500;
   border-radius: 10px;
+  background-color: ${({ type, theme }) =>
+    type === "ghost" ? "transparent" : theme.colors.palette.orange.dark};
+
+  border: ${({ type, theme }) =>
+    type === "ghost"
+      ? `1px solid ${theme.colors.palette.orange.darker}`
+      : "none"};
+
+  color: ${({ type, theme }) =>
+    type === "ghost" ? theme.colors.palette.orange.darker : "white"};
+
+  &:hover {
+    background-color: ${({ type, theme }) =>
+      type === "ghost" ? `transparent` : theme.colors.palette.orange.dark};
+
+    opacity: 0.8;
+
+    border: ${({ type, theme }) =>
+      type === "ghost" && `1px solid ${theme.colors.palette.orange.darker}`};
+
+    color: ${({ type, theme }) =>
+      type === "ghost" ? theme.colors.palette.orange.darker : "white"};
+  }
 `;
 
 const Field = styled.div`
@@ -55,7 +81,7 @@ const Field = styled.div`
   padding-bottom: 10px;
 `;
 
-const ContactForm: FunctionComponent<Props> = () => {
+const ContactForm: FunctionComponent<Props> = ({ close }) => {
   const { t, i18n } = useTranslation("common");
 
   const validationSchema = yup.object({
@@ -65,6 +91,7 @@ const ContactForm: FunctionComponent<Props> = () => {
       .required(t("common:required")),
     message: yup.string().required(t("common:required")),
   });
+
   const resolver = yupResolver(validationSchema);
 
   const defaultValues = { email: "", message: "" };
@@ -78,11 +105,12 @@ const ContactForm: FunctionComponent<Props> = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     const sent = await submitContactForm<FormValues>(data, t);
-    sent && reset();
+    sent && handleClearForm();
   });
 
   const handleClearForm = () => {
     reset();
+    close();
   };
 
   return (
@@ -132,7 +160,7 @@ const ContactForm: FunctionComponent<Props> = () => {
 
         <div className="buttons">
           <SendButton type="ghost" htmlType="button" onClick={handleClearForm}>
-            {t("clearButton")}
+            {t("closeButton")}
           </SendButton>
           <SendButton type="primary" htmlType="submit">
             {t("contactSend")}

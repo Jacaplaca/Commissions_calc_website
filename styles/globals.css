@@ -32,3 +32,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.ant-input:hover,
+.ant-input:focus,
+.ant-input-focused {
+  border-color: rgb(183 59 0 / 30%);
+  border-right-width: 0px !important;
+  box-shadow: 0 0 0 2px rgb(183 59 0 / 20%);
+}

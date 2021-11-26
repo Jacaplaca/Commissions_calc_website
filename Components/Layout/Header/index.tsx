@@ -35,6 +35,8 @@ const PortalStyled = styled.div`
   z-index: 2;
 `;
 
+const divider = 6;
+
 const Header: FunctionComponent<Props> = ({}) => {
   const screen = useBreakpoint();
   return (
@@ -43,10 +45,10 @@ const Header: FunctionComponent<Props> = ({}) => {
         <Link href={`/`}>
           <a>
             <Image
-              src="/logo.svg"
+              src="/calcaider_logo2.svg"
               alt={`company_logo`}
-              width={127 * 1.45}
-              height={22 * 1.45}
+              width={1191 / divider}
+              height={228 / divider}
             />
           </a>
         </Link>

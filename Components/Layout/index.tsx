@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import Header from "./Header";
 import { motion } from "framer-motion";
 import usePrevious from "../../hooks/usePrevious";
@@ -7,6 +7,8 @@ import { useMainContext } from "../../contexts/main";
 import Footer from "../Footer";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
+import { CommentAltLinesSolid } from "../Icons";
+import ContactButton from "../Buttons/ContactButton";
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 
 type Props = {
@@ -41,6 +43,7 @@ const Layout: FunctionComponent<Props> = ({
   const { t } = useTranslation(["common", "subMenu"]);
   const { background, updateBackground } = useMainContext();
   const prevBackground = usePrevious(background);
+  const footerRef = useRef(null);
 
   useEffect(() => {
     updateBackground(backgroundColor);
@@ -75,7 +78,10 @@ const Layout: FunctionComponent<Props> = ({
       >
         {children}
       </Container>
-      <Footer />
+      {/* <div id="footerContainer" > */}
+        <Footer refElement={footerRef}/>
+      {/* </div> */}
+      <ContactButton refToChangeColor={footerRef} />
     </Wrapper>
   );
 };

@@ -8,7 +8,8 @@ import paths from "../../data/paths";
 
 const appName = process.env.NEXT_PUBLIC_APPNAME;
 
-type Props = {};
+type Props = { refElement: React.RefObject<HTMLDivElement> };
+
 const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -70,6 +71,7 @@ const Bottom = styled.section`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    cursor: pointer;
   }
   .bottomLeft {
     display: flex;
@@ -99,11 +101,11 @@ const Icon = styled(({ component, ...props }) =>
   opacity: 0.7;
 `;
 
-const Footer: FunctionComponent<Props> = ({}) => {
+const Footer: FunctionComponent<Props> = ({ refElement }) => {
   const { t } = useTranslation(["common", "subMenu", "footer"]);
   const footerContent = useFooterElements();
   return (
-    <Wrapper>
+    <Wrapper ref={refElement}>
       <Main>
         {footerContent.map((el) => {
           const { title, links } = el;
@@ -129,7 +131,7 @@ const Footer: FunctionComponent<Props> = ({}) => {
       <div className="divider"></div>
       <Bottom>
         <div className="bottomLeft">
-          <h4 className="claim">Some Bold Statement</h4>
+          <h4 className="claim">{t("common:claim")}</h4>
           <div className="bottomLinks">
             <div className="copyright">{`${appName} ©2021`}</div>
             <LinkStyled className="bottomLink">
@@ -145,7 +147,11 @@ const Footer: FunctionComponent<Props> = ({}) => {
           </div>
         </div>
         <div className="socialsIcons">
-          <Icon component={<FacebookFBrands />} />
+          <Link href={paths.facebookFanPage}>
+            <a>
+              <Icon component={<FacebookFBrands />} />
+            </a>
+          </Link>
         </div>
       </Bottom>
     </Wrapper>
