@@ -8,6 +8,7 @@ import Features from "./Features";
 import { useMainContext } from "../../../contexts/main";
 import { pricingFeatureType } from "../../../Types/pricingFeaturesType";
 import antdBreakpoints from "../../../themes/antdBreakpoints";
+import paths from "../../../data/paths";
 
 const Wrapper = styled.div<{ marginTop: number; backgroundColor: string }>`
   display: flex;
@@ -79,6 +80,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               title="Free"
               plan={0}
               icon={<PuzzleTwo />}
+              actionUrl={paths.appSignUpFree}
             />
             <div className="description">
               <Features
@@ -94,6 +96,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={0}
               icon={<PuzzleTwo />}
               isFooter
+              actionUrl={paths.appSignUpFree}
             />
           </ColumnContent>
         </div>
@@ -107,6 +110,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               title="Basic"
               plan={1}
               icon={<PuzzleThree />}
+              actionUrl={paths.appSignUpBasic}
             />
             <div className="description">
               <Features
@@ -122,6 +126,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={1}
               icon={<PuzzleThree />}
               isFooter
+              actionUrl={paths.appSignUpBasic}
             />
           </ColumnContent>
         </div>
@@ -135,6 +140,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               title="Pro"
               plan={2}
               icon={<PuzzleFour />}
+              actionUrl={paths.appSignUpPro}
             />
             <div className="description">
               <Features
@@ -150,6 +156,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={2}
               icon={<PuzzleFour />}
               isFooter
+              actionUrl={paths.appSignUpPro}
             />
           </ColumnContent>
         </div>

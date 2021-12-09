@@ -134,6 +134,7 @@ type Props = {
   highlightPlan: boolean;
   isFooter?: boolean;
   icon: JSX.Element;
+  actionUrl: string;
 };
 const HeaderPlanBox: FunctionComponent<Props> = ({
   title,
@@ -142,6 +143,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
   // isSticky,
   highlightPlan,
   isFooter,
+  actionUrl,
 }) => {
   const {
     plans,
@@ -175,7 +177,11 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <Comment plan={plan} />
           </div>
           <div className="signUpButton">
-            <SignUpButton isFree={isFree} disabled={isDisabled} />
+            <SignUpButton
+              isFree={isFree}
+              disabled={isDisabled}
+              url={actionUrl}
+            />
           </div>
         </div>
       </Wrapper>
@@ -243,7 +249,11 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <Comment plan={plan} />
           </div>
           <div className="signUpButton">
-            <SignUpButton isFree={isFree} disabled={isDisabled} />
+            <SignUpButton
+              isFree={isFree}
+              disabled={isDisabled}
+              url={actionUrl}
+            />
           </div>
         </div>
         <Recommended visible={highlightPlan} label={t("recommended")} />

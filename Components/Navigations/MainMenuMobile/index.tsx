@@ -7,6 +7,7 @@ import useMainMenuElements from "../useMainMenuElements";
 import { useTranslation } from "react-i18next";
 import MainNavigationBigButton from "../../Buttons/MainNavigationBigButton";
 import { lighten, transparentize } from "polished";
+import paths from "../../../data/paths";
 
 type Props = {};
 
@@ -340,7 +341,11 @@ const MainMenuMobile: FunctionComponent<Props> = ({}) => {
           );
         })}
         <div className={`bigButton ${menuElementClass}`}>
-          <MainNavigationBigButton label={t("common:startFree")} mobile />
+          <MainNavigationBigButton
+            label={t("common:startFree")}
+            mobile
+            path={paths.freePlan}
+          />
         </div>
       </Menu>
     </Wrapper>

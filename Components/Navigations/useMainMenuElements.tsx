@@ -1,9 +1,9 @@
-import { useTranslation } from 'next-i18next';
-import { useState, useEffect } from 'react';
+import { useTranslation } from "next-i18next";
+import { useState, useEffect } from "react";
 import SubMenu from "./MainMenu/SubMenu";
 import CasesSubMenu from "./MainMenu/CasesSubMenu";
-import LanguageSwitcher from './MainMenu/LanguageSwitcher';
-
+import LanguageSwitcher from "./MainMenu/LanguageSwitcher";
+import paths from "../../data/paths";
 
 const useMainMenuElements = () => {
   const {
@@ -12,9 +12,9 @@ const useMainMenuElements = () => {
   } = useTranslation("common");
   const [featuresOpened, setFeaturesOpened] = useState<number>(0);
 
-const closeSubMenu = () => {
-  setFeaturesOpened(0)
-}
+  const closeSubMenu = () => {
+    setFeaturesOpened(0);
+  };
 
   const toggler = (key: number) => {
     if (featuresOpened === key) {
@@ -39,7 +39,7 @@ const closeSubMenu = () => {
       SubMenu: <CasesSubMenu />,
       centerSubMenu: true,
     },
-    { label: t("common:pricingMenuLabel"), key: 3, link: "/pricing" },
+    { label: t("common:pricingMenuLabel"), key: 3, link: paths.pricing },
     {
       label: language,
       key: 4,
@@ -48,7 +48,7 @@ const closeSubMenu = () => {
     },
   ];
 
-  return {elements, featuresOpened, closeSubMenu}
-}
+  return { elements, featuresOpened, closeSubMenu };
+};
 
-export default useMainMenuElements
+export default useMainMenuElements;

@@ -7,6 +7,7 @@ import SubMenu from "./SubMenu";
 import LanguageSwitcher from "./LanguageSwitcher";
 import CasesSubMenu from "./CasesSubMenu";
 import useMainMenuElements from '../useMainMenuElements';
+import paths from '../../../data/paths';
 
 type Props = {};
 const Row = styled.section`
@@ -47,7 +48,8 @@ const MainMenu: FunctionComponent<Props> = ({}) => {
         })}
       </Menu>
       <div>
-        <MainNavigationBigButton label={t("common:startFree")} />
+        <MainNavigationBigButton label={t("common:startFree")} 
+        path={paths.freePlan}/>
       </div>
     </Row>
   );

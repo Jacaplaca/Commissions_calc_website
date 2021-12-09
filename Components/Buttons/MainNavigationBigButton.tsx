@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 
 type Props = {
   label: string;
-  mobile? :boolean
+  mobile?: boolean;
+  path: string;
 };
 const Button = styled.button`
   display: flex;
@@ -22,6 +24,10 @@ const Button = styled.button`
     background: ${({ theme }) => theme.colors.palette.red.main};
     color: ${({ theme }) => theme.colors.text.light};
     border: 1px solid ${({ theme }) => theme.colors.palette.red.main};
+    a:link,
+    a:visited {
+      color: ${({ theme }) => theme.colors.text.light};
+    }
   }
 `;
 
@@ -35,18 +41,37 @@ const ButtonMobile = styled.button`
   padding: 7px 30px;
   cursor: pointer;
   font-weight: 600;
-  font-size: .9em;
+  font-size: 0.9em;
   background: ${({ theme }) => theme.colors.palette.orange.dark};
-  color: ${({ theme }) => 'white'};
+  color: ${({ theme }) => "white"};
   transition: all 0.2s ease-in;
+  a:link,
+  a:visited {
+    color: ${({ theme }) => "white"};
+  }
 `;
 
-const MainNavigationBigButton: FunctionComponent<Props> = ({ label, mobile }) => {
+const MainNavigationBigButton: FunctionComponent<Props> = ({
+  label,
+  mobile,
+  path,
+}) => {
   if (mobile) {
-    return <ButtonMobile>{label}</ButtonMobile>;
-    
+    return (
+      <ButtonMobile>
+        <Link href={path}>
+          <a>{label}</a>
+        </Link>
+      </ButtonMobile>
+    );
   }
-  return <Button>{label}</Button>;
+  return (
+    <Button>
+      <Link href={path}>
+        <a>{label}</a>
+      </Link>
+    </Button>
+  );
 };
 
 export default MainNavigationBigButton;

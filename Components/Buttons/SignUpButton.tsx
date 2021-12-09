@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import antdBreakpoints from "../../themes/antdBreakpoints";
@@ -23,17 +24,25 @@ const SignUpButtonStyled = styled.button`
   transition: opacity 0.2s linear;
   &:hover {
     opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+    a:visited,
+    a:link,
+    a:active {
+      color: white;
+    }
   }
 `;
 
-const SignUpButton: FunctionComponent<{ isFree: boolean; disabled?: boolean }> =
-  ({ isFree, disabled }) => {
-    const { t } = useTranslation("common");
+const SignUpButton: FunctionComponent<{
+  isFree: boolean;
+  disabled?: boolean;
+  url: string;
+}> = ({ isFree, disabled, url }) => {
+  const { t } = useTranslation("common");
 
-    return (
-      <SignUpButtonStyled disabled={disabled}>
-        {isFree ? t("signUpFree") : t("startFreeTrial")}
-      </SignUpButtonStyled>
-    );
-  };
+  return (
+    <SignUpButtonStyled disabled={disabled}>
+      <Link href={url}>{isFree ? t("signUpFree") : t("startFreeTrial")}</Link>
+    </SignUpButtonStyled>
+  );
+};
 export default SignUpButton;
