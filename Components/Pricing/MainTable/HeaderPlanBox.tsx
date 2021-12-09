@@ -252,7 +252,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <SignUpButton
               isFree={isFree}
               disabled={isDisabled}
-              url={actionUrl}
+              url={`${actionUrl}&employees=${employees}`}
             />
           </div>
         </div>
