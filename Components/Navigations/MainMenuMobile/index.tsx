@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled, { css } from "styled-components";
 import { cloneElement, FunctionComponent, useState } from "react";
 import { BarsRegular, ChevronRightRegular } from "../../Icons";
@@ -272,6 +273,9 @@ const MainMenuMobile: FunctionComponent<Props> = ({}) => {
     i18n: { language },
   } = useTranslation("common");
 
+  const router = useRouter();
+  const path = router.pathname;
+
   const [opened, setOpened] = useState(false);
   const [menuClasses, setMenuClasses] = useState("hide");
   const [menuElementClass, setMenuElementClass] = useState("");
@@ -340,13 +344,15 @@ const MainMenuMobile: FunctionComponent<Props> = ({}) => {
             </MenuElement>
           );
         })}
-        <div className={`bigButton ${menuElementClass}`}>
-          <MainNavigationBigButton
-            label={t("common:startFree")}
-            mobile
-            path={paths.freePlan}
-          />
-        </div>
+        {path !== "/plans" && (
+          <div className={`bigButton ${menuElementClass}`}>
+            <MainNavigationBigButton
+              label={t("common:startFree")}
+              mobile
+              path={paths.freePlan}
+            />
+          </div>
+        )}
       </Menu>
     </Wrapper>
   );

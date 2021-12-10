@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import Path from "./Path";
 import HeadlinePage from "./Headline";
@@ -6,6 +7,7 @@ import SubHeadlinePage from "./SubHeadline";
 import { useTranslation } from "react-i18next";
 import RiseButton from "../../Buttons/RiseButton";
 import antdBreakpoints from "../../../themes/antdBreakpoints";
+import paths from "../../../data/paths";
 
 type Props = {
   pathElements: string[];
@@ -46,7 +48,9 @@ const TopPage: FunctionComponent<Props> = ({
       <HeadlinePage>{headline}</HeadlinePage>
       <SubHeadlinePage>{subHeadline}</SubHeadlinePage>
       <div className="riseButtonWrapper">
-        <RiseButton onClick={() => {}}>{t("startFree")}</RiseButton>
+        <RiseButton onClick={() => {}}>
+          <Link href={paths.pricing}>{t("startFree")}</Link>
+        </RiseButton>
       </div>
     </Wrapper>
   );

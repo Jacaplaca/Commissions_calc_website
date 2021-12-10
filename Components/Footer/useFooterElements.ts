@@ -18,13 +18,13 @@ const useFooterElements = () => {
     //     { label: "Second", path: "/" },
     //   ],
     // },
-    {
-      title: "Company",
-      links: [
-        { label: "First", path: "/" },
-        { label: "Second", path: "/" },
-      ],
-    },
+    // {
+    //   title: "Company",
+    //   links: [
+    //     { label: "First", path: "/" },
+    //     { label: "Second", path: "/" },
+    //   ],
+    // },
   ];
   const features = useSubMenuElements();
   const cases = useCaseMenuElements();

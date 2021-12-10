@@ -29,6 +29,17 @@ const StartButton = styled.button`
       ${({ theme }) => transparentize(0.6, theme.colors.palette.orange.main)};
     color: #fff;
     transform: translateY(-5px);
+
+    a {
+      cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
+      color: white;
+    }
+    /* opacity: ${({ disabled }) => (disabled ? 0.5 : 1)}; */
+    a:visited,
+    a:link,
+    a:active {
+      color: white;
+    }
   }
   &:active {
     transform: translateY(0px) scale(0.95);

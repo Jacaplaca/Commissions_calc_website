@@ -23,6 +23,9 @@ const SignUpButtonStyled = styled.button`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 0.8)};
   transition: opacity 0.2s linear;
   &:hover {
+    a {
+      cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
+    }
     opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
     a:visited,
     a:link,
@@ -41,7 +44,9 @@ const SignUpButton: FunctionComponent<{
 
   return (
     <SignUpButtonStyled disabled={disabled}>
-      <Link href={url}>{isFree ? t("signUpFree") : t("startFreeTrial")}</Link>
+      <Link href={disabled ? "" : url}>
+        {isFree ? t("signUpFree") : t("startFreeTrial")}
+      </Link>
     </SignUpButtonStyled>
   );
 };
