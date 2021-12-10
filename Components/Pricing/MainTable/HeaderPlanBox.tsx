@@ -162,6 +162,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
   const isDisabled = plans[plan].disabled;
 
   const headerPlanBoxHeightFooter = 150;
+  const signUpUrl = `${actionUrl}&employees=${employees}`;
 
   if (isFooter) {
     return (
@@ -180,7 +181,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <SignUpButton
               isFree={isFree}
               disabled={isDisabled}
-              url={actionUrl}
+              url={signUpUrl}
             />
           </div>
         </div>
@@ -252,7 +253,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <SignUpButton
               isFree={isFree}
               disabled={isDisabled}
-              url={`${actionUrl}&employees=${employees}`}
+              url={signUpUrl}
             />
           </div>
         </div>

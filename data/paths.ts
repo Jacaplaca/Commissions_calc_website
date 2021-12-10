@@ -1,3 +1,5 @@
+const APP_URL = process.env.APP_URL;
+
 const paths = {
   freePlan: "/plans",
   pricing: "/plans",
@@ -5,9 +7,9 @@ const paths = {
   privacy: "/privacy",
   terms: "/terms",
   facebookFanPage: "https://www.facebook.com/swiadomafirma/",
-  appSignUpFree: "https:/app.calcaider.com/signup?plan=free",
-  appSignUpBasic: "https:/app.calcaider.com/signup?plan=basic",
-  appSignUpPro: "https:/app.calcaider.com/signup?plan=pro",
+  appSignUpFree: `${APP_URL}/signup?plan=free`,
+  appSignUpBasic: `${APP_URL}/signup?plan=basic`,
+  appSignUpPro: `${APP_URL}/signup?plan=pro`,
 };
 
 export default paths;
