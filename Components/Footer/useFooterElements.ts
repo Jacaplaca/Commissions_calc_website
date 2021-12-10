@@ -5,11 +5,11 @@ const useFooterElements = () => {
   const content = [
     {
       title: "footer:features",
-      links: [],
+      links: [] as { label: string; path: string }[],
     },
     {
       title: "common:casesMenuLabel",
-      links: [],
+      links: [] as { label: string; path: string }[],
     },
     // {
     //   title: "Education",
