@@ -41,6 +41,7 @@ const SignUpButton: FunctionComponent<{
   url: string;
 }> = ({ isFree, disabled, url }) => {
   const { t } = useTranslation("common");
+  console.log("🚀 ~ file: SignUpButton.tsx ~ line 48 ~ url", url);
 
   return (
     <SignUpButtonStyled disabled={disabled}>
