@@ -151,6 +151,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
     maxEmployeesOnSlider,
     headerPlanBoxHeightFull,
     headerPlanBoxHeightSticky,
+    period,
   } = usePricingContext();
 
   const { currency, locale } = useMainContext();
@@ -162,7 +163,9 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
   const isDisabled = plans[plan].disabled;
 
   const headerPlanBoxHeightFooter = 150;
-  const signUpUrl = `${actionUrl}&employees=${employees}`;
+  const signUpUrl = `${actionUrl}&employees=${employees}&period=${
+    period === 0 ? "month" : "year"
+  }`;
 
   if (isFooter) {
     return (
