@@ -29,14 +29,18 @@ const ForEmployees: FunctionComponent<Props> = ({ plan }) => {
   const { currency, locale } = useMainContext();
 
   const forOne = period
-    ? plans[plan].forEmployeeYearly
-    : plans[plan].forEmployeeMonthly;
+    ? plans?.[plan]?.forEmployeeYearly
+    : plans?.[plan]?.forEmployeeMonthly;
 
   return (
     <Wrapper>
       <div className="startingAt">{t("forOne")}</div>
       <div className="amountForOne">
-        <MultiCurrencyFormat value={forOne} currency={currency} locale={locale}/>
+        <MultiCurrencyFormat
+          value={forOne}
+          currency={currency}
+          locale={locale}
+        />
       </div>
       <div className="period">/{t("month")}</div>
     </Wrapper>

@@ -160,7 +160,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
 
   const maxEmployeesReached = employees === maxEmployeesOnSlider;
   const isFree = plan === 0;
-  const isDisabled = plans[plan].disabled;
+  const isDisabled = plans?.[plan]?.disabled;
 
   const headerPlanBoxHeightFooter = 150;
   const signUpUrl = `${actionUrl}&employees=${employees}&period=${
@@ -204,7 +204,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
           <div className="price">
             <div className="amount">
               <MultiCurrencyFormat
-                value={plans[plan]?.price}
+                value={plans?.[plan]?.price}
                 currency={currency}
                 locale={locale}
               />
@@ -234,7 +234,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
                   <div className="price__amountAndPeriod">
                     <div className="amount">
                       <MultiCurrencyFormat
-                        value={plans[plan]?.price}
+                        value={plans?.[plan]?.price}
                         currency={currency}
                         locale={locale}
                       />

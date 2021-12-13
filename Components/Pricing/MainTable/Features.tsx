@@ -66,7 +66,7 @@ const FeaturesContent: FunctionComponent<Props> = ({
       {features.map(({ feat, plans }, i) => (
         <Feature
           key={i}
-          disabled={!plans[plan]}
+          disabled={!plans?.[plan]}
           onMouseEnter={(e) => highlight(i)}
           highlighted={highlightedRow === i}
         >

@@ -68,8 +68,8 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     maxEmployeesOnSlider,
   } = usePricingContext();
   const { t, i18n } = useTranslation("pricing");
-  const planData = plans[plan];
-  const { yearlyPrice } = planData;
+  const planData = plans?.[plan];
+  const { yearlyPrice } = planData || {};
 
   if (plan === 0) {
     return (
