@@ -98,7 +98,6 @@ const Pricing: FunctionComponent<Props> = ({ faq, features }) => {
     period,
     updatePeriod,
     maxEmployeesOnSlider,
-    employeesTemp,
   } = usePricingContext();
   const { t, i18n } = useTranslation("pricing");
 

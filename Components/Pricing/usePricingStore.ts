@@ -4,20 +4,20 @@ import usePricingInternational from "../../utils/usePricingInternational";
 
 const maxFreeEmp = parseInt(process.env.NEXT_PUBLIC_MAXEMP4FREE || "0");
 
-type DefaultPricesType = {
-  maxEmployees: number;
-  price: number;
-  disabled: boolean;
-  yearlyPrice: number;
-  forEmployeeMonthly: number;
-  forEmployeeYearly: number;
-  additionalEmployee: number;
-};
+// type DefaultPricesType = {
+//   maxEmployees: number;
+//   price: number;
+//   disabled: boolean;
+//   yearlyPrice: number;
+//   forEmployeeMonthly: number;
+//   forEmployeeYearly: number;
+//   additionalEmployee: number;
+// };
 
 const usePricingStore = () => {
   const [recommendedPlan, setRecommendedPlan] = useState(0);
   const [employees, setEmployees] = useState(maxFreeEmp);
-  const [employeesTemp, setEmployeesTemp] = useState(maxFreeEmp);
+  // const [employeesTemp, setEmployeesTemp] = useState(maxFreeEmp);
   const [period, setPeriod] = useState(0);
 
   const { maxEmployeesForFreePlan, plans } = usePricingInternational({
@@ -134,6 +134,7 @@ const usePricingStore = () => {
     freeEmployees,
     headerPlanBoxHeightFull,
     headerPlanBoxHeightSticky,
+    maxEmployeesForFreePlan,
     // employeesTemp,
   };
 };

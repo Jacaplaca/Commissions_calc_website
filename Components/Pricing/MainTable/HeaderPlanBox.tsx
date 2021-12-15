@@ -182,7 +182,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             </div>
           )}
           <div className="comment">
-            <Comment plan={plan} />
+            <Comment plan={plan} planName={planName} />
           </div>
           <div className="signUpButton">
             <SignUpButton
@@ -262,7 +262,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
             <ForEmployees plan={plan} planName={planName} />
           </div>
           <div className="comment">
-            <Comment plan={plan} />
+            <Comment plan={plan} planName={planName} />
           </div>
           <div className="signUpButton">
             <SignUpButton

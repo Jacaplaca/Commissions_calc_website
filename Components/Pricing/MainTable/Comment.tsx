@@ -56,9 +56,10 @@ const Yearly: FunctionComponent<YProps> = ({ period, yearlyPrice }) => {
 
 type Props = {
   plan: number;
+  planName: "free" | "pro" | "basic";
 };
 
-const Comment: FunctionComponent<Props> = ({ plan }) => {
+const Comment: FunctionComponent<Props> = ({ plan, planName }) => {
   const {
     plans,
     period,
@@ -68,8 +69,8 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     maxEmployeesOnSlider,
   } = usePricingContext();
   const { t, i18n } = useTranslation("pricing");
-  const planData = plans?.[plan];
-  const { yearlyPrice } = planData || {};
+  const planData = plans?.[planName];
+  // const { yearlyPrice } = planData || {};
 
   if (plan === 0) {
     return (
@@ -93,7 +94,10 @@ const Comment: FunctionComponent<Props> = ({ plan }) => {
     }
     return (
       <CommentStyled>
-        <Yearly yearlyPrice={yearlyPrice} period={period} />
+        <Yearly
+          yearlyPrice={planData.priceForAllEmployeesYearly * 12}
+          period={period}
+        />
         <div>
           {t("upTo")} <strong>{employees}</strong> {t("employees")}.
         </div>
