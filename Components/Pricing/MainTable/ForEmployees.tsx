@@ -7,6 +7,7 @@ import { useMainContext } from "../../../contexts/main";
 
 type Props = {
   plan: number;
+  planName: "free" | "pro" | "basic";
 };
 const Wrapper = styled.section`
   display: flex;
@@ -16,7 +17,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const ForEmployees: FunctionComponent<Props> = ({ plan }) => {
+const ForEmployees: FunctionComponent<Props> = ({ plan, planName }) => {
   const {
     plans,
     period,
@@ -29,8 +30,8 @@ const ForEmployees: FunctionComponent<Props> = ({ plan }) => {
   const { currency, locale } = useMainContext();
 
   const forOne = period
-    ? plans?.[plan]?.forEmployeeYearly
-    : plans?.[plan]?.forEmployeeMonthly;
+    ? plans?.[planName]?.priceMonthButYearPerEmployee
+    : plans?.[planName]?.priceMonthPerEmployee;
 
   return (
     <Wrapper>

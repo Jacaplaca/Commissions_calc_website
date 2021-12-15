@@ -20,96 +20,93 @@ const usePricingStore = () => {
   const [employeesTemp, setEmployeesTemp] = useState(maxFreeEmp);
   const [period, setPeriod] = useState(0);
 
-  const {
-    pro,
-    basicPrice,
-    proPrice,
-    basicYearlyPrice,
-    proYearlyPrice,
-    basicForEmployeeMonthly,
-    basicForEmployeeYearly,
-    proForEmployeeMonthly,
-    proForEmployeeYearly,
-    defaultPrices,
-  } = usePricingInternational({
+  const { maxEmployeesForFreePlan, plans } = usePricingInternational({
     isYearly: Boolean(period),
     employees: employees,
-  }) || {
-    pro: false,
-    basicPrice: 0,
-    proPrice: 0,
-    basicYearlyPrice: 0,
-    proYearlyPrice: 0,
-    basicForEmployeeMonthly: 0,
-    basicForEmployeeYearly: 0,
-    proForEmployeeMonthly: 0,
-    proForEmployeeYearly: 0,
-    defaultPrices: [
-      {
-        maxEmployees: maxFreeEmp,
-        price: 0,
-        disabled: false,
-        yearlyPrice: 0,
-        forEmployeeMonthly: 0,
-        forEmployeeYearly: 0,
-        additionalEmployee: 0,
-      },
-      {
-        maxEmployees: maxFreeEmp,
-        price: 0,
-        disabled: false,
-        yearlyPrice: 0,
-        forEmployeeMonthly: 0,
-        forEmployeeYearly: 0,
-        additionalEmployee: 0,
-      },
-      {
-        maxEmployees: maxFreeEmp,
-        price: 0,
-        disabled: false,
-        yearlyPrice: 0,
-        forEmployeeMonthly: 0,
-        forEmployeeYearly: 0,
-        additionalEmployee: 0,
-      },
-    ],
-  };
+  });
 
-  const [plans, setPlans] = useState<DefaultPricesType[]>(defaultPrices);
+  // useEffect(() => {
+  //   console.log({ plans });
+  // }, [plans]);
+
+  // const [plans, setPlans] = useState<DefaultPricesType[]>();
   const maxEmployeesOnSlider = 100;
   const freeEmployees = maxFreeEmp;
+
   const screen = useBreakpoint();
   const headerPlanBoxHeightFull = screen.sm ? 350 : 300;
   const headerPlanBoxHeightSticky = 70;
 
   useEffect(() => {
-    const free = employees <= freeEmployees;
-
-    if (!free && defaultPrices && defaultPrices.length > 2) {
-      setRecommendedPlan(pro ? 2 : 1);
-
-      setPlans([
-        { ...defaultPrices[0], disabled: true },
-        {
-          ...defaultPrices[1],
-          price: Math.floor(basicPrice),
-          yearlyPrice: Math.floor(basicYearlyPrice),
-          forEmployeeMonthly: basicForEmployeeMonthly,
-          forEmployeeYearly: basicForEmployeeYearly,
-        },
-        {
-          ...defaultPrices[2],
-          price: Math.floor(proPrice),
-          yearlyPrice: Math.floor(proYearlyPrice),
-          forEmployeeMonthly: proForEmployeeMonthly,
-          forEmployeeYearly: proForEmployeeYearly,
-        },
-      ]);
+    if (employees > 50) {
+      setRecommendedPlan(2);
     } else {
-      setPlans(defaultPrices);
       setRecommendedPlan(1);
     }
-  }, [employees, period, basicPrice]);
+  }, [employees]);
+
+  // useEffect(() => {
+  //   const free = employees <= freeEmployees;
+
+  //   if (!free && defaultPrices && defaultPrices.length > 2) {
+  //     setRecommendedPlan(employees > 50 ? 2 : 1);
+  //     // const defaultPrices = [
+  // //   {
+  // //     maxEmployees: maxFreeEmp,
+  // //     price: startedPrices[0],
+  // //     disabled: false,
+  // //     yearlyPrice: startedPrices[0],
+  // //     forEmployeeMonthly: startedPrices[0],
+  // //     forEmployeeYearly: startedPrices[0],
+  // //     additionalEmployee: employeePrices[0],
+  // //   },
+  // //   {
+  // //     price: startedPrices[1],
+  // //     disabled: false,
+  // //     yearlyPrice: startedPrices[1] * 12 * yearFactor,
+  // //     forEmployeeMonthly: startedPrices[1] / maxFreeEmp,
+  // //     forEmployeeYearly: (startedPrices[1] / maxFreeEmp) * yearFactor,
+  // //     additionalEmployee: employeePrices[1],
+  // //   },
+  // //   {
+  // //     price: startedPrices[2],
+  // //     disabled: false,
+  // //     yearlyPrice: startedPrices[2] * 12 * yearFactor,
+  // //     forEmployeeMonthly: startedPrices[2] / maxFreeEmp,
+  // //     forEmployeeYearly: (startedPrices[2] / maxFreeEmp) * yearFactor,
+  // //     additionalEmployee: employeePrices[2],
+  // //   },
+  // // ];
+
+  //     setPlans([
+
+  //       { maxEmployees: basic.maxEmployeesForFreePlan,
+  //         price:0,
+  //         yearlyPrice:0,
+  //         forEmployeeMonthly:0,
+  //         forEmployeeYearly: 0,
+  //         disabled: true
+  //        },
+  //       {
+  //         disabled:false,
+  //         price: Math.floor(basicPrice),
+  //         yearlyPrice: Math.floor(basicYearlyPrice),
+  //         forEmployeeMonthly: basicForEmployeeMonthly,
+  //         forEmployeeYearly: basicForEmployeeYearly,
+  //       },
+  //       {
+  //         disabled:false,
+  //         price: Math.floor(proPrice),
+  //         yearlyPrice: Math.floor(proYearlyPrice),
+  //         forEmployeeMonthly: proForEmployeeMonthly,
+  //         forEmployeeYearly: proForEmployeeYearly,
+  //       },
+  //     ]);
+  //   } else {
+  //     setPlans(defaultPrices);
+  //     setRecommendedPlan(1);
+  //   }
+  // }, [employees, period, basicPrice]);
 
   type UpdateEmployees = (
     event: Event,
@@ -137,7 +134,7 @@ const usePricingStore = () => {
     freeEmployees,
     headerPlanBoxHeightFull,
     headerPlanBoxHeightSticky,
-    employeesTemp,
+    // employeesTemp,
   };
 };
 

@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import axios from "axios";
-const getPricesDataUrl = process.env.NEXT_PUBLIC_MS_GETPRICES_ALL_URL || "";
-// import getPrices from "./getPrices";
+const getPricesDataUrl = process.env.NEXT_PUBLIC_MS_GETPRICES_URL || "";
+const pathPrices = "/all";
+const pathMaxForFreeEmployees = "/free_users";
 
 const usePricingInternational = ({
   isYearly,
@@ -16,7 +17,31 @@ const usePricingInternational = ({
     i18n: { language },
   } = useTranslation("common");
 
-  const [prices, setPrices] = useState(null);
+  const [maxEmployeesForFreePlan, setMaxEmployeesForFreePlan] = useState(0);
+
+  const [prices, setPrices] = useState({
+    free: {
+      disabled: false,
+      priceMonthPerEmployee: 0,
+      priceMonthButYearPerEmployee: 0,
+      priceForAllEmployeesMonthly: 0,
+      priceForAllEmployeesYearly: 0,
+    },
+    basic: {
+      disabled: false,
+      priceMonthPerEmployee: 0,
+      priceMonthButYearPerEmployee: 0,
+      priceForAllEmployeesMonthly: 0,
+      priceForAllEmployeesYearly: 0,
+    },
+    pro: {
+      disabled: false,
+      priceMonthPerEmployee: 0,
+      priceMonthButYearPerEmployee: 0,
+      priceForAllEmployeesMonthly: 0,
+      priceForAllEmployeesYearly: 0,
+    },
+  });
   const [all, setAll] = useState(null);
 
   const getAll = async ({
@@ -26,10 +51,16 @@ const usePricingInternational = ({
     language: string;
     isYearly: boolean;
   }) => {
-    const result = await axios.post(getPricesDataUrl, {
+    const maxEmployeesForFreePlanData = await axios.get(
+      `${getPricesDataUrl}${pathMaxForFreeEmployees}`
+    );
+    const maxEmployeesForFreePlan = maxEmployeesForFreePlanData.data;
+
+    setMaxEmployeesForFreePlan(maxEmployeesForFreePlan);
+
+    const result = await axios.post(`${getPricesDataUrl}${pathPrices}`, {
       language,
       isYearly: isYearly ? 1 : 0,
-      // employees,
     });
     setAll(result.data);
     getPrices(result.data, employees);
@@ -50,13 +81,21 @@ const usePricingInternational = ({
     getAll({ language, isYearly });
   }, [isYearly, language]);
 
-  // const prices = getPrices({
-  //   language,
-  //   isYearly,
-  //   employees,
-  // });
-
-  return prices;
+  return {
+    maxEmployeesForFreePlan,
+    plans: {
+      free: {
+        ...prices.free,
+        disabled: employees > maxEmployeesForFreePlan,
+        priceMonthPerEmployee: 0,
+        priceMonthButYearPerEmployee: 0,
+        priceForAllEmployeesMonthly: 0,
+        priceForAllEmployeesYearly: 0,
+      },
+      basic: { ...prices.basic, disabled: false },
+      pro: { ...prices.pro, disabled: false },
+    },
+  };
 };
 
 export default usePricingInternational;

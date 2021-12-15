@@ -81,6 +81,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={0}
               icon={<PuzzleTwo />}
               actionUrl={paths.appSignUpFree}
+              planName="free"
             />
             <div className="description">
               <Features
@@ -97,6 +98,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               icon={<PuzzleTwo />}
               isFooter
               actionUrl={paths.appSignUpFree}
+              planName="free"
             />
           </ColumnContent>
         </div>
@@ -111,6 +113,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={1}
               icon={<PuzzleThree />}
               actionUrl={paths.appSignUpBasic}
+              planName="basic"
             />
             <div className="description">
               <Features
@@ -127,6 +130,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               icon={<PuzzleThree />}
               isFooter
               actionUrl={paths.appSignUpBasic}
+              planName="basic"
             />
           </ColumnContent>
         </div>
@@ -141,6 +145,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               plan={2}
               icon={<PuzzleFour />}
               actionUrl={paths.appSignUpPro}
+              planName="pro"
             />
             <div className="description">
               <Features
@@ -157,6 +162,7 @@ const MainPricingTable: FunctionComponent<Props> = ({ features }) => {
               icon={<PuzzleFour />}
               isFooter
               actionUrl={paths.appSignUpPro}
+              planName="pro"
             />
           </ColumnContent>
         </div>

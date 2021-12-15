@@ -33,8 +33,8 @@ const SliderStyled = styled(Slider)`
 
 const marks = [
   {
-    value: 0,
-    label: "0",
+    value: 1,
+    label: "1",
   },
   {
     value: 5,
@@ -49,6 +49,7 @@ const marks = [
 type Props = {
   value: number;
   max: number;
+  min?: number;
   onChange: (
     event: Event,
     value: number | Array<number>,
@@ -62,12 +63,14 @@ const EmployeesSlider: FunctionComponent<Props> = ({
   value,
   max,
   onChange,
+  min = 0,
 }) => {
   return (
     <SliderStyled
       aria-label="Always visible"
       // defaultValue={0}
       value={value}
+      min={min}
       // getAriaValueText={(n) => "asdf"}
       max={max}
       onChange={onChange}

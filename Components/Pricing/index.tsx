@@ -114,6 +114,7 @@ const Pricing: FunctionComponent<Props> = ({ faq, features }) => {
       {/* <Button>sdf</Button> */}
       <div className="sliderWrapper">
         <EmployeesSlider
+          min={1}
           value={employees}
           max={maxEmployeesOnSlider}
           onChange={updateEmployees}

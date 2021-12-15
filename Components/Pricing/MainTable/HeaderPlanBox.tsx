@@ -135,6 +135,7 @@ type Props = {
   isFooter?: boolean;
   icon: JSX.Element;
   actionUrl: string;
+  planName: "free" | "pro" | "basic";
 };
 const HeaderPlanBox: FunctionComponent<Props> = ({
   title,
@@ -144,6 +145,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
   highlightPlan,
   isFooter,
   actionUrl,
+  planName,
 }) => {
   const {
     plans,
@@ -159,13 +161,15 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
   const { t, i18n } = useTranslation("pricing");
 
   const maxEmployeesReached = employees === maxEmployeesOnSlider;
-  const isFree = plan === 0;
-  const isDisabled = plans?.[plan]?.disabled;
+  const isFree = planName === "free";
+  const isDisabled = plans?.[planName]?.disabled;
 
   const headerPlanBoxHeightFooter = 150;
   const signUpUrl = `${actionUrl}&employees=${employees}&period=${
     period === 0 ? "month" : "year"
   }`;
+
+  const isMonth = period === 0;
 
   if (isFooter) {
     return (
@@ -204,7 +208,11 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
           <div className="price">
             <div className="amount">
               <MultiCurrencyFormat
-                value={plans?.[plan]?.price}
+                value={
+                  isMonth
+                    ? plans?.[planName]?.priceForAllEmployeesMonthly
+                    : plans?.[planName]?.priceForAllEmployeesYearly
+                }
                 currency={currency}
                 locale={locale}
               />
@@ -234,7 +242,11 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
                   <div className="price__amountAndPeriod">
                     <div className="amount">
                       <MultiCurrencyFormat
-                        value={plans?.[plan]?.price}
+                        value={
+                          isMonth
+                            ? plans?.[planName]?.priceForAllEmployeesMonthly
+                            : plans?.[planName]?.priceForAllEmployeesYearly
+                        }
                         currency={currency}
                         locale={locale}
                       />
@@ -247,7 +259,7 @@ const HeaderPlanBox: FunctionComponent<Props> = ({
           </div>
 
           <div className="forEmployee">
-            <ForEmployees plan={plan} />
+            <ForEmployees plan={plan} planName={planName} />
           </div>
           <div className="comment">
             <Comment plan={plan} />
