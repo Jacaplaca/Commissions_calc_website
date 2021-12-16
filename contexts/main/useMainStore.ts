@@ -11,6 +11,16 @@ const useMainStore = () => {
     i18n: { language },
   } = useTranslation();
 
+  const [contactIsOpen, setContactIsOpen] = useState(false);
+
+  const handleOpenContact = () => {
+    setContactIsOpen(true);
+  };
+
+  const handleCloseContact = () => {
+    setContactIsOpen(false);
+  };
+
   const updateBackground = (color: string) => {
     setBackground(color);
   };
@@ -22,7 +32,15 @@ const useMainStore = () => {
     setLocale(locale);
   }, [language]);
 
-  return { background, updateBackground, currency, locale };
+  return {
+    background,
+    updateBackground,
+    currency,
+    locale,
+    contactIsOpen,
+    handleOpenContact,
+    handleCloseContact,
+  };
 };
 
 export default useMainStore;

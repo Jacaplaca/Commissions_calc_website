@@ -30,6 +30,16 @@ const AskInquiry = styled.a`
   cursor: pointer;
 `;
 
+const CommentButton = styled.button`
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  a {
+    color: ${({ theme }) => theme.colors.palette.red.main};
+  }
+`;
+
 type YProps = {
   period: number;
   yearlyPrice: number;
@@ -72,6 +82,8 @@ const Comment: FunctionComponent<Props> = ({ plan, planName }) => {
   const planData = plans?.[planName];
   // const { yearlyPrice } = planData || {};
 
+  const { handleOpenContact } = useMainContext();
+
   if (plan === 0) {
     return (
       <CommentStyled>
@@ -86,9 +98,9 @@ const Comment: FunctionComponent<Props> = ({ plan, planName }) => {
     if (employees === maxEmployeesOnSlider) {
       return (
         <CommentStyled>
-          <Link href={paths.contact} passHref>
+          <CommentButton onClick={handleOpenContact}>
             <AskInquiry>{t("inquiry")}</AskInquiry>
-          </Link>
+          </CommentButton>
         </CommentStyled>
       );
     }

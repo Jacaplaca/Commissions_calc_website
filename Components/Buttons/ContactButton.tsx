@@ -3,6 +3,7 @@ import { FunctionComponent, RefObject, useEffect, useState } from "react";
 import { CommentAltLinesSolid } from "../Icons";
 import useOnScreen from "../../hooks/useOnScreen";
 import ContactForm from "../Contact/form";
+import { useMainContext } from "../../contexts/main";
 
 type Props = {
   refToChangeColor: RefObject<HTMLInputElement>;
@@ -66,15 +67,8 @@ const ContactButtonIcon = styled(CommentAltLinesSolid)<{ color: string }>`
 
 const ContactButton: FunctionComponent<Props> = ({ refToChangeColor }) => {
   const isVisible = useOnScreen(refToChangeColor, "-50px");
-  const [contactIsOpen, setContactIsOpen] = useState(false);
-
-  const handleOpenContact = () => {
-    setContactIsOpen(true);
-  };
-
-  const handleCloseContact = () => {
-    setContactIsOpen(false);
-  };
+  const { contactIsOpen, handleCloseContact, handleOpenContact } =
+    useMainContext();
 
   const theme = useTheme();
   const color = isVisible
