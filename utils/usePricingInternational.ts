@@ -58,10 +58,7 @@ const usePricingInternational = ({
 
     setMaxEmployeesForFreePlan(maxEmployeesForFreePlan);
 
-    const result = await axios.post(`${getPricesDataUrl}${pathPrices}`, {
-      language,
-      isYearly: isYearly ? 1 : 0,
-    });
+    const result = await axios.get(`${getPricesDataUrl}${pathPrices}`);
     setAll(result.data);
     getPrices(result.data, employees);
   };

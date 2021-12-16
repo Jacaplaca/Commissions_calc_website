@@ -1,5 +1,5 @@
 const currencies: { [key: string]: string } = {
-  pl: "PLN",
+  pl: "USD",
   en: "USD",
 };
 
