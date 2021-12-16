@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import axios from "axios";
-const getPricesDataUrl = process.env.NEXT_PUBLIC_MS_GETPRICES_URL || "";
+const getPricesDataUrl = process.env.NEXT_PUBLIC_MS_GETPRICES_ALL_URL || "";
 const pathPrices = "/all";
 const pathMaxForFreeEmployees = "/free_users";
 
